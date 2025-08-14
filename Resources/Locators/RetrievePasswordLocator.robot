@@ -68,3 +68,44 @@ ${SENDOTP_API}     api/v2/retrive/send-otp/
 ${CheckToken_API}     api/v2/retrive/check-token/
 ${RetrivePassword_API}     api/v2/retrive/password/
 
+
+#Element IOS#
+${elm_RetrivePassword_IOS}     //XCUIElementTypeLink[@name="Retrieve password"]
+${input_UserID_RetrievePassword_IOS}    //XCUIElementTypeTextField[@name="Enter your User ID"]
+${elm_minUserID_IOS}    //XCUIElementTypeStaticText[@name="User ID must be 5 characters or longer!"]
+${Expected_minUserID_IOS}    User ID must be 5 characters or longer!
+${elm_maxUserID_IOS}    //XCUIElementTypeStaticText[@name="User ID must be 20 characters or fewer!"]
+${Expected_maxUserID_IOS}    User ID must be 20 characters or fewer!
+${elm_specialcharacters_IOS}    //XCUIElementTypeStaticText[@name="Special characters are not allowed"]
+${Expected_specialcharacters_IOS}    Special characters are not allowed
+${elm_Continue_IOS}    //XCUIElementTypeStaticText[@name="Continue"]
+${elm_UserID_notfound_IOS}    //XCUIElementTypeOther[@name="User ID not found"]
+${Expected_UserID_notfound_IOS}    User ID not found
+${elm_Signout_IOS}    //XCUIElementTypeStaticText[@name="Your password has been update successfully\nDone"]
+${Expected_Signout_IOS}    Your password has been update successfully\nDone
+${elm_Confirm_IOS}      //XCUIElementTypeStaticText[@name="Confirm"]
+${elm_Submit_IOS}      //XCUIElementTypeStaticText[@name="Submit"]
+${elm_newPassword_IOS}    //XCUIElementTypeTextField[@name="Enter your new password"]
+${elm_confirmPassword_IOS}    //XCUIElementTypeTextField[@name="Repeat your new password"]
+${elm_title_NewPassword_IOS}    //XCUIElementTypeStaticText[@name="New Password"]
+${elm_showNewPassword}      //XCUIElementTypeApplication[@name="Panda App Prod"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[1]/XCUIElementTypeOther
+${elm_showConfirmPassword}      //XCUIElementTypeApplication[@name="Panda App Prod"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeOther
+${elm_empty_New_Password_IOS}     xpath=(//XCUIElementTypeStaticText[@name="This field is required"])[1]
+${Expected_empty_Password_IOS}    This field is required
+
+${elm_empty_ConfirmPassword_IOS}      //XCUIElementTypeStaticText[@name="This field is required"]
+
+${elm_MinPassword}      //XCUIElementTypeStaticText[@name="Password must be 8 characters or longer!"]
+${Expected_MinPassword}        Password must be 8 characters or longer!
+
+${elm_validationtext_password}      //XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]
+${EXPECTED_validationtext_password}        Password should contain at least one upper case, lower case, digit and special character
+
+${elm_validationtext_confirm_password}      //XCUIElementTypeStaticText[@name="Confirm password and password must be match"]
+${EXPECTED_validationtext_confirmpassword}      Confirm password and password must be match
+
+${elm_Newpassword_samecurrent}      //XCUIElementTypeStaticText[@name="New password cannot be the same as current password"]
+${EXPECTED_NewPassword_SameCurrent}     New password cannot be the same as current password
+
+${elm_popup_Newpassword_samecurrent}    //XCUIElementTypeOther[@name="Password reset failed"]
+${Expected_popup_NewPassword_SameCurrent}    Password reset failed

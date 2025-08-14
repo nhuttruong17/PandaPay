@@ -66,3 +66,49 @@ ${SIGNIN_API}     api/user/sign-in/
 ${Profile_API}    api/user/me/profile/
 ${SIGNOUT_API}    api/logout/
 
+# Element IOS
+${input_UserID_IOS}    //XCUIElementTypeTextField[@name="Enter your User ID"]
+${elm_clickscreen}     //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]
+${btn_Login_IOS}      //XCUIElementTypeStaticText[@name="Login"]
+${input_Password_IOS}    //XCUIElementTypeTextField[@name="Enter your Password"]
+${elm_Settings_IOS}      //XCUIElementTypeStaticText[@name="Settings"]
+${elem_SignOut_IOS}      //XCUIElementTypeStaticText[@name="Sign Out"]
+${elm_confirm_Yes}      //XCUIElementTypeStaticText[@name="Yes"]
+${elm_welcome_IOS}      //XCUIElementTypeStaticText[@name="Welcome!"]
+${Expected_Welcome_IOS}    Welcome!
+
+${elm_error_empty_UserID_IOS}      //XCUIElementTypeTextField[@name="Enter your User ID"]/following-sibling::XCUIElementTypeStaticText[@name="This field is required"]
+${Expected_error_emptyfield}        This field is required
+
+${elm_MinUserID}      //XCUIElementTypeStaticText[@name="User ID must be 5 characters or longer!"]
+${Expected_MinUserID}        User ID must be 5 characters or longer!
+
+${elm_MaxUserID}      //XCUIElementTypeStaticText[@name="User ID must be 20 characters or fewer!"]
+${Expected_MaxUserID}        User ID must be 20 characters or fewer!
+
+${elm_SpecialCharacters}      //XCUIElementTypeStaticText[@name="Special characters are not allowed"]
+${EXPECTED_SpecialCharacters}        Special characters are not allowed
+
+${elm_showPassword}      //XCUIElementTypeApplication[@name="Panda App Prod"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther
+
+
+${elm_error_empty_Password_IOS}      //XCUIElementTypeStaticText[@name="This field is required"]
+
+${elm_MinPassword}      //XCUIElementTypeStaticText[@name="Password must be 8 characters or longer!"]
+${Expected_MinPassword}        Password must be 8 characters or longer!
+
+${elm_validationtext_password}      //XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]
+${EXPECTED_validationtext_password}        Password should contain at least one upper case, lower case, digit and special character
+
+${elm_validationtext_confirm_password}      //XCUIElementTypeStaticText[@name="Confirm password and password must be match"]
+${EXPECTED_validationtext_confirmpassword}      Confirm password and password must be match
+${Click_shownewpassword}        //XCUIElementTypeApplication[@name="Panda App Prod"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[3]/XCUIElementTypeOther[1]/XCUIElementTypeOther
+${elm_login_failed_IOS}     //XCUIElementTypeOther[@name="Incorrect User ID or Password"]
+${Expected_login_failed_IOS}    Incorrect User ID or Password
+
+${elm_login_success_IOS}     //XCUIElementTypeOther[@name="Sign in successful"]
+${Expected_login_success_IOS}    Sign in successful
+
+${elm_login_inactive_IOS}     //XCUIElementTypeOther[@name="Account Deactivated. Please contact admin."]
+${Expected_login_inactive_IOS}    Account Deactivated. Please contact admin.
+

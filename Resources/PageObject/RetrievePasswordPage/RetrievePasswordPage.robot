@@ -11,8 +11,8 @@ Library    ../../../LibPy/FinalNetwork.py    WITH NAME    Network
 *** Keywords ***
 Navigate to Retrieve Password Page
     Click on Element    ${elm_A_RetrivePassword}
-    Wait Until Element Is Visible    ${elm_H1_RetrivePassword}    5s
-    ${title}=    Get Text    ${elm_H1_RetrivePassword}
+    SeleniumLibrary.Wait Until Element Is Visible    ${elm_H1_RetrivePassword}    5s
+    ${title}=    SeleniumLibrary.Get Text    ${elm_H1_RetrivePassword}
     Should Be Equal As Strings    ${title}    ${Expected_H1_RetrivePassword}
 
 Click on Retrieve Password with Wait Request Payload User not existing
@@ -276,3 +276,92 @@ Check API send OTP, check token, retrieve password success with email
     &{PAYLOAD_RetriveSuccess}=    Create Dictionary     user_id=${Valid_userID}    token=${token}    new_password=${newpassword}    confirm_new_password=${confirmpassword}
     ${retrieve_password}=   API Request    ${Method_PUT}    ${URL_Retrive}    ${PAYLOAD_RetriveSuccess}    ${Status_200}
     Should Contain    ${retrieve_password.content}    ${EXPECTED_SUCCESS_MESSAGE_Retrieve}
+
+
+###Mobile Retrieve Password - IOS###
+Check validation text New Password & Confirm Password mobile
+    Click on Element mobile    ${elm_showNewPassword}
+    Click on Element mobile    ${elm_showConfirmPassword}
+
+    Fill Text Input mobile    ${elm_newPassword_IOS}    ${Empty_textPassword}
+    Click on Element mobile   ${elm_Submit_IOS}
+    Check validation error message mobile    ${elm_empty_New_Password_IOS}    ${Expected_empty_Password_IOS}
+
+    Fill Text Input mobile    ${elm_newPassword_IOS}    ${Min_textPassword}
+    Click on Element mobile   ${elm_Submit_IOS}
+    Check validation error message mobile    ${elm_MinPassword}    ${Expected_MinPassword}
+#
+    Clear Text   //XCUIElementTypeTextField[@value="${Min_textPassword}"]
+    Fill Text Input mobile    ${elm_newPassword_IOS}    ${Missing_Uppercase}
+    Click on Element mobile   ${elm_Submit_IOS}
+    Check validation error message mobile    ${elm_validationtext_password}    ${EXPECTED_validationtext_password}
+#
+    Clear Text   //XCUIElementTypeTextField[@value="${Missing_Uppercase}"]
+    Fill Text Input mobile    ${elm_newPassword_IOS}    ${Missing_Lowercase}
+    Click on Element mobile   ${elm_Submit_IOS}
+    Check validation error message mobile    ${elm_validationtext_password}    ${EXPECTED_validationtext_password}
+#
+    Clear Text    //XCUIElementTypeTextField[@value="${Missing_Lowercase}"]
+    Fill Text Input mobile    ${elm_newPassword_IOS}    ${Missing_OneNumber}
+    Click on Element mobile   ${elm_Submit_IOS}
+    Check validation error message mobile    ${elm_validationtext_password}     ${EXPECTED_validationtext_password}
+#
+    Clear Text   //XCUIElementTypeTextField[@value="${Missing_OneNumber}"]
+    Fill Text Input mobile    ${elm_newPassword_IOS}     ${Missing_OneSpecialCharacter}
+    Click on Element mobile   ${elm_Submit_IOS}
+    Check validation error message mobile     ${elm_validationtext_password}     ${EXPECTED_validationtext_password}
+#
+    Fill Text Input mobile    ${elm_confirmPassword_IOS}     ${Empty_textPassword}
+    Click on Element mobile   ${elm_Submit_IOS}
+    Check validation error message mobile     ${elm_empty_ConfirmPassword_IOS}     ${Expected_empty_Password_IOS}
+#
+    Fill Text Input mobile    ${elm_confirmPassword_IOS}    ${Min_textPassword}
+    Click on Element mobile   ${elm_Submit_IOS}
+    Check validation error message mobile    ${elm_MinPassword}    ${Expected_MinPassword}
+#
+    Clear Text    //XCUIElementTypeTextField[@value="${Missing_OneSpecialCharacter}"]
+    Clear Text    //XCUIElementTypeTextField[@value="${Min_textPassword}"]
+    Fill Text Input mobile    ${elm_newPassword_IOS}    Dev123!@#
+    Fill Text Input mobile    ${elm_confirmPassword_IOS}    School123@
+    Click on Element mobile   ${elm_Submit_IOS}
+    Check validation error message mobile    ${elm_validationtext_confirm_password}    ${EXPECTED_validationtext_confirmpassword}
+    
+
+Click on Retrieve Password with email
+    Click on Element mobile    ${elm_Continue_IOS}
+    Click on Element mobile    //XCUIElementTypeStaticText[@name="Retrieve Password via Email in****ve@yopmail.com?"]
+    Click on Element mobile    ${elm_Confirm_IOS}
+    AppiumLibrary.Wait Until Element Is Visible     ${elm_title_NewPassword_IOS}       120s
+    Check validation text New Password & Confirm Password mobile
+    Clear Text    //XCUIElementTypeTextField[@value="Dev123!@#"]
+    Clear Text    //XCUIElementTypeTextField[@value="School123@"]
+    ${newpassword}=  Generate Secure Password
+    ${confirmpassword}=    Set Variable    ${newpassword}
+    Fill Text Input mobile    ${elm_newPassword_IOS}    ${newpassword}
+    Fill Text Input mobile    ${elm_confirmPassword_IOS}    ${confirmpassword}
+    Click on Element mobile   ${elm_Submit_IOS}
+Click on Retrieve Password with phone number
+    Click on Element mobile    ${elm_Continue_IOS}
+    Click on Element mobile    //XCUIElementTypeStaticText[@name="Retrieve Password via Phone (978) ***-**22?"]
+    Click on Element mobile    ${elm_Confirm_IOS}
+    AppiumLibrary.Wait Until Element Is Visible     ${elm_title_NewPassword_IOS}       120s
+    Check validation text New Password & Confirm Password mobile
+    Clear Text    //XCUIElementTypeTextField[@value="Dev123!@#"]
+    Clear Text    //XCUIElementTypeTextField[@value="School123@"]
+    ${newpassword}=  Generate Secure Password
+    ${confirmpassword}=    Set Variable    ${newpassword}
+    Fill Text Input mobile    ${elm_newPassword_IOS}    ${newpassword}
+    Fill Text Input mobile    ${elm_confirmPassword_IOS}    ${confirmpassword}
+    Click on Element mobile   ${elm_Submit_IOS}
+
+Click on Retrieve Password with email, New password same as old password
+    Click on Element mobile    ${elm_Continue_IOS}
+    Click on Element mobile    //XCUIElementTypeStaticText[@name="Retrieve Password via Email sc**ol@yopmail.com?"]
+    Click on Element mobile    ${elm_Confirm_IOS}
+    AppiumLibrary.Wait Until Element Is Visible     ${elm_title_NewPassword_IOS}       120s
+    Check validation text New Password & Confirm Password mobile
+    Clear Text    //XCUIElementTypeTextField[@value="Dev123!@#"]
+    Clear Text    //XCUIElementTypeTextField[@value="School123@"]
+    Fill Text Input mobile    ${elm_newPassword_IOS}    School123@
+    Fill Text Input mobile    ${elm_confirmPassword_IOS}    School123@
+    Click on Element mobile   ${elm_Submit_IOS}

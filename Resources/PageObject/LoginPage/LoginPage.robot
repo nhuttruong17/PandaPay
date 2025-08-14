@@ -14,7 +14,7 @@ Library    ../../../LibPy/FinalNetwork.py    WITH NAME    Network
 Click on Sign In with Wait Request Payload account Inactive
     #Prepare for request interception
     ${driver}=    Prepare For Request Interception    ${SIGNIN_API}
-    Wait Until Element Is Visible   ${btn_SignIn}     5s
+    SeleniumLibrary.Wait Until Element Is Visible   ${btn_SignIn}     5s
     Click on Element    ${btn_SignIn}
     Sleep    2s
     #Get Sign In Request
@@ -37,7 +37,7 @@ Click on Sign In with Wait Request Payload account Inactive
 Click on SignIn with Wait Request Payload login Failed
     #Prepare for request interception
     ${driver}=    Prepare For Request Interception    ${SIGNIN_API}
-    Wait Until Element Is Visible   ${btn_SignIn}     5s
+    SeleniumLibrary.Wait Until Element Is Visible   ${btn_SignIn}     5s
     Click on Element    ${btn_SignIn}
     Sleep    2s
     #Get Sign In Request

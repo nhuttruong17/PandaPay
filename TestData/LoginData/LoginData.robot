@@ -18,8 +18,8 @@ ${Max_textUserID}    abcd12345678901234567890
 ${Empty_textPassword}
 ${Min_textPassword}    ab
 ${Missing_Uppercase}    abcdefghijklmnop
-${Missing_Lowercase}    ABCDEFGHIJKLMNOP
-${Missing_Number}    abcdefghijAA
+${Missing_Lowercase}    ABCDEFGHIJKLMNTT
+${Missing_Number}    abcdefghijAA@
 ${Missing_Special}    abcdefghij1A
 #Data validation text Password
 
@@ -33,9 +33,3 @@ ${Type}     ORG_ADMIN
 &{PAYLOAD}         user_code=${Valid_UserID}    password=${Invalid_Password}    type=${TYPE}
 &{PAYLOAD_UserInactive}         user_code=${Valid_UserID_inactive}    password=${Valid_Password_inactive}    type=${TYPE}
 ## Payload API ##
-
-
-
-
-
-
