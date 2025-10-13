@@ -1,1400 +1,690 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-08-14T15:16:28.295372" rpa="false" schemaversion="5">
-<suite id="s1" name="LoginIOS" source="/Users/apple/Downloads/School/PycharmProjects/PandaPay/Tests/Authen/LoginIOS.robot">
-<kw name="Basic Setup iOS" owner="Common" type="SETUP">
-<kw name="Open Application" owner="AppiumLibrary">
-<arg>${APPIUM_SERVER_URL}</arg>
-<arg>platformName=${PLATFORM_NAME}</arg>
-<arg>appium:automationName=${AUTOMATION_NAME}</arg>
-<arg>appium:udid=${UDID}</arg>
-<arg>appium:bundleId=${BUNDLE_ID}</arg>
-<doc>Opens a new application to given Appium server.
-Capabilities of appium server, Android and iOS,
-Please check https://appium.io/docs/en/2.1/cli/args/
-| *Option*            | *Man.* | *Description*     |
-| remote_url          | Yes    | Appium server url |
-| alias               | no     | alias             |
-| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
-<status status="PASS" start="2025-08-14T15:16:28.509573" elapsed="62.570229"/>
+<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-10-13T17:34:13.032070" rpa="false" schemaversion="5">
+<suite id="s1" name="CreateUser" source="/Users/apple/Downloads/School/PycharmProjects/PandaPay/Tests/Authen/User/CreateUser.robot">
+<kw name="Basic Setup" owner="Common" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-13T17:34:13.195924" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x107a63b20&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-13T17:34:13.195529" elapsed="0.001860"/>
 </kw>
-<status status="PASS" start="2025-08-14T15:16:28.508861" elapsed="62.571330"/>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-13T17:34:13.198063" level="INFO">${logging_prefs} = {'performance': 'ALL'}</msg>
+<var>${logging_prefs}</var>
+<arg>performance=ALL</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-13T17:34:13.197716" elapsed="0.000490"/>
 </kw>
-<test id="s1-t1" name="Check validation empty UserID error" line="8">
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:31.443984" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>set_capability</arg>
+<arg>goog:loggingPrefs</arg>
+<arg>${logging_prefs}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-10-13T17:34:13.198344" elapsed="0.000202"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:13.198951" level="INFO">Opening browser 'Chrome' to base url 'https://app.panda.ennam.vn/'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${CHROME_BROWSER}</arg>
+<arg>options=${options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-10-13T17:34:13.198684" elapsed="1.934692"/>
+</kw>
+<status status="PASS" start="2025-10-13T17:34:13.194761" elapsed="1.939034"/>
+</kw>
+<test id="s1-t1" name="Create User With Valid Information" line="94">
+<kw name="Given Open Browser To Create User Page">
+<kw name="Restore Browser Session" owner="CreateUserPage">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-13T17:34:15.136070" level="INFO">${cookies_file} = .session/my_user/cookies.json</msg>
+<var>${cookies_file}</var>
+<arg>${session_dir}/cookies.json</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.135818" elapsed="0.001054"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-13T17:34:15.138625" level="INFO">${local_file} = .session/my_user/localStorage.json</msg>
+<var>${local_file}</var>
+<arg>${session_dir}/localStorage.json</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.137332" elapsed="0.001440"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2025-10-13T17:34:15.139571" level="INFO" html="true">File '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json&lt;/a&gt;' exists.</msg>
+<arg>${cookies_file}</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.139238" elapsed="0.000511"/>
+</kw>
+<msg time="2025-10-13T17:34:15.140437" level="INFO">${cookies_exist} = True</msg>
+<var>${cookies_exist}</var>
+<arg>File Should Exist</arg>
+<arg>${cookies_file}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.138977" elapsed="0.001598"/>
+</kw>
+<if>
+<branch type="IF" condition="${cookies_exist}">
+<kw name="Get Library Instance" owner="BuiltIn">
+<msg time="2025-10-13T17:34:15.141359" level="INFO">${sl} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x106dd11f0&gt;</msg>
+<var>${sl}</var>
+<arg>SeleniumLibrary</arg>
+<doc>Returns the currently active instance of the specified library.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.141030" elapsed="0.000425"/>
+</kw>
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2025-10-13T17:34:15.141907" level="INFO" html="true">Getting file '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json&lt;/a&gt;'.</msg>
+<msg time="2025-10-13T17:34:15.144416" level="INFO">${cookies_json} = [{"domain": "app.panda.ennam.vn", "httpOnly": false, "name": "refresh_token", "path": "/", "sameSite": "Lax", "secure": false, "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcm...</msg>
+<var>${cookies_json}</var>
+<arg>${cookies_file}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.141599" elapsed="0.003142"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-13T17:34:15.147697" level="INFO">${cookies} = [{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'refresh_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcm...</msg>
+<var>${cookies}</var>
+<arg>json.loads('''${cookies_json}''')</arg>
+<arg>modules=json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.145238" elapsed="0.003265"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${sl.driver}</arg>
+<arg>add_cookie</arg>
+<arg>${cookie}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.149437" elapsed="0.021992"/>
+</kw>
+<var name="${cookie}">{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'refresh_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmV...</var>
+<status status="PASS" start="2025-10-13T17:34:15.149249" elapsed="0.022325"/>
+</iter>
+<iter>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${sl.driver}</arg>
+<arg>add_cookie</arg>
+<arg>${cookie}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.171921" elapsed="0.004291"/>
+</kw>
+<var name="${cookie}">{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'access_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNz...</var>
+<status status="PASS" start="2025-10-13T17:34:15.171720" elapsed="0.004650"/>
+</iter>
+<iter>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${sl.driver}</arg>
+<arg>add_cookie</arg>
+<arg>${cookie}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.176693" elapsed="0.003618"/>
+</kw>
+<var name="${cookie}">{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'NEXT_LOCALE', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'en'}</var>
+<status status="PASS" start="2025-10-13T17:34:15.176524" elapsed="0.003925"/>
+</iter>
+<var>${cookie}</var>
+<value>@{cookies}</value>
+<status status="PASS" start="2025-10-13T17:34:15.148901" elapsed="0.031616"/>
+</for>
+<status status="PASS" start="2025-10-13T17:34:15.140735" elapsed="0.039848"/>
+</branch>
+<status status="PASS" start="2025-10-13T17:34:15.140692" elapsed="0.039942"/>
+</if>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2025-10-13T17:34:15.181253" level="INFO" html="true">File '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/localStorage.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/localStorage.json&lt;/a&gt;' exists.</msg>
+<arg>${local_file}</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.180945" elapsed="0.000530"/>
+</kw>
+<msg time="2025-10-13T17:34:15.181940" level="INFO">${local_exist} = True</msg>
+<var>${local_exist}</var>
+<arg>File Should Exist</arg>
+<arg>${local_file}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.180752" elapsed="0.001281"/>
+</kw>
+<if>
+<branch type="IF" condition="${local_exist}">
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2025-10-13T17:34:15.183342" level="INFO" html="true">Getting file '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/localStorage.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/localStorage.json&lt;/a&gt;'.</msg>
+<msg time="2025-10-13T17:34:15.185415" level="INFO">${local_json} = {}</msg>
+<var>${local_json}</var>
+<arg>${local_file}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.182358" elapsed="0.003286"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Evaluate" owner="BuiltIn">
+<arg>json.loads('''${local_json}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.186287" elapsed="0.000246"/>
+</kw>
+<msg time="2025-10-13T17:34:15.186655" level="INFO">${status} = PASS</msg>
+<msg time="2025-10-13T17:34:15.186727" level="INFO">${dummy} = {}</msg>
+<var>${status}</var>
+<var>${dummy}</var>
+<arg>Evaluate</arg>
+<arg>json.loads('''${local_json}''')</arg>
+<arg>json</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.185988" elapsed="0.000786"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:15.187417" level="INFO">Executing JavaScript:
+try{ var items = JSON.parse(arguments[0]); for(var k in items){ localStorage.setItem(k, items[k]); } }catch(e){ console.warn('localStorage restore skipped, invalid JSON'); }{}
+Without any arguments.</msg>
+<arg>try{ var items = JSON.parse(arguments[0]); for(var k in items){ localStorage.setItem(k, items[k]); } }catch(e){ console.warn('localStorage restore skipped, invalid JSON'); }</arg>
+<arg>${local_json}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.187136" elapsed="0.004443"/>
+</kw>
+<arg>'${status}' == 'PASS'</arg>
+<arg>SeleniumLibrary.Execute JavaScript</arg>
+<arg>try{ var items = JSON.parse(arguments[0]); for(var k in items){ localStorage.setItem(k, items[k]); } }catch(e){ console.warn('localStorage restore skipped, invalid JSON'); }</arg>
+<arg>${local_json}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.186901" elapsed="0.004834"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${status}' != 'PASS'</arg>
+<arg>Log</arg>
+<arg>Local storage JSON invalid or empty, skipping restoration</arg>
+<arg>WARN</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.191915" elapsed="0.000250"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.192520" elapsed="0.291631"/>
+</kw>
+<arg>'${status}' == 'PASS'</arg>
+<arg>Reload Page</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.192300" elapsed="0.292028"/>
+</kw>
+<status status="PASS" start="2025-10-13T17:34:15.182182" elapsed="0.302231"/>
+</branch>
+<status status="PASS" start="2025-10-13T17:34:15.182160" elapsed="0.302326"/>
+</if>
+<arg>.session/my_user</arg>
+<status status="PASS" start="2025-10-13T17:34:15.135449" elapsed="0.349095"/>
+</kw>
+<kw name="Click on Element" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:31.082590" elapsed="0.366476"/>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.485164" elapsed="0.239406"/>
 </kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:31.459383" level="INFO">Typing text '' into text field '//XCUIElementTypeTextField[@name="Enter your User ID"]'</msg>
-<msg time="2025-08-14T15:17:32.677880" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:15.725505" level="INFO">Clicking element 'xpath=//button[normalize-space()='User']'.</msg>
+<arg>${elm_input}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.725007" elapsed="0.048066"/>
+</kw>
+<arg>${Tab_USER_BUTTON}</arg>
+<status status="PASS" start="2025-10-13T17:34:15.484757" elapsed="0.288498"/>
+</kw>
+<kw name="Click on Element" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:15.773818" elapsed="1.719164"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:17.493579" level="INFO">Clicking element 'xpath=//button[normalize-space()='Create New User']'.</msg>
+<arg>${elm_input}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:17.493279" elapsed="0.033731"/>
+</kw>
+<arg>${CREATE_USER_BUTTON}</arg>
+<status status="PASS" start="2025-10-13T17:34:15.773464" elapsed="1.753712"/>
+</kw>
+<status status="PASS" start="2025-10-13T17:34:15.134769" elapsed="2.392493"/>
+</kw>
+<kw name="When User Input Valid Information for New User">
+<kw name="Input User ID" owner="CreateUserPage">
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:17.528509" elapsed="0.436051"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:17.965349" level="INFO">Typing text 'School2025' into text field '//*[@name="user_id"]'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:31.449867" elapsed="1.228510"/>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:17.964921" elapsed="0.108307"/>
 </kw>
-<arg>${input_UserID_IOS}</arg>
-<arg>${Empty_textUserID}</arg>
-<status status="PASS" start="2025-08-14T15:17:31.081383" elapsed="1.597375"/>
+<arg>${USER_ID_INPUT}</arg>
+<arg>${user_id}</arg>
+<status status="PASS" start="2025-10-13T17:34:17.528199" elapsed="0.545217"/>
 </kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:33.378349" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
+<arg>School2025</arg>
+<status status="PASS" start="2025-10-13T17:34:17.527907" elapsed="0.545604"/>
+</kw>
+<kw name="Input First Name" owner="CreateUserPage">
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:32.680404" elapsed="0.698935"/>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.074396" elapsed="0.011483"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:33.390528" level="INFO">Clicking element '//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]'.</msg>
-<msg time="2025-08-14T15:17:34.630025" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:33.380379" elapsed="1.250456"/>
-</kw>
-<arg>${elm_clickscreen}</arg>
-<status status="PASS" start="2025-08-14T15:17:32.679430" elapsed="1.952144"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:34.875394" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:34.634278" elapsed="0.241797"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:34.885199" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Login"]'.</msg>
-<msg time="2025-08-14T15:17:35.362685" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:34.876889" elapsed="0.486186"/>
-</kw>
-<arg>${btn_Login_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:17:34.632936" elapsed="0.730437"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:35.803752" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]/following-sibling::XCUIElementTypeStaticText[@name="This field is required"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:35.366187" elapsed="0.438482"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:36.158283" level="INFO">Element '//XCUIElementTypeTextField[@name="Enter your User ID"]/following-sibling::XCUIElementTypeStaticText[@name="This field is required"]' text is 'This field is required' </msg>
-<msg time="2025-08-14T15:17:36.158754" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]/following-sibling::XCUIElementTypeStaticText[@name="This field is required"]</msg>
-<msg time="2025-08-14T15:17:36.159075" level="INFO">${error_message_invalid} = This field is required</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:17:35.805457" elapsed="0.353809"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:17:36.159720" elapsed="0.000885"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:17:36.161402" level="INFO">Set test message to:
-validation error message with 'This field is required'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:17:36.160965" elapsed="0.000674"/>
-</kw>
-<arg>${elm_error_empty_UserID_IOS}</arg>
-<arg>${Expected_error_emptyfield}</arg>
-<status status="PASS" start="2025-08-14T15:17:35.364238" elapsed="0.797625"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:17:31.080405" elapsed="5.082632">validation error message with 'This field is required'</status>
-</test>
-<test id="s1-t2" name="Check validation min UserID error" line="13">
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:36.440833" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:36.168630" elapsed="0.273174"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:36.452255" level="INFO">Typing text 'ab' into text field '//XCUIElementTypeTextField[@name="Enter your User ID"]'</msg>
-<msg time="2025-08-14T15:17:37.918341" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:18.086378" level="INFO">Typing text 'Nhut' into text field '//input[@id='first_name ']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:36.442819" elapsed="1.476310"/>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.086114" elapsed="0.063934"/>
 </kw>
-<arg>${input_UserID_IOS}</arg>
-<arg>${Min_textUserID}</arg>
-<status status="PASS" start="2025-08-14T15:17:36.166939" elapsed="1.753041"/>
+<arg>${FIRST_NAME_INPUT}</arg>
+<arg>${first_name}</arg>
+<status status="PASS" start="2025-10-13T17:34:18.074049" elapsed="0.076166"/>
 </kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:38.407415" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
+<arg>Nhut</arg>
+<status status="PASS" start="2025-10-13T17:34:18.073708" elapsed="0.076588"/>
+</kw>
+<kw name="Input Last Name" owner="CreateUserPage">
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:37.922077" elapsed="0.485741"/>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.151076" elapsed="0.010250"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:38.415517" level="INFO">Clicking element '//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]'.</msg>
-<msg time="2025-08-14T15:17:39.655080" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:38.408254" elapsed="1.247212"/>
-</kw>
-<arg>${elm_clickscreen}</arg>
-<status status="PASS" start="2025-08-14T15:17:37.920908" elapsed="1.734841"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:39.908074" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="User ID must be 5 characters or longer!"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:39.657634" elapsed="0.250972"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:40.160302" level="INFO">Element '//XCUIElementTypeStaticText[@name="User ID must be 5 characters or longer!"]' text is 'User ID must be 5 characters or longer!' </msg>
-<msg time="2025-08-14T15:17:40.160764" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="User ID must be 5 characters or longer!"]</msg>
-<msg time="2025-08-14T15:17:40.161072" level="INFO">${error_message_invalid} = User ID must be 5 characters or longer!</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:17:39.909125" elapsed="0.252135"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:17:40.161714" elapsed="0.000809"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:17:40.163304" level="INFO">Set test message to:
-validation error message with 'User ID must be 5 characters or longer!'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:17:40.162894" elapsed="0.000651"/>
-</kw>
-<arg>${elm_MinUserID}</arg>
-<arg>${Expected_MinUserID}</arg>
-<status status="PASS" start="2025-08-14T15:17:39.656568" elapsed="0.507208"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:17:36.164320" elapsed="4.000028">validation error message with 'User ID must be 5 characters or longer!'</status>
-</test>
-<test id="s1-t3" name="Check validation max UserID error" line="17">
-<kw name="Clear Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:40.176175" level="INFO">Clear text field '//XCUIElementTypeTextField[@value="ab"]'</msg>
-<msg time="2025-08-14T15:17:41.455807" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="ab"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Min_textUserID}"]</arg>
-<doc>Clears the text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:40.169037" elapsed="1.287742"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:41.934375" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:41.459253" elapsed="0.475627"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:41.943339" level="INFO">Typing text 'abcd12345678901234567890' into text field '//XCUIElementTypeTextField[@name="Enter your User ID"]'</msg>
-<msg time="2025-08-14T15:17:43.707580" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:18.161816" level="INFO">Typing text 'Minh' into text field '//input[@id='last_name ']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:41.935396" elapsed="1.772575"/>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.161557" elapsed="0.037399"/>
 </kw>
-<arg>${input_UserID_IOS}</arg>
-<arg>${Max_textUserID}</arg>
-<status status="PASS" start="2025-08-14T15:17:41.457868" elapsed="2.250393"/>
+<arg>${LAST_NAME_INPUT}</arg>
+<arg>${last_name}</arg>
+<status status="PASS" start="2025-10-13T17:34:18.150775" elapsed="0.048459"/>
 </kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:44.195574" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
+<arg>Minh</arg>
+<status status="PASS" start="2025-10-13T17:34:18.150473" elapsed="0.048865"/>
+</kw>
+<kw name="Input Email" owner="CreateUserPage">
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:43.709857" elapsed="0.486344"/>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.200149" elapsed="0.009316"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:44.206409" level="INFO">Clicking element '//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]'.</msg>
-<msg time="2025-08-14T15:17:45.487991" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:44.196901" elapsed="1.291570"/>
-</kw>
-<arg>${elm_clickscreen}</arg>
-<status status="PASS" start="2025-08-14T15:17:43.708967" elapsed="1.779860"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:45.756588" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="User ID must be 20 characters or fewer!"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:45.491019" elapsed="0.266369"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:46.009571" level="INFO">Element '//XCUIElementTypeStaticText[@name="User ID must be 20 characters or fewer!"]' text is 'User ID must be 20 characters or fewer!' </msg>
-<msg time="2025-08-14T15:17:46.010094" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="User ID must be 20 characters or fewer!"]</msg>
-<msg time="2025-08-14T15:17:46.010578" level="INFO">${error_message_invalid} = User ID must be 20 characters or fewer!</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:17:45.758225" elapsed="0.252557"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:17:46.011236" elapsed="0.000830"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:17:46.012829" level="INFO">Set test message to:
-validation error message with 'User ID must be 20 characters or fewer!'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:17:46.012431" elapsed="0.000638"/>
-</kw>
-<arg>${elm_MaxUserID}</arg>
-<arg>${Expected_MaxUserID}</arg>
-<status status="PASS" start="2025-08-14T15:17:45.489735" elapsed="0.523563"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:17:40.167247" elapsed="5.847703">validation error message with 'User ID must be 20 characters or fewer!'</status>
-</test>
-<test id="s1-t4" name="Check validation special characters UserID error" line="22">
-<kw name="Clear Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:46.039318" level="INFO">Clear text field '//XCUIElementTypeTextField[@value="abcd12345678901234567890"]'</msg>
-<msg time="2025-08-14T15:17:47.314349" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="abcd12345678901234567890"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Max_textUserID}"]</arg>
-<doc>Clears the text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:46.018716" elapsed="1.295992"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:47.810068" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:47.316239" elapsed="0.494973"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:47.822350" level="INFO">Typing text '@#$%^&amp;*' into text field '//XCUIElementTypeTextField[@name="Enter your User ID"]'</msg>
-<msg time="2025-08-14T15:17:48.812562" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:18.210264" level="INFO">Typing text 'minh25@yopmail.com' into text field '//input[@id='email ']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:47.812365" elapsed="1.000836"/>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.209686" elapsed="0.040999"/>
 </kw>
-<arg>${input_UserID_IOS}</arg>
-<arg>${Specialcharacters_textUserID}</arg>
-<status status="PASS" start="2025-08-14T15:17:47.315367" elapsed="1.498482"/>
+<arg>${EMAIL_INPUT}</arg>
+<arg>${email}</arg>
+<status status="PASS" start="2025-10-13T17:34:18.199860" elapsed="0.051016"/>
 </kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:49.307472" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
+<arg>minh25@yopmail.com</arg>
+<status status="PASS" start="2025-10-13T17:34:18.199529" elapsed="0.051433"/>
+</kw>
+<kw name="Input Phone Number" owner="CreateUserPage">
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:48.815923" elapsed="0.492217"/>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.251933" elapsed="0.009695"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:49.318055" level="INFO">Clicking element '//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]'.</msg>
-<msg time="2025-08-14T15:17:50.563798" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:49.308858" elapsed="1.256384"/>
-</kw>
-<arg>${elm_clickscreen}</arg>
-<status status="PASS" start="2025-08-14T15:17:48.814700" elapsed="1.751199"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:50.813021" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Special characters are not allowed"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:50.570947" elapsed="0.242642"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:51.056154" level="INFO">Element '//XCUIElementTypeStaticText[@name="Special characters are not allowed"]' text is 'Special characters are not allowed' </msg>
-<msg time="2025-08-14T15:17:51.056553" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Special characters are not allowed"]</msg>
-<msg time="2025-08-14T15:17:51.056860" level="INFO">${error_message_invalid} = Special characters are not allowed</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:17:50.814230" elapsed="0.242810"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:17:51.057489" elapsed="0.000784"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:17:51.059032" level="INFO">Set test message to:
-validation error message with 'Special characters are not allowed'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:17:51.058636" elapsed="0.000631"/>
-</kw>
-<arg>${elm_SpecialCharacters}</arg>
-<arg>${EXPECTED_SpecialCharacters}</arg>
-<status status="PASS" start="2025-08-14T15:17:50.568529" elapsed="0.490969"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:17:46.016631" elapsed="5.043265">validation error message with 'Special characters are not allowed'</status>
-</test>
-<test id="s1-t5" name="Check validation empty Password error" line="27">
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:51.329858" level="INFO">xpath criteria: //XCUIElementTypeApplication[@name="Panda App Prod"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:51.064570" elapsed="0.266345"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:51.340605" level="INFO">Clicking element '//XCUIElementTypeApplication[@name="Panda App Prod"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther'.</msg>
-<msg time="2025-08-14T15:17:51.816234" level="INFO">xpath criteria: //XCUIElementTypeApplication[@name="Panda App Prod"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:51.331780" elapsed="0.485105"/>
-</kw>
-<arg>${elm_showPassword}</arg>
-<status status="PASS" start="2025-08-14T15:17:51.063453" elapsed="0.753894"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:52.082754" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:51.819982" elapsed="0.263640"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:52.093862" level="INFO">Typing text '' into text field '//XCUIElementTypeTextField[@name="Enter your Password"]'</msg>
-<msg time="2025-08-14T15:17:53.553150" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:18.262100" level="INFO">Typing text '9977682025' into text field '//input[@placeholder='Enter phone number']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:52.084427" elapsed="1.469891"/>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.261852" elapsed="0.040823"/>
 </kw>
-<arg>${input_Password_IOS}</arg>
-<arg>${Empty_textPassword}</arg>
-<status status="PASS" start="2025-08-14T15:17:51.818401" elapsed="1.736636"/>
+<arg>${PHONE_INPUT}</arg>
+<arg>${phone}</arg>
+<status status="PASS" start="2025-10-13T17:34:18.251631" elapsed="0.051210"/>
 </kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:54.020024" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
+<arg>9977682025</arg>
+<status status="PASS" start="2025-10-13T17:34:18.251192" elapsed="0.051727"/>
+</kw>
+<kw name="Input Date Of Birth" owner="CreateUserPage">
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:53.557604" elapsed="0.463066"/>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.304054" elapsed="0.009800"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:54.030356" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Login"]'.</msg>
-<msg time="2025-08-14T15:17:55.299326" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:54.021363" elapsed="1.279005"/>
-</kw>
-<arg>${btn_Login_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:17:53.556325" elapsed="1.744963"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:55.559218" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="This field is required"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:55.305129" elapsed="0.254505"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:55.812957" level="INFO">Element '//XCUIElementTypeStaticText[@name="This field is required"]' text is 'This field is required' </msg>
-<msg time="2025-08-14T15:17:55.813528" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="This field is required"]</msg>
-<msg time="2025-08-14T15:17:55.813862" level="INFO">${error_message_invalid} = This field is required</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:17:55.560091" elapsed="0.253943"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:17:55.814471" elapsed="0.000768"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:17:55.816002" level="INFO">Set test message to:
-validation error message with 'This field is required'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:17:55.815611" elapsed="0.000609"/>
-</kw>
-<arg>${elm_error_empty_Password_IOS}</arg>
-<arg>${Expected_error_emptyfield}</arg>
-<status status="PASS" start="2025-08-14T15:17:55.303038" elapsed="0.513405"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:17:51.061738" elapsed="4.755881">validation error message with 'This field is required'</status>
-</test>
-<test id="s1-t6" name="Check validation min Password error" line="32">
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:56.072625" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:55.823389" elapsed="0.249727"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:56.081441" level="INFO">Typing text 'ab' into text field '//XCUIElementTypeTextField[@name="Enter your Password"]'</msg>
-<msg time="2025-08-14T15:17:57.536033" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:18.314335" level="INFO">Typing text '11-10-2025' into text field '//input[@placeholder='Enter date of birth']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:56.073629" elapsed="1.463324"/>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.314086" elapsed="0.038870"/>
 </kw>
-<arg>${input_Password_IOS}</arg>
-<arg>${Min_textPassword}</arg>
-<status status="PASS" start="2025-08-14T15:17:55.821088" elapsed="1.716585"/>
+<arg>${DOB_INPUT}</arg>
+<arg>${dob}</arg>
+<status status="PASS" start="2025-10-13T17:34:18.303690" elapsed="0.049496"/>
 </kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:58.035136" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
+<arg>${VALID_DOB}</arg>
+<status status="PASS" start="2025-10-13T17:34:18.303088" elapsed="0.050178"/>
+</kw>
+<kw name="Input Address" owner="CreateUserPage">
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:57.540317" elapsed="0.495946"/>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.354070" elapsed="0.010870"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:58.047454" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Login"]'.</msg>
-<msg time="2025-08-14T15:17:59.326782" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:58.037656" elapsed="1.290419"/>
-</kw>
-<arg>${btn_Login_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:17:57.538863" elapsed="1.789997"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:59.583369" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Password must be 8 characters or longer!"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:17:59.332142" elapsed="0.251783"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:59.843138" level="INFO">Element '//XCUIElementTypeStaticText[@name="Password must be 8 characters or longer!"]' text is 'Password must be 8 characters or longer!' </msg>
-<msg time="2025-08-14T15:17:59.843527" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Password must be 8 characters or longer!"]</msg>
-<msg time="2025-08-14T15:17:59.843935" level="INFO">${error_message_invalid} = Password must be 8 characters or longer!</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:17:59.584436" elapsed="0.259666"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:17:59.844484" elapsed="0.000664"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:17:59.845776" level="INFO">Set test message to:
-validation error message with 'Password must be 8 characters or longer!'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:17:59.845447" elapsed="0.000526"/>
-</kw>
-<arg>${elm_MinPassword}</arg>
-<arg>${Expected_MinPassword}</arg>
-<status status="PASS" start="2025-08-14T15:17:59.330347" elapsed="0.515814"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:17:55.819130" elapsed="4.027378">validation error message with 'Password must be 8 characters or longer!'</status>
-</test>
-<test id="s1-t7" name="Check validation missing uppercase Password error" line="36">
-<kw name="Clear Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:17:59.854244" level="INFO">Clear text field '//XCUIElementTypeTextField[@value="ab"]'</msg>
-<msg time="2025-08-14T15:18:01.147380" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="ab"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Min_textPassword}"]</arg>
-<doc>Clears the text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:17:59.847942" elapsed="1.300358"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:01.635676" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:01.151384" elapsed="0.485457"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:01.647560" level="INFO">Typing text 'abcdefghijklmnop' into text field '//XCUIElementTypeTextField[@name="Enter your Password"]'</msg>
-<msg time="2025-08-14T15:18:03.041140" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:18.365409" level="INFO">Typing text '123 Test Street' into text field '//input[@placeholder='Enter address']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:01.637984" elapsed="1.404005"/>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.365162" elapsed="0.037681"/>
 </kw>
-<arg>${input_Password_IOS}</arg>
-<arg>${Missing_Uppercase}</arg>
-<status status="PASS" start="2025-08-14T15:18:01.149730" elapsed="1.892721"/>
+<arg>${ADDRESS_INPUT}</arg>
+<arg>${address}</arg>
+<status status="PASS" start="2025-10-13T17:34:18.353780" elapsed="0.049236"/>
 </kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:03.527292" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
+<arg>${VALID_ADDRESS}</arg>
+<status status="PASS" start="2025-10-13T17:34:18.353453" elapsed="0.049647"/>
+</kw>
+<kw name="Scroll To Bottom" owner="Common">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:18.403854" level="INFO">Executing JavaScript:
+window.scrollTo(0, document.body.scrollHeight);
+Without any arguments.</msg>
+<arg>window.scrollTo(0, document.body.scrollHeight);</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.403593" elapsed="0.003154"/>
+</kw>
+<doc>Scroll to the bottom of the page.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.403288" elapsed="0.003604"/>
+</kw>
+<kw name="Select User Role" owner="CreateUserPage">
+<kw name="Click on Element" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:03.044773" elapsed="0.483534"/>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:18.407556" elapsed="1.526146"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:03.538364" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Login"]'.</msg>
-<msg time="2025-08-14T15:18:04.822531" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:19.934639" level="INFO">Clicking element 'xpath=//select[@aria-hidden='true']/option[@value='8']'.</msg>
 <arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:03.529241" elapsed="1.294695"/>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:19.934159" elapsed="0.032868"/>
 </kw>
-<arg>${btn_Login_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:18:03.043420" elapsed="1.781496"/>
+<arg>xpath=//select[@aria-hidden='true']/option[@value='8']</arg>
+<status status="PASS" start="2025-10-13T17:34:18.407316" elapsed="1.559958"/>
 </kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:05.071502" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:04.827563" elapsed="0.244602"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:05.323887" level="INFO">Element '//XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]' text is 'Password should contain at least one upper case, lower case, digit and special character' </msg>
-<msg time="2025-08-14T15:18:05.324331" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]</msg>
-<msg time="2025-08-14T15:18:05.324650" level="INFO">${error_message_invalid} = Password should contain at least one upper case, lower case, digit and special character</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:18:05.072981" elapsed="0.251851"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:18:05.325277" elapsed="0.000776"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:18:05.326798" level="INFO">Set test message to:
-validation error message with 'Password should contain at least one upper case, lower case, digit and special character'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:18:05.326409" elapsed="0.000627"/>
-</kw>
-<arg>${elm_validationtext_password}</arg>
-<arg>${EXPECTED_validationtext_password}</arg>
-<status status="PASS" start="2025-08-14T15:18:04.825980" elapsed="0.501319"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:17:59.847106" elapsed="5.480811">validation error message with 'Password should contain at least one upper case, lower case, digit and special character'</status>
-</test>
-<test id="s1-t8" name="Check validation missing lowercase Password error" line="41">
-<kw name="Clear Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:05.339759" level="INFO">Clear text field '//XCUIElementTypeTextField[@value="abcdefghijklmnop"]'</msg>
-<msg time="2025-08-14T15:18:06.597631" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="abcdefghijklmnop"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Missing_Uppercase}"]</arg>
-<doc>Clears the text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:05.332255" elapsed="1.266474"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:07.079693" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:06.602400" elapsed="0.478316"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:07.091822" level="INFO">Typing text 'ABCDEFGHIJKLMNTT' into text field '//XCUIElementTypeTextField[@name="Enter your Password"]'</msg>
-<msg time="2025-08-14T15:18:08.407975" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:07.081749" elapsed="1.326673"/>
-</kw>
-<arg>${input_Password_IOS}</arg>
-<arg>${Missing_Lowercase}</arg>
-<status status="PASS" start="2025-08-14T15:18:06.600223" elapsed="1.808562"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:08.873428" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:08.410596" elapsed="0.463784"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:08.884938" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Login"]'.</msg>
-<msg time="2025-08-14T15:18:10.149494" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:08.875345" elapsed="1.275951"/>
-</kw>
-<arg>${btn_Login_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:18:08.409688" elapsed="1.742665"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:10.406127" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:10.154544" elapsed="0.252132"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:10.655188" level="INFO">Element '//XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]' text is 'Password should contain at least one upper case, lower case, digit and special character' </msg>
-<msg time="2025-08-14T15:18:10.655711" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]</msg>
-<msg time="2025-08-14T15:18:10.656115" level="INFO">${error_message_invalid} = Password should contain at least one upper case, lower case, digit and special character</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:18:10.407176" elapsed="0.249158"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:18:10.656815" elapsed="0.000796"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:18:10.658375" level="INFO">Set test message to:
-validation error message with 'Password should contain at least one upper case, lower case, digit and special character'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:18:10.657978" elapsed="0.000628"/>
-</kw>
-<arg>${elm_validationtext_password}</arg>
-<arg>${EXPECTED_validationtext_password}</arg>
-<status status="PASS" start="2025-08-14T15:18:10.153321" elapsed="0.505516"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:18:05.330458" elapsed="5.328990">validation error message with 'Password should contain at least one upper case, lower case, digit and special character'</status>
-</test>
-<test id="s1-t9" name="Check validation missing one number Password error" line="46">
-<kw name="Clear Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:10.678647" level="INFO">Clear text field '//XCUIElementTypeTextField[@value="ABCDEFGHIJKLMNTT"]'</msg>
-<msg time="2025-08-14T15:18:12.078164" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="ABCDEFGHIJKLMNTT"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Missing_Lowercase}"]</arg>
-<doc>Clears the text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:10.664821" elapsed="1.414002"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:12.607554" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:12.081178" elapsed="0.527186"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:12.617474" level="INFO">Typing text 'abcdefghijAA@' into text field '//XCUIElementTypeTextField[@name="Enter your Password"]'</msg>
-<msg time="2025-08-14T15:18:13.831316" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:12.609271" elapsed="1.222519"/>
-</kw>
-<arg>${input_Password_IOS}</arg>
-<arg>${Missing_Number}</arg>
-<status status="PASS" start="2025-08-14T15:18:12.079882" elapsed="1.752275"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:14.344290" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:13.834084" elapsed="0.511225"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:14.355818" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Login"]'.</msg>
-<msg time="2025-08-14T15:18:15.607132" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:14.346357" elapsed="1.262260"/>
-</kw>
-<arg>${btn_Login_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:18:13.833011" elapsed="1.776463"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:15.860287" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:15.613582" elapsed="0.247179"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:16.105702" level="INFO">Element '//XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]' text is 'Password should contain at least one upper case, lower case, digit and special character' </msg>
-<msg time="2025-08-14T15:18:16.106321" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]</msg>
-<msg time="2025-08-14T15:18:16.106709" level="INFO">${error_message_invalid} = Password should contain at least one upper case, lower case, digit and special character</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:18:15.861312" elapsed="0.245939"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:18:16.107813" elapsed="0.000995"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:18:16.109562" level="INFO">Set test message to:
-validation error message with 'Password should contain at least one upper case, lower case, digit and special character'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:18:16.109168" elapsed="0.000630"/>
-</kw>
-<arg>${elm_validationtext_password}</arg>
-<arg>${EXPECTED_validationtext_password}</arg>
-<status status="PASS" start="2025-08-14T15:18:15.611043" elapsed="0.498985"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:18:10.662257" elapsed="5.448157">validation error message with 'Password should contain at least one upper case, lower case, digit and special character'</status>
-</test>
-<test id="s1-t10" name="Check validation missing one special character Password error" line="51">
-<kw name="Clear Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:16.121349" level="INFO">Clear text field '//XCUIElementTypeTextField[@value="abcdefghijAA@"]'</msg>
-<msg time="2025-08-14T15:18:17.478862" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="abcdefghijAA@"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Missing_Number}"]</arg>
-<doc>Clears the text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:16.113402" elapsed="1.366500"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:17.981261" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:17.483043" elapsed="0.498842"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:17.991518" level="INFO">Typing text 'abcdefghij1A' into text field '//XCUIElementTypeTextField[@name="Enter your Password"]'</msg>
-<msg time="2025-08-14T15:18:19.086562" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:17.982556" elapsed="1.104817"/>
-</kw>
-<arg>${input_Password_IOS}</arg>
-<arg>${Missing_Special}</arg>
-<status status="PASS" start="2025-08-14T15:18:17.481326" elapsed="1.606547"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:19.574324" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:19.090214" elapsed="0.484933"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:19.584393" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Login"]'.</msg>
-<msg time="2025-08-14T15:18:20.879535" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:19.575889" elapsed="1.304736"/>
-</kw>
-<arg>${btn_Login_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:18:19.088860" elapsed="1.792445"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:21.138231" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:20.885507" elapsed="0.253282"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:21.394620" level="INFO">Element '//XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]' text is 'Password should contain at least one upper case, lower case, digit and special character' </msg>
-<msg time="2025-08-14T15:18:21.395337" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Password should contain at least one upper case, lower case, digit and special character"]</msg>
-<msg time="2025-08-14T15:18:21.395684" level="INFO">${error_message_invalid} = Password should contain at least one upper case, lower case, digit and special character</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:18:21.139366" elapsed="0.256746"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:18:21.396843" elapsed="0.001092"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:18:21.398717" level="INFO">Set test message to:
-validation error message with 'Password should contain at least one upper case, lower case, digit and special character'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:18:21.398311" elapsed="0.000674"/>
-</kw>
-<arg>${elm_validationtext_password}</arg>
-<arg>${EXPECTED_validationtext_password}</arg>
-<status status="PASS" start="2025-08-14T15:18:20.883852" elapsed="0.515370"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:18:16.111994" elapsed="5.287889">validation error message with 'Password should contain at least one upper case, lower case, digit and special character'</status>
-</test>
-<test id="s1-t11" name="Verify login with account inactive" line="57">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:21.653484" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="@#$%^&amp;*"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Specialcharacters_textUserID}"]</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:21.402838" elapsed="0.251633"/>
-</kw>
-<kw name="Clear Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:21.665270" level="INFO">Clear text field '//XCUIElementTypeTextField[@value="@#$%^&amp;*"]'</msg>
-<msg time="2025-08-14T15:18:23.079498" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="@#$%^&amp;*"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Specialcharacters_textUserID}"]</arg>
-<doc>Clears the text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:21.655600" elapsed="1.424967"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:23.574686" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:23.085460" elapsed="0.490652"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:23.585991" level="INFO">Typing text 'Schoolinactive' into text field '//XCUIElementTypeTextField[@name="Enter your User ID"]'</msg>
-<msg time="2025-08-14T15:18:24.826283" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:23.576792" elapsed="1.249981"/>
-</kw>
-<arg>${input_UserID_IOS}</arg>
-<arg>${Valid_UserID_inactive}</arg>
-<status status="PASS" start="2025-08-14T15:18:23.082512" elapsed="1.744590"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:25.306228" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:24.829284" elapsed="0.477935"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:25.317832" level="INFO">Clicking element '//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]'.</msg>
-<msg time="2025-08-14T15:18:26.680700" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:25.308338" elapsed="1.373436"/>
-</kw>
-<arg>${elm_clickscreen}</arg>
-<status status="PASS" start="2025-08-14T15:18:24.828190" elapsed="1.854179"/>
-</kw>
-<kw name="Clear Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:26.693219" level="INFO">Clear text field '//XCUIElementTypeTextField[@value="abcdefghij1A"]'</msg>
-<msg time="2025-08-14T15:18:27.964892" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="abcdefghij1A"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Missing_Special}"]</arg>
-<doc>Clears the text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:26.683521" elapsed="1.282438"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:28.514968" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:27.969750" elapsed="0.546346"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:28.527820" level="INFO">Typing text 'School123@' into text field '//XCUIElementTypeTextField[@name="Enter your Password"]'</msg>
-<msg time="2025-08-14T15:18:29.672406" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:28.517247" elapsed="1.156332"/>
-</kw>
-<arg>${input_Password_IOS}</arg>
-<arg>${Valid_Password_inactive}</arg>
-<status status="PASS" start="2025-08-14T15:18:27.967549" elapsed="1.706815"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:30.164447" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:29.676940" elapsed="0.488277"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:30.175492" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Login"]'.</msg>
-<msg time="2025-08-14T15:18:31.558904" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:30.166004" elapsed="1.394858"/>
-</kw>
-<arg>${btn_Login_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:18:29.675643" elapsed="1.885917"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:32.243190" level="INFO">xpath criteria: //XCUIElementTypeOther[@name="Account Deactivated. Please contact admin."]
-xpath criteria: //XCUIElementTypeOther[@name="Account Deactivated. Please contact admin."]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:31.564086" elapsed="0.679367"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:32.572985" level="INFO">Element '//XCUIElementTypeOther[@name="Account Deactivated. Please contact admin."]' text is 'Account Deactivated. Please contact admin.' </msg>
-<msg time="2025-08-14T15:18:32.573419" level="INFO">xpath criteria: //XCUIElementTypeOther[@name="Account Deactivated. Please contact admin."]</msg>
-<msg time="2025-08-14T15:18:32.573765" level="INFO">${error_message_invalid} = Account Deactivated. Please contact admin.</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:18:32.243710" elapsed="0.330244"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:18:32.574430" elapsed="0.000813"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:18:32.575998" level="INFO">Set test message to:
-validation error message with 'Account Deactivated. Please contact admin.'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:18:32.575604" elapsed="0.000630"/>
-</kw>
-<arg>${elm_login_inactive_IOS}</arg>
-<arg>${Expected_login_inactive_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:18:31.562659" elapsed="1.013807"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:18:21.401626" elapsed="11.175447">validation error message with 'Account Deactivated. Please contact admin.'</status>
-</test>
-<test id="s1-t12" name="Verify login with account invalid" line="66">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:32.914289" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="Schoolinactive"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Valid_UserID_inactive}"]</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:32.582101" elapsed="0.333409"/>
-</kw>
-<kw name="Clear Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:32.926609" level="INFO">Clear text field '//XCUIElementTypeTextField[@value="Schoolinactive"]'</msg>
-<msg time="2025-08-14T15:18:34.194227" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="Schoolinactive"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Valid_UserID_inactive}"]</arg>
-<doc>Clears the text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:32.916995" elapsed="1.278305"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:34.697070" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:34.197996" elapsed="0.500008"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:34.708569" level="INFO">Typing text 'SchoolLe' into text field '//XCUIElementTypeTextField[@name="Enter your User ID"]'</msg>
-<msg time="2025-08-14T15:18:35.714980" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:34.698935" elapsed="1.016985"/>
-</kw>
-<arg>${input_UserID_IOS}</arg>
-<arg>${Valid_UserID}</arg>
-<status status="PASS" start="2025-08-14T15:18:34.196701" elapsed="1.519897"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:36.176449" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:35.719411" elapsed="0.458044"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:36.186445" level="INFO">Clicking element '//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]'.</msg>
-<msg time="2025-08-14T15:18:37.400844" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:36.178291" elapsed="1.223024"/>
-</kw>
-<arg>${elm_clickscreen}</arg>
-<status status="PASS" start="2025-08-14T15:18:35.717979" elapsed="1.683704"/>
-</kw>
-<kw name="Clear Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:37.411167" level="INFO">Clear text field '//XCUIElementTypeTextField[@value="School123@"]'</msg>
-<msg time="2025-08-14T15:18:38.662012" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="School123@"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Valid_Password_inactive}"]</arg>
-<doc>Clears the text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:37.402471" elapsed="1.260671"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:39.156404" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:38.666408" elapsed="0.490569"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:39.166398" level="INFO">Typing text 'Schools123@@@' into text field '//XCUIElementTypeTextField[@name="Enter your Password"]'</msg>
-<msg time="2025-08-14T15:18:40.376409" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:39.157560" elapsed="1.219931"/>
-</kw>
-<arg>${input_Password_IOS}</arg>
-<arg>${Invalid_Password}</arg>
-<status status="PASS" start="2025-08-14T15:18:38.664847" elapsed="1.713409"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:40.830625" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:40.380699" elapsed="0.450734"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:40.842108" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Login"]'.</msg>
-<msg time="2025-08-14T15:18:42.094780" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:40.832255" elapsed="1.264256"/>
-</kw>
-<arg>${btn_Login_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:18:40.379450" elapsed="1.717631"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:43.112330" level="INFO">xpath criteria: //XCUIElementTypeOther[@name="Incorrect User ID or Password"]
-xpath criteria: //XCUIElementTypeOther[@name="Incorrect User ID or Password"]
-xpath criteria: //XCUIElementTypeOther[@name="Incorrect User ID or Password"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:42.101630" elapsed="1.011968"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:43.421190" level="INFO">Element '//XCUIElementTypeOther[@name="Incorrect User ID or Password"]' text is 'Incorrect User ID or Password' </msg>
-<msg time="2025-08-14T15:18:43.421642" level="INFO">xpath criteria: //XCUIElementTypeOther[@name="Incorrect User ID or Password"]</msg>
-<msg time="2025-08-14T15:18:43.421961" level="INFO">${error_message_invalid} = Incorrect User ID or Password</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:18:43.114877" elapsed="0.307271"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:18:43.422570" elapsed="0.000770"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:18:43.424092" level="INFO">Set test message to:
-validation error message with 'Incorrect User ID or Password'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:18:43.423697" elapsed="0.000633"/>
-</kw>
-<arg>${elm_login_failed_IOS}</arg>
-<arg>${Expected_login_failed_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:18:42.099072" elapsed="1.325491"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:18:32.580249" elapsed="10.844892">validation error message with 'Incorrect User ID or Password'</status>
-</test>
-<test id="s1-t13" name="Verify login success with valid account" line="75">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:43.704201" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="SchoolLe"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Valid_UserID}"]</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:43.427551" elapsed="0.277260"/>
-</kw>
-<kw name="Clear Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:43.715340" level="INFO">Clear text field '//XCUIElementTypeTextField[@value="SchoolLe"]'</msg>
-<msg time="2025-08-14T15:18:44.976162" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="SchoolLe"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Valid_UserID}"]</arg>
-<doc>Clears the text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:43.705723" elapsed="1.270906"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:45.466968" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:44.978475" elapsed="0.489271"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:45.478146" level="INFO">Typing text 'SchoolLe' into text field '//XCUIElementTypeTextField[@name="Enter your User ID"]'</msg>
-<msg time="2025-08-14T15:18:46.493976" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your User ID"]</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:45.468592" elapsed="1.026159"/>
-</kw>
-<arg>${input_UserID_IOS}</arg>
-<arg>${Valid_UserID}</arg>
-<status status="PASS" start="2025-08-14T15:18:44.977547" elapsed="1.517660"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:46.981614" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:46.497377" elapsed="0.485028"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:46.992298" level="INFO">Clicking element '//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]'.</msg>
-<msg time="2025-08-14T15:18:48.266939" level="INFO">xpath criteria: //XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:46.983031" elapsed="1.284979"/>
-</kw>
-<arg>${elm_clickscreen}</arg>
-<status status="PASS" start="2025-08-14T15:18:46.496349" elapsed="1.772458"/>
-</kw>
-<kw name="Clear Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:48.280056" level="INFO">Clear text field '//XCUIElementTypeTextField[@value="Schools123@@@"]'</msg>
-<msg time="2025-08-14T15:18:49.557632" level="INFO">xpath criteria: //XCUIElementTypeTextField[@value="Schools123@@@"]</msg>
-<arg>//XCUIElementTypeTextField[@value="${Invalid_Password}"]</arg>
-<doc>Clears the text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:48.270554" elapsed="1.288227"/>
-</kw>
-<kw name="Fill Text Input mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:50.065603" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:49.564360" elapsed="0.501913"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:50.075725" level="INFO">Typing text 'School123@' into text field '//XCUIElementTypeTextField[@name="Enter your Password"]'</msg>
-<msg time="2025-08-14T15:18:51.164920" level="INFO">xpath criteria: //XCUIElementTypeTextField[@name="Enter your Password"]</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:50.066903" elapsed="1.098483"/>
-</kw>
-<arg>${input_Password_IOS}</arg>
-<arg>${Valid_Password}</arg>
-<status status="PASS" start="2025-08-14T15:18:49.560585" elapsed="1.605157"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:51.646246" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:51.167976" elapsed="0.479180"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:51.656861" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Login"]'.</msg>
-<msg time="2025-08-14T15:18:53.015690" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Login"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:18:51.648081" elapsed="1.368153"/>
-</kw>
-<arg>${btn_Login_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:18:51.166904" elapsed="1.849700"/>
-</kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:56.438927" level="INFO">xpath criteria: //XCUIElementTypeOther[@name="Sign in successful"]
-xpath criteria: //XCUIElementTypeOther[@name="Sign in successful"]
-xpath criteria: //XCUIElementTypeOther[@name="Sign in successful"]
-xpath criteria: //XCUIElementTypeOther[@name="Sign in successful"]
-xpath criteria: //XCUIElementTypeOther[@name="Sign in successful"]
-xpath criteria: //XCUIElementTypeOther[@name="Sign in successful"]
-xpath criteria: //XCUIElementTypeOther[@name="Sign in successful"]
-xpath criteria: //XCUIElementTypeOther[@name="Sign in successful"]
-xpath criteria: //XCUIElementTypeOther[@name="Sign in successful"]
-xpath criteria: //XCUIElementTypeOther[@name="Sign in successful"]</msg>
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:53.019251" elapsed="3.420598"/>
-</kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:18:56.765465" level="INFO">Element '//XCUIElementTypeOther[@name="Sign in successful"]' text is 'Sign in successful' </msg>
-<msg time="2025-08-14T15:18:56.765909" level="INFO">xpath criteria: //XCUIElementTypeOther[@name="Sign in successful"]</msg>
-<msg time="2025-08-14T15:18:56.766255" level="INFO">${error_message_invalid} = Sign in successful</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:18:56.440739" elapsed="0.325697"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:18:56.766870" elapsed="0.000771"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:18:56.768598" level="INFO">Set test message to:
-validation error message with 'Sign in successful'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:18:56.768166" elapsed="0.000684"/>
-</kw>
-<arg>${elm_login_success_IOS}</arg>
-<arg>${Expected_login_success_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:18:53.017288" elapsed="3.751813"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:18:43.426010" elapsed="13.343612">validation error message with 'Sign in successful'</status>
-</test>
-<test id="s1-t14" name="Verify logout success" line="84">
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-08-14T15:18:59.775966" level="INFO">Slept 3 seconds.</msg>
-<arg>3s</arg>
+<msg time="2025-10-13T17:34:21.968650" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-08-14T15:18:56.772671" elapsed="3.003788"/>
+<status status="PASS" start="2025-10-13T17:34:19.967500" elapsed="2.002604"/>
 </kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:19:00.055020" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Settings"]</msg>
+<status status="PASS" start="2025-10-13T17:34:18.407066" elapsed="3.563914"/>
+</kw>
+<kw name="Input Password Web" owner="CreateUserPage">
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:18:59.778003" elapsed="0.277959"/>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:21.975127" elapsed="0.024760"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:19:00.066444" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Settings"]'.</msg>
-<msg time="2025-08-14T15:19:00.559785" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Settings"]</msg>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:22.000770" level="INFO">Typing text 'Test@123' into text field '//input[@name='password']'.</msg>
 <arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:19:00.056862" elapsed="0.504012"/>
+<arg>${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:22.000296" elapsed="0.052854"/>
 </kw>
-<arg>${elm_Settings_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:18:59.777182" elapsed="0.784328"/>
+<arg>${PASSWORD_INPUT}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2025-10-13T17:34:21.974110" elapsed="0.079241"/>
 </kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:19:00.832494" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Sign Out"]</msg>
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:19:00.563899" elapsed="0.269399"/>
+<arg>${VALID_New_User_PASSWORD}</arg>
+<status status="PASS" start="2025-10-13T17:34:21.972418" elapsed="0.081025"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:19:00.844089" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Sign Out"]'.</msg>
-<msg time="2025-08-14T15:19:01.339047" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Sign Out"]</msg>
-<arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:19:00.834044" elapsed="0.505527"/>
-</kw>
-<arg>${elem_SignOut_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:19:00.562586" elapsed="0.777311"/>
-</kw>
-<kw name="Click on Element mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:19:01.632294" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Yes"]</msg>
+<kw name="Input Confirm Password" owner="CreateUserPage">
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:19:01.342072" elapsed="0.290906"/>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:22.054331" elapsed="0.010561"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-14T15:19:01.641929" level="INFO">Clicking element '//XCUIElementTypeStaticText[@name="Yes"]'.</msg>
-<msg time="2025-08-14T15:19:02.114333" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Yes"]</msg>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:22.065387" level="INFO">Typing text 'Test@123' into text field '//input[@name='confirm_password']'.</msg>
 <arg>${elm_input}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-14T15:19:01.633600" elapsed="0.481931"/>
+<arg>${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:22.065129" elapsed="0.044316"/>
 </kw>
-<arg>${elm_confirm_Yes}</arg>
-<status status="PASS" start="2025-08-14T15:19:01.340903" elapsed="0.775356"/>
+<arg>${CONFIRM_PASSWORD_INPUT}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2025-10-13T17:34:22.054011" elapsed="0.055598"/>
 </kw>
-<kw name="Check validation error message mobile" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-14T15:19:03.387233" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Welcome!"]
-xpath criteria: //XCUIElementTypeStaticText[@name="Welcome!"]
-xpath criteria: //XCUIElementTypeStaticText[@name="Welcome!"]
-xpath criteria: //XCUIElementTypeStaticText[@name="Welcome!"]</msg>
+<arg>${VALID_CONFIRM_PASSWORD}</arg>
+<status status="PASS" start="2025-10-13T17:34:22.053646" elapsed="0.056040"/>
+</kw>
+<status status="PASS" start="2025-10-13T17:34:17.527564" elapsed="4.582192"/>
+</kw>
+<kw name="And Click Submit button and wait for response create user successfully" owner="CreateUserPage">
+<kw name="Get Library Instance" owner="BuiltIn">
+<msg time="2025-10-13T17:34:22.110728" level="INFO">${driver} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x106dd11f0&gt;</msg>
+<var>${driver}</var>
+<arg>SeleniumLibrary</arg>
+<doc>Returns the currently active instance of the specified library.</doc>
+<status status="PASS" start="2025-10-13T17:34:22.110462" elapsed="0.000358"/>
+</kw>
+<kw name="Click on Element" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:22.111208" elapsed="0.010171"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:22.121838" level="INFO">Clicking element 'xpath=/html/body/div[1]/div/main/div/div/form/button'.</msg>
+<arg>${elm_input}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:22.121610" elapsed="0.034846"/>
+</kw>
+<arg>xpath=/html/body/div[1]/div/main/div/div/form/button</arg>
+<status status="PASS" start="2025-10-13T17:34:22.110964" elapsed="0.045658"/>
+</kw>
+<kw name="Start Network Interception" owner="Network">
+<msg time="2025-10-13T17:34:22.160155" level="INFO">Network tracking enabled</msg>
+<msg time="2025-10-13T17:34:22.160594" level="INFO">Successfully started network monitoring</msg>
+<arg>${driver.driver}</arg>
+<doc>Start intercepting network requests using CDP.</doc>
+<status status="PASS" start="2025-10-13T17:34:22.156771" elapsed="0.003956"/>
+</kw>
+<kw name="Clear Intercepted Requests" owner="Network">
+<msg time="2025-10-13T17:34:22.173882" level="INFO">Cleared all intercepted requests</msg>
+<arg>${driver.driver}</arg>
+<doc>Clear all intercepted requests</doc>
+<status status="PASS" start="2025-10-13T17:34:22.160908" elapsed="0.013165"/>
+</kw>
+<kw name="Wait For Request" owner="Network">
+<msg time="2025-10-13T17:34:23.930787" level="INFO">Found 1 matching requests</msg>
+<msg time="2025-10-13T17:34:23.931760" level="INFO">${profile_request} = {'url': 'https://api.panda.ennam.vn/api/admin/user/', 'method': 'POST', 'headers': {'Accept': 'application/json, text/plain, */*', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2t...</msg>
+<var>${profile_request}</var>
+<arg>${driver.driver}</arg>
+<arg>${Create_User_API}</arg>
+<arg>POST</arg>
+<arg>10</arg>
+<doc>Wait for a specific request to be intercepted.</doc>
+<status status="PASS" start="2025-10-13T17:34:22.174249" elapsed="1.757771"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-13T17:34:23.932883" level="INFO">{'url': 'https://api.panda.ennam.vn/api/admin/user/', 'method': 'POST', 'headers': {'Accept': 'application/json, text/plain, */*', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNDEyMDc0LCJpYXQiOjE3NjAzMjU2NzQsImp0aSI6IjkxZDA3M2E4MTMyNjQwZmI4NjdlYWM2NmI2Y2JkM2Q5IiwidXNlcl9pZCI6ODY3LCJwaG9uZV9udW1iZXIiOiI5ODc2NjEyNjMxIiwiZW1haWwiOiJzY2hvb2xAeW9wbWFpbC5jb20iLCJ1c2VyX3R5cGUiOiJPV05FUiIsImZpcnN0X25hbWUiOiJOaHV0IiwibGFzdF9uYW1lIjoiVHJ1b25nIiwidXNlcl9jb2RlIjoiU2Nob29sTGUifQ.FbbVvc399ivkGKfcGPx3nK3hiVV9VZhE0EFADRzhmNI', 'Content-Type': 'application/json', 'Referer': 'https://app.panda.ennam.vn/', 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"macOS"'}, 'postData': '{"first_name":"Nhut","last_name":"Minh","phone_number":"9977682025","email":"minh25@yopmail.com","address":"123 Test Street","dob":"2025-11-10","user_id":"School2025","role":"8","generate_password":false,"is_active":true,"send_email":true,"password":"Test@123","confirm_password":"Test@123","language":"en"}', 'timestamp': 1760351662.390304, 'type': 'request', 'requestId': '81658.201', 'status': 201, 'responseTimestamp': 1760351663.837343, 'response': '{"success": true, "statusCode": 201, "message": "CREATE_SUCCESS", "data": {"first_name": "Nhut", "last_name": "Minh", "phone_number": "9977682025", "email": "minh25@yopmail.com", "avatar": null, "dob": "2025-11-10", "address": "123 Test Street", "role": 8, "generate_password": false, "password": "Test@123", "confirm_password": "Test@123", "user_id": "School2025", "send_email": true, "is_active": true, "language": "en"}}'}</msg>
+<arg>${profile_request}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-13T17:34:23.932452" elapsed="0.000686"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-13T17:34:23.935539" level="INFO">${response} = {"success": true, "statusCode": 201, "message": "CREATE_SUCCESS", "data": {"first_name": "Nhut", "last_name": "Minh", "phone_number": "9977682025", "email": "minh25@yopmail.com", "avatar": null, "dob"...</msg>
+<var>${response}</var>
+<arg>${profile_request['response']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-13T17:34:23.933430" elapsed="0.002262"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-13T17:34:23.936205" level="INFO">{"success": true, "statusCode": 201, "message": "CREATE_SUCCESS", "data": {"first_name": "Nhut", "last_name": "Minh", "phone_number": "9977682025", "email": "minh25@yopmail.com", "avatar": null, "dob": "2025-11-10", "address": "123 Test Street", "role": 8, "generate_password": false, "password": "Test@123", "confirm_password": "Test@123", "user_id": "School2025", "send_email": true, "is_active": true, "language": "en"}}</msg>
+<arg>${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-13T17:34:23.935940" elapsed="0.000440"/>
+</kw>
+<kw name="Parse Response API" owner="Common">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-13T17:34:23.937926" level="INFO">${response_json} = {'success': True, 'statusCode': 201, 'message': 'CREATE_SUCCESS', 'data': {'first_name': 'Nhut', 'last_name': 'Minh', 'phone_number': '9977682025', 'email': 'minh25@yopmail.com', 'avatar': None, 'dob'...</msg>
+<var>${response_json}</var>
+<arg>json.loads('''${body}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-13T17:34:23.937373" elapsed="0.000715"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-13T17:34:23.940383" level="INFO">${success} = True</msg>
+<var>${success}</var>
+<arg>${response_json['success']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-13T17:34:23.938361" elapsed="0.002184"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-13T17:34:23.942698" level="INFO">${statusCode} = 201</msg>
+<var>${statusCode}</var>
+<arg>${response_json['statusCode']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-13T17:34:23.940798" elapsed="0.002039"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-13T17:34:23.945675" level="INFO">${message} = CREATE_SUCCESS</msg>
+<var>${message}</var>
+<arg>${response_json['message']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-13T17:34:23.943082" elapsed="0.002739"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-13T17:34:23.947829" level="INFO">${data} = {'first_name': 'Nhut', 'last_name': 'Minh', 'phone_number': '9977682025', 'email': 'minh25@yopmail.com', 'avatar': None, 'dob': '2025-11-10', 'address': '123 Test Street', 'role': 8, 'generate_passwor...</msg>
+<var>${data}</var>
+<arg>${response_json['data']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-13T17:34:23.946057" elapsed="0.001902"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-13T17:34:23.949578" level="INFO">&amp;{parsed} = { success=True | statusCode=201 | message=CREATE_SUCCESS | data={'first_name': 'Nhut', 'last_name': 'Minh', 'phone_number': '9977682025', 'email': 'minh25@yopmail.com', 'avatar': None, 'dob': '2025-11...</msg>
+<var>&amp;{parsed}</var>
+<arg>success=${success}</arg>
+<arg>statusCode=${statusCode}</arg>
+<arg>message=${message}</arg>
+<arg>data=${data}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-13T17:34:23.948557" elapsed="0.001226"/>
+</kw>
+<return>
+<value>&amp;{parsed}</value>
+<status status="PASS" start="2025-10-13T17:34:23.949981" elapsed="0.000165"/>
+</return>
+<msg time="2025-10-13T17:34:23.950417" level="INFO">${parsed_data} = {'success': True, 'statusCode': 201, 'message': 'CREATE_SUCCESS', 'data': {'first_name': 'Nhut', 'last_name': 'Minh', 'phone_number': '9977682025', 'email': 'minh25@yopmail.com', 'avatar': None, 'dob'...</msg>
+<var>${parsed_data}</var>
+<arg>${response}</arg>
+<status status="PASS" start="2025-10-13T17:34:23.936718" elapsed="0.013825"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-13T17:34:23.951019" level="INFO">{'success': True, 'statusCode': 201, 'message': 'CREATE_SUCCESS', 'data': {'first_name': 'Nhut', 'last_name': 'Minh', 'phone_number': '9977682025', 'email': 'minh25@yopmail.com', 'avatar': None, 'dob': '2025-11-10', 'address': '123 Test Street', 'role': 8, 'generate_password': False, 'password': 'Test@123', 'confirm_password': 'Test@123', 'user_id': 'School2025', 'send_email': True, 'is_active': True, 'language': 'en'}}</msg>
+<arg>${parsed_data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-13T17:34:23.950766" elapsed="0.000405"/>
+</kw>
+<kw name="Stop Network Interception" owner="Network">
+<msg time="2025-10-13T17:34:24.070448" level="INFO">Cleared all intercepted requests</msg>
+<msg time="2025-10-13T17:34:24.070703" level="INFO">Network interception stopped</msg>
+<arg>${driver.driver}</arg>
+<doc>Stop network interception and cleanup</doc>
+<status status="PASS" start="2025-10-13T17:34:23.951371" elapsed="0.123052"/>
+</kw>
+<status status="PASS" start="2025-10-13T17:34:22.110130" elapsed="1.964542"/>
+</kw>
+<kw name="Then Verify Sucessfully Message For Create User">
+<kw name="Check validation error message" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${Elm_message}</arg>
 <arg>15s</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-14T15:19:02.119066" elapsed="1.269197"/>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-13T17:34:24.076439" elapsed="0.016413"/>
 </kw>
-<kw name="Get Text" owner="AppiumLibrary">
-<msg time="2025-08-14T15:19:03.741472" level="INFO">Element '//XCUIElementTypeStaticText[@name="Welcome!"]' text is 'Welcome!' </msg>
-<msg time="2025-08-14T15:19:03.741933" level="INFO">xpath criteria: //XCUIElementTypeStaticText[@name="Welcome!"]</msg>
-<msg time="2025-08-14T15:19:03.742267" level="INFO">${error_message_invalid} = Welcome!</msg>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-10-13T17:34:24.107252" level="INFO">${error_message_invalid} = User created successfully.</msg>
 <var>${error_message_invalid}</var>
 <arg>${Elm_message}</arg>
-<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
-<status status="PASS" start="2025-08-14T15:19:03.389351" elapsed="0.353093"/>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-13T17:34:24.093185" elapsed="0.014224"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${error_message_invalid}</arg>
 <arg>${Expected_message}</arg>
 <arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-08-14T15:19:03.742887" elapsed="0.000778"/>
+<status status="PASS" start="2025-10-13T17:34:24.107624" elapsed="0.000393"/>
 </kw>
 <kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-08-14T15:19:03.744418" level="INFO">Set test message to:
-validation error message with 'Welcome!'</msg>
+<msg time="2025-10-13T17:34:24.108367" level="INFO">Set test message to:
+validation error message with 'User created successfully.'</msg>
 <arg>validation error message with '${error_message_invalid}'</arg>
 <doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-08-14T15:19:03.744023" elapsed="0.000634"/>
+<status status="PASS" start="2025-10-13T17:34:24.108179" elapsed="0.000297"/>
 </kw>
-<arg>${elm_welcome_IOS}</arg>
-<arg>${Expected_Welcome_IOS}</arg>
-<status status="PASS" start="2025-08-14T15:19:02.117593" elapsed="1.627301"/>
+<arg>//div[@class="text-sm opacity-90"]</arg>
+<arg>User created successfully.</arg>
+<status status="PASS" start="2025-10-13T17:34:24.075848" elapsed="0.032728"/>
 </kw>
-<status status="PASS" start="2025-08-14T15:18:56.771055" elapsed="6.975092">validation error message with 'Welcome!'</status>
+<status status="PASS" start="2025-10-13T17:34:24.075155" elapsed="0.033518"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-10-13T17:34:24.109156" elapsed="0.086280"/>
+</kw>
+<doc>Verify user can be created with valid information</doc>
+<tag>create_user</tag>
+<tag>positive</tag>
+<tag>regression</tag>
+<status status="PASS" start="2025-10-13T17:34:15.133965" elapsed="9.061652">validation error message with 'User created successfully.'</status>
 </test>
-<kw name="Basic TearDowns iOS" owner="Common" type="TEARDOWN">
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-08-14T15:19:06.751054" level="INFO">Slept 3 seconds.</msg>
-<arg>3</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-08-14T15:19:03.750335" elapsed="3.001324"/>
-</kw>
-<kw name="Close Application" owner="AppiumLibrary">
-<doc>Closes the current application and also close webdriver session.</doc>
-<status status="PASS" start="2025-08-14T15:19:06.752275" elapsed="1.071183"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:19:03.749399" elapsed="4.074793"/>
-</kw>
-<status status="PASS" start="2025-08-14T15:16:28.297973" elapsed="159.526492"/>
+<doc>Test cases for Create User functionality</doc>
+<status status="PASS" start="2025-10-13T17:34:13.034186" elapsed="11.161995"/>
 </suite>
 <statistics>
 <total>
-<stat pass="14" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0" skip="0">create_user</stat>
+<stat pass="1" fail="0" skip="0">positive</stat>
+<stat pass="1" fail="0" skip="0">regression</stat>
 </tag>
 <suite>
-<stat name="LoginIOS" id="s1" pass="14" fail="0" skip="0">LoginIOS</stat>
+<stat name="CreateUser" id="s1" pass="1" fail="0" skip="0">CreateUser</stat>
 </suite>
 </statistics>
 <errors>

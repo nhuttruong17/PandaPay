@@ -4,6 +4,8 @@ Resource    ../TestData/Browser/Global.robot
 Library     ../LibPy/FinalNetwork.py    WITH NAME    Network
 # Library     ../../../LibPy/FinalNetwork.py    WITH NAME    Network
 Library     AppiumLibrary
+Library     OperatingSystem
+
 *** Keywords ***
 Basic Setup
 #new#
@@ -63,6 +65,24 @@ Generate Secure Password
     ${shuffled}=     Evaluate    ''.join(random.sample(list('${password}'), len('${password}')))    modules=random
     RETURN    ${shuffled}
 ##Request Payload###
+
+## Scroll helpers ##
+Scroll Page By Pixels
+    [Arguments]    ${x}=0    ${y}=500
+    [Documentation]    Scroll the page by the given x/y pixels. Default scrolls down 500px.
+    SeleniumLibrary.Execute JavaScript    window.scrollBy(Number(arguments[0]), Number(arguments[1]));    ${x}    ${y}
+
+Scroll To Bottom
+    [Arguments]
+    [Documentation]    Scroll to the bottom of the page.
+    SeleniumLibrary.Execute JavaScript    window.scrollTo(0, document.body.scrollHeight);
+
+Scroll Element Into View
+    [Arguments]    ${locator}
+    [Documentation]    Scroll the element located by ${locator} into view using element.scrollIntoView().
+    ${elem}=    SeleniumLibrary.Get WebElement    ${locator}
+    SeleniumLibrary.Execute JavaScript    arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'nearest'});    ${elem}
+
 Prepare For Request Interception
     [Arguments]    ${endpoint}
     ${driver}=    Get Library Instance    SeleniumLibrary
@@ -90,6 +110,8 @@ Parse Response API
     &{parsed}=           Create Dictionary    success=${success}    statusCode=${statusCode}  message=${message}    data=${data}
     RETURN    &{parsed}
 ##Request Payload###
+
+
 
 ##Mobile
 Basic Setup iOS
@@ -137,4 +159,3 @@ ${Boolean_True}    True
 ${Boolean_False}    False
 
 
-    
