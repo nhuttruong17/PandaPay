@@ -12,11 +12,11 @@ Suite Setup     Basic Setup
 Save Session After Login (profile)
     [Documentation]    Login once using a Chrome profile and close browser (profile will keep session)
     [Tags]    session    save
-    Open Browser To Create User Page
+    # Open Browser To Create User Page
     Fill Text Input    ${input_UserID}    ${Valid_UserID}
     Fill Text Input    ${input_Password}    ${Valid_Password}
     Click on SignIn with Wait Response login successfully
-    Save Browser Session    .session/my_user
+    Save Browser Session
     [Teardown]    Close Browser
 
 
@@ -102,7 +102,7 @@ Create User With Valid Information
 
 *** Keywords ***
 Open Browser To Create User Page
-    Restore Browser Session    .session/my_user
+    Restore Browser Session
     Click on Element    ${Tab_USER_BUTTON}
     Click on Element    ${CREATE_USER_BUTTON}
 

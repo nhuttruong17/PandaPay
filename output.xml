@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-10-13T17:34:13.032070" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-10-14T17:50:38.819136" rpa="false" schemaversion="5">
 <suite id="s1" name="CreateUser" source="/Users/apple/Downloads/School/PycharmProjects/PandaPay/Tests/Authen/User/CreateUser.robot">
 <kw name="Basic Setup" owner="Common" type="SETUP">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-10-13T17:34:13.195924" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x107a63b20&gt;</msg>
+<msg time="2025-10-14T17:50:39.010175" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x107032ee0&gt;</msg>
 <var>${options}</var>
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-10-13T17:34:13.195529" elapsed="0.001860"/>
+<status status="PASS" start="2025-10-14T17:50:39.009930" elapsed="0.001564"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-13T17:34:13.198063" level="INFO">${logging_prefs} = {'performance': 'ALL'}</msg>
+<msg time="2025-10-14T17:50:39.012144" level="INFO">${logging_prefs} = {'performance': 'ALL'}</msg>
 <var>${logging_prefs}</var>
 <arg>performance=ALL</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-13T17:34:13.197716" elapsed="0.000490"/>
+<status status="PASS" start="2025-10-14T17:50:39.011847" elapsed="0.000407"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
 <arg>${options}</arg>
@@ -23,73 +23,66 @@
 <arg>goog:loggingPrefs</arg>
 <arg>${logging_prefs}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-10-13T17:34:13.198344" elapsed="0.000202"/>
+<status status="PASS" start="2025-10-14T17:50:39.012391" elapsed="0.000208"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:13.198951" level="INFO">Opening browser 'Chrome' to base url 'https://app.panda.ennam.vn/'.</msg>
+<msg time="2025-10-14T17:50:39.013014" level="INFO">Opening browser 'Chrome' to base url 'https://app.panda.ennam.vn/'.</msg>
 <arg>${BASE_URL}</arg>
 <arg>${CHROME_BROWSER}</arg>
 <arg>options=${options}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-10-13T17:34:13.198684" elapsed="1.934692"/>
+<status status="PASS" start="2025-10-14T17:50:39.012745" elapsed="1.938692"/>
 </kw>
-<status status="PASS" start="2025-10-13T17:34:13.194761" elapsed="1.939034"/>
+<status status="PASS" start="2025-10-14T17:50:39.009157" elapsed="1.944303"/>
 </kw>
-<test id="s1-t1" name="Create User With Valid Information" line="94">
+<test id="s1-t1" name="Create User With Existing UserID" line="67">
 <kw name="Given Open Browser To Create User Page">
 <kw name="Restore Browser Session" owner="CreateUserPage">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-13T17:34:15.136070" level="INFO">${cookies_file} = .session/my_user/cookies.json</msg>
+<msg time="2025-10-14T17:50:40.961867" level="INFO">${cookies_file} = .session/my_user/cookies.json</msg>
 <var>${cookies_file}</var>
-<arg>${session_dir}/cookies.json</arg>
+<arg>.session/my_user/cookies.json</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.135818" elapsed="0.001054"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-13T17:34:15.138625" level="INFO">${local_file} = .session/my_user/localStorage.json</msg>
-<var>${local_file}</var>
-<arg>${session_dir}/localStorage.json</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.137332" elapsed="0.001440"/>
+<status status="PASS" start="2025-10-14T17:50:40.961287" elapsed="0.002964"/>
 </kw>
 <kw name="Run Keyword And Return Status" owner="BuiltIn">
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2025-10-13T17:34:15.139571" level="INFO" html="true">File '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json&lt;/a&gt;' exists.</msg>
+<msg time="2025-10-14T17:50:40.973813" level="INFO" html="true">File '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json&lt;/a&gt;' exists.</msg>
 <arg>${cookies_file}</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.139238" elapsed="0.000511"/>
+<status status="PASS" start="2025-10-14T17:50:40.966666" elapsed="0.008149"/>
 </kw>
-<msg time="2025-10-13T17:34:15.140437" level="INFO">${cookies_exist} = True</msg>
+<msg time="2025-10-14T17:50:40.976007" level="INFO">${cookies_exist} = True</msg>
 <var>${cookies_exist}</var>
 <arg>File Should Exist</arg>
 <arg>${cookies_file}</arg>
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.138977" elapsed="0.001598"/>
+<status status="PASS" start="2025-10-14T17:50:40.965010" elapsed="0.012113"/>
 </kw>
 <if>
 <branch type="IF" condition="${cookies_exist}">
 <kw name="Get Library Instance" owner="BuiltIn">
-<msg time="2025-10-13T17:34:15.141359" level="INFO">${sl} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x106dd11f0&gt;</msg>
+<msg time="2025-10-14T17:50:40.980410" level="INFO">${sl} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x106b67fd0&gt;</msg>
 <var>${sl}</var>
 <arg>SeleniumLibrary</arg>
 <doc>Returns the currently active instance of the specified library.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.141030" elapsed="0.000425"/>
+<status status="PASS" start="2025-10-14T17:50:40.979618" elapsed="0.001612"/>
 </kw>
 <kw name="Get File" owner="OperatingSystem">
-<msg time="2025-10-13T17:34:15.141907" level="INFO" html="true">Getting file '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json&lt;/a&gt;'.</msg>
-<msg time="2025-10-13T17:34:15.144416" level="INFO">${cookies_json} = [{"domain": "app.panda.ennam.vn", "httpOnly": false, "name": "refresh_token", "path": "/", "sameSite": "Lax", "secure": false, "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcm...</msg>
+<msg time="2025-10-14T17:50:40.982702" level="INFO" html="true">Getting file '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json&lt;/a&gt;'.</msg>
+<msg time="2025-10-14T17:50:40.984280" level="INFO">${cookies_json} = [{"domain": "app.panda.ennam.vn", "httpOnly": false, "name": "refresh_token", "path": "/", "sameSite": "Lax", "secure": false, "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcm...</msg>
 <var>${cookies_json}</var>
 <arg>${cookies_file}</arg>
 <doc>Returns the contents of a specified file.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.141599" elapsed="0.003142"/>
+<status status="PASS" start="2025-10-14T17:50:40.982055" elapsed="0.002555"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-10-13T17:34:15.147697" level="INFO">${cookies} = [{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'refresh_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcm...</msg>
+<msg time="2025-10-14T17:50:40.986107" level="INFO">${cookies} = [{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'refresh_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcm...</msg>
 <var>${cookies}</var>
 <arg>json.loads('''${cookies_json}''')</arg>
 <arg>modules=json</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.145238" elapsed="0.003265"/>
+<status status="PASS" start="2025-10-14T17:50:40.985364" elapsed="0.000899"/>
 </kw>
 <for flavor="IN">
 <iter>
@@ -98,10 +91,14 @@
 <arg>add_cookie</arg>
 <arg>${cookie}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.149437" elapsed="0.021992"/>
+<status status="PASS" start="2025-10-14T17:50:40.987009" elapsed="0.215639"/>
+</kw>
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2025-10-14T17:50:41.202973" elapsed="0.094045"/>
 </kw>
 <var name="${cookie}">{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'refresh_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmV...</var>
-<status status="PASS" start="2025-10-13T17:34:15.149249" elapsed="0.022325"/>
+<status status="PASS" start="2025-10-14T17:50:40.986771" elapsed="0.310402"/>
 </iter>
 <iter>
 <kw name="Call Method" owner="BuiltIn">
@@ -109,10 +106,14 @@
 <arg>add_cookie</arg>
 <arg>${cookie}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.171921" elapsed="0.004291"/>
+<status status="PASS" start="2025-10-14T17:50:41.297596" elapsed="0.008071"/>
+</kw>
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2025-10-14T17:50:41.305894" elapsed="0.271805"/>
 </kw>
 <var name="${cookie}">{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'access_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNz...</var>
-<status status="PASS" start="2025-10-13T17:34:15.171720" elapsed="0.004650"/>
+<status status="PASS" start="2025-10-14T17:50:41.297344" elapsed="0.280520"/>
 </iter>
 <iter>
 <kw name="Call Method" owner="BuiltIn">
@@ -120,158 +121,81 @@
 <arg>add_cookie</arg>
 <arg>${cookie}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.176693" elapsed="0.003618"/>
+<status status="PASS" start="2025-10-14T17:50:41.578252" elapsed="0.004479"/>
+</kw>
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2025-10-14T17:50:41.583003" elapsed="0.078767"/>
 </kw>
 <var name="${cookie}">{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'NEXT_LOCALE', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'en'}</var>
-<status status="PASS" start="2025-10-13T17:34:15.176524" elapsed="0.003925"/>
+<status status="PASS" start="2025-10-14T17:50:41.578048" elapsed="0.083911"/>
 </iter>
 <var>${cookie}</var>
 <value>@{cookies}</value>
-<status status="PASS" start="2025-10-13T17:34:15.148901" elapsed="0.031616"/>
+<status status="PASS" start="2025-10-14T17:50:40.986442" elapsed="0.675600"/>
 </for>
-<status status="PASS" start="2025-10-13T17:34:15.140735" elapsed="0.039848"/>
+<status status="PASS" start="2025-10-14T17:50:40.978057" elapsed="0.684075"/>
 </branch>
-<status status="PASS" start="2025-10-13T17:34:15.140692" elapsed="0.039942"/>
+<status status="PASS" start="2025-10-14T17:50:40.977926" elapsed="0.684267"/>
 </if>
-<kw name="Run Keyword And Return Status" owner="BuiltIn">
-<kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2025-10-13T17:34:15.181253" level="INFO" html="true">File '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/localStorage.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/localStorage.json&lt;/a&gt;' exists.</msg>
-<arg>${local_file}</arg>
-<doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.180945" elapsed="0.000530"/>
-</kw>
-<msg time="2025-10-13T17:34:15.181940" level="INFO">${local_exist} = True</msg>
-<var>${local_exist}</var>
-<arg>File Should Exist</arg>
-<arg>${local_file}</arg>
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.180752" elapsed="0.001281"/>
-</kw>
-<if>
-<branch type="IF" condition="${local_exist}">
-<kw name="Get File" owner="OperatingSystem">
-<msg time="2025-10-13T17:34:15.183342" level="INFO" html="true">Getting file '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/localStorage.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/localStorage.json&lt;/a&gt;'.</msg>
-<msg time="2025-10-13T17:34:15.185415" level="INFO">${local_json} = {}</msg>
-<var>${local_json}</var>
-<arg>${local_file}</arg>
-<doc>Returns the contents of a specified file.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.182358" elapsed="0.003286"/>
-</kw>
-<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
-<kw name="Evaluate" owner="BuiltIn">
-<arg>json.loads('''${local_json}''')</arg>
-<arg>json</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.186287" elapsed="0.000246"/>
-</kw>
-<msg time="2025-10-13T17:34:15.186655" level="INFO">${status} = PASS</msg>
-<msg time="2025-10-13T17:34:15.186727" level="INFO">${dummy} = {}</msg>
-<var>${status}</var>
-<var>${dummy}</var>
-<arg>Evaluate</arg>
-<arg>json.loads('''${local_json}''')</arg>
-<arg>json</arg>
-<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.185988" elapsed="0.000786"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Execute Javascript" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:15.187417" level="INFO">Executing JavaScript:
-try{ var items = JSON.parse(arguments[0]); for(var k in items){ localStorage.setItem(k, items[k]); } }catch(e){ console.warn('localStorage restore skipped, invalid JSON'); }{}
-Without any arguments.</msg>
-<arg>try{ var items = JSON.parse(arguments[0]); for(var k in items){ localStorage.setItem(k, items[k]); } }catch(e){ console.warn('localStorage restore skipped, invalid JSON'); }</arg>
-<arg>${local_json}</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.187136" elapsed="0.004443"/>
-</kw>
-<arg>'${status}' == 'PASS'</arg>
-<arg>SeleniumLibrary.Execute JavaScript</arg>
-<arg>try{ var items = JSON.parse(arguments[0]); for(var k in items){ localStorage.setItem(k, items[k]); } }catch(e){ console.warn('localStorage restore skipped, invalid JSON'); }</arg>
-<arg>${local_json}</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.186901" elapsed="0.004834"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<arg>'${status}' != 'PASS'</arg>
-<arg>Log</arg>
-<arg>Local storage JSON invalid or empty, skipping restoration</arg>
-<arg>WARN</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.191915" elapsed="0.000250"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Reload Page" owner="SeleniumLibrary">
-<doc>Simulates user reloading page.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.192520" elapsed="0.291631"/>
-</kw>
-<arg>'${status}' == 'PASS'</arg>
-<arg>Reload Page</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.192300" elapsed="0.292028"/>
-</kw>
-<status status="PASS" start="2025-10-13T17:34:15.182182" elapsed="0.302231"/>
-</branch>
-<status status="PASS" start="2025-10-13T17:34:15.182160" elapsed="0.302326"/>
-</if>
-<arg>.session/my_user</arg>
-<status status="PASS" start="2025-10-13T17:34:15.135449" elapsed="0.349095"/>
+<status status="PASS" start="2025-10-14T17:50:40.960318" elapsed="0.702090"/>
 </kw>
 <kw name="Click on Element" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.485164" elapsed="0.239406"/>
+<status status="PASS" start="2025-10-14T17:50:41.663427" elapsed="0.250474"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:15.725505" level="INFO">Clicking element 'xpath=//button[normalize-space()='User']'.</msg>
+<msg time="2025-10-14T17:50:41.915333" level="INFO">Clicking element 'xpath=//button[normalize-space()='User']'.</msg>
 <arg>${elm_input}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.725007" elapsed="0.048066"/>
+<status status="PASS" start="2025-10-14T17:50:41.914293" elapsed="0.040074"/>
 </kw>
 <arg>${Tab_USER_BUTTON}</arg>
-<status status="PASS" start="2025-10-13T17:34:15.484757" elapsed="0.288498"/>
+<status status="PASS" start="2025-10-14T17:50:41.662973" elapsed="0.291686"/>
 </kw>
 <kw name="Click on Element" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:15.773818" elapsed="1.719164"/>
+<status status="PASS" start="2025-10-14T17:50:41.956043" elapsed="2.161351"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:17.493579" level="INFO">Clicking element 'xpath=//button[normalize-space()='Create New User']'.</msg>
+<msg time="2025-10-14T17:50:44.118082" level="INFO">Clicking element 'xpath=//button[normalize-space()='Create New User']'.</msg>
 <arg>${elm_input}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:17.493279" elapsed="0.033731"/>
+<status status="PASS" start="2025-10-14T17:50:44.117717" elapsed="0.035204"/>
 </kw>
 <arg>${CREATE_USER_BUTTON}</arg>
-<status status="PASS" start="2025-10-13T17:34:15.773464" elapsed="1.753712"/>
+<status status="PASS" start="2025-10-14T17:50:41.955519" elapsed="2.197589"/>
 </kw>
-<status status="PASS" start="2025-10-13T17:34:15.134769" elapsed="2.392493"/>
+<status status="PASS" start="2025-10-14T17:50:40.957218" elapsed="3.195982"/>
 </kw>
-<kw name="When User Input Valid Information for New User">
+<kw name="When User Input Information with Existing User ID">
 <kw name="Input User ID" owner="CreateUserPage">
 <kw name="Fill Text Input" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:17.528509" elapsed="0.436051"/>
+<status status="PASS" start="2025-10-14T17:50:44.154620" elapsed="0.444427"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:17.965349" level="INFO">Typing text 'School2025' into text field '//*[@name="user_id"]'.</msg>
+<msg time="2025-10-14T17:50:44.599988" level="INFO">Typing text 'School1190' into text field '//*[@name="user_id"]'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:17.964921" elapsed="0.108307"/>
+<status status="PASS" start="2025-10-14T17:50:44.599489" elapsed="0.122279"/>
 </kw>
 <arg>${USER_ID_INPUT}</arg>
 <arg>${user_id}</arg>
-<status status="PASS" start="2025-10-13T17:34:17.528199" elapsed="0.545217"/>
+<status status="PASS" start="2025-10-14T17:50:44.154290" elapsed="0.567671"/>
 </kw>
-<arg>School2025</arg>
-<status status="PASS" start="2025-10-13T17:34:17.527907" elapsed="0.545604"/>
+<arg>${UserID_exist}</arg>
+<status status="PASS" start="2025-10-14T17:50:44.153897" elapsed="0.568156"/>
 </kw>
 <kw name="Input First Name" owner="CreateUserPage">
 <kw name="Fill Text Input" owner="Common">
@@ -279,21 +203,21 @@ Without any arguments.</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.074396" elapsed="0.011483"/>
+<status status="PASS" start="2025-10-14T17:50:44.722901" elapsed="0.010056"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:18.086378" level="INFO">Typing text 'Nhut' into text field '//input[@id='first_name ']'.</msg>
+<msg time="2025-10-14T17:50:44.733444" level="INFO">Typing text 'Nhut' into text field '//input[@id='first_name ']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.086114" elapsed="0.063934"/>
+<status status="PASS" start="2025-10-14T17:50:44.733188" elapsed="0.053416"/>
 </kw>
 <arg>${FIRST_NAME_INPUT}</arg>
 <arg>${first_name}</arg>
-<status status="PASS" start="2025-10-13T17:34:18.074049" elapsed="0.076166"/>
+<status status="PASS" start="2025-10-14T17:50:44.722581" elapsed="0.064187"/>
 </kw>
 <arg>Nhut</arg>
-<status status="PASS" start="2025-10-13T17:34:18.073708" elapsed="0.076588"/>
+<status status="PASS" start="2025-10-14T17:50:44.722244" elapsed="0.064601"/>
 </kw>
 <kw name="Input Last Name" owner="CreateUserPage">
 <kw name="Fill Text Input" owner="Common">
@@ -301,21 +225,21 @@ Without any arguments.</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.151076" elapsed="0.010250"/>
+<status status="PASS" start="2025-10-14T17:50:44.787591" elapsed="0.009822"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:18.161816" level="INFO">Typing text 'Minh' into text field '//input[@id='last_name ']'.</msg>
+<msg time="2025-10-14T17:50:44.797887" level="INFO">Typing text 'Minh' into text field '//input[@id='last_name ']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.161557" elapsed="0.037399"/>
+<status status="PASS" start="2025-10-14T17:50:44.797643" elapsed="0.035204"/>
 </kw>
 <arg>${LAST_NAME_INPUT}</arg>
 <arg>${last_name}</arg>
-<status status="PASS" start="2025-10-13T17:34:18.150775" elapsed="0.048459"/>
+<status status="PASS" start="2025-10-14T17:50:44.787309" elapsed="0.045700"/>
 </kw>
 <arg>Minh</arg>
-<status status="PASS" start="2025-10-13T17:34:18.150473" elapsed="0.048865"/>
+<status status="PASS" start="2025-10-14T17:50:44.787015" elapsed="0.046071"/>
 </kw>
 <kw name="Input Email" owner="CreateUserPage">
 <kw name="Fill Text Input" owner="Common">
@@ -323,21 +247,21 @@ Without any arguments.</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.200149" elapsed="0.009316"/>
+<status status="PASS" start="2025-10-14T17:50:44.833813" elapsed="0.010497"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:18.210264" level="INFO">Typing text 'minh25@yopmail.com' into text field '//input[@id='email ']'.</msg>
+<msg time="2025-10-14T17:50:44.844808" level="INFO">Typing text 'minh2@yopmail.com' into text field '//input[@id='email ']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.209686" elapsed="0.040999"/>
+<status status="PASS" start="2025-10-14T17:50:44.844554" elapsed="0.040260"/>
 </kw>
 <arg>${EMAIL_INPUT}</arg>
 <arg>${email}</arg>
-<status status="PASS" start="2025-10-13T17:34:18.199860" elapsed="0.051016"/>
+<status status="PASS" start="2025-10-14T17:50:44.833534" elapsed="0.051442"/>
 </kw>
-<arg>minh25@yopmail.com</arg>
-<status status="PASS" start="2025-10-13T17:34:18.199529" elapsed="0.051433"/>
+<arg>minh2@yopmail.com</arg>
+<status status="PASS" start="2025-10-14T17:50:44.833251" elapsed="0.051803"/>
 </kw>
 <kw name="Input Phone Number" owner="CreateUserPage">
 <kw name="Fill Text Input" owner="Common">
@@ -345,21 +269,21 @@ Without any arguments.</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.251933" elapsed="0.009695"/>
+<status status="PASS" start="2025-10-14T17:50:44.885779" elapsed="0.017050"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:18.262100" level="INFO">Typing text '9977682025' into text field '//input[@placeholder='Enter phone number']'.</msg>
+<msg time="2025-10-14T17:50:44.903311" level="INFO">Typing text '9977686113' into text field '//input[@placeholder='Enter phone number']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.261852" elapsed="0.040823"/>
+<status status="PASS" start="2025-10-14T17:50:44.903064" elapsed="0.039636"/>
 </kw>
 <arg>${PHONE_INPUT}</arg>
 <arg>${phone}</arg>
-<status status="PASS" start="2025-10-13T17:34:18.251631" elapsed="0.051210"/>
+<status status="PASS" start="2025-10-14T17:50:44.885506" elapsed="0.057374"/>
 </kw>
-<arg>9977682025</arg>
-<status status="PASS" start="2025-10-13T17:34:18.251192" elapsed="0.051727"/>
+<arg>9977686113</arg>
+<status status="PASS" start="2025-10-14T17:50:44.885219" elapsed="0.057745"/>
 </kw>
 <kw name="Input Date Of Birth" owner="CreateUserPage">
 <kw name="Fill Text Input" owner="Common">
@@ -367,21 +291,21 @@ Without any arguments.</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.304054" elapsed="0.009800"/>
+<status status="PASS" start="2025-10-14T17:50:44.943816" elapsed="0.009454"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:18.314335" level="INFO">Typing text '11-10-2025' into text field '//input[@placeholder='Enter date of birth']'.</msg>
+<msg time="2025-10-14T17:50:44.953739" level="INFO">Typing text '11-10-2025' into text field '//input[@placeholder='Enter date of birth']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.314086" elapsed="0.038870"/>
+<status status="PASS" start="2025-10-14T17:50:44.953495" elapsed="0.039546"/>
 </kw>
 <arg>${DOB_INPUT}</arg>
 <arg>${dob}</arg>
-<status status="PASS" start="2025-10-13T17:34:18.303690" elapsed="0.049496"/>
+<status status="PASS" start="2025-10-14T17:50:44.943521" elapsed="0.049693"/>
 </kw>
 <arg>${VALID_DOB}</arg>
-<status status="PASS" start="2025-10-13T17:34:18.303088" elapsed="0.050178"/>
+<status status="PASS" start="2025-10-14T17:50:44.943182" elapsed="0.050111"/>
 </kw>
 <kw name="Input Address" owner="CreateUserPage">
 <kw name="Fill Text Input" owner="Common">
@@ -389,33 +313,33 @@ Without any arguments.</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.354070" elapsed="0.010870"/>
+<status status="PASS" start="2025-10-14T17:50:44.994071" elapsed="0.011283"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:18.365409" level="INFO">Typing text '123 Test Street' into text field '//input[@placeholder='Enter address']'.</msg>
+<msg time="2025-10-14T17:50:45.005848" level="INFO">Typing text '123 Test Street' into text field '//input[@placeholder='Enter address']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.365162" elapsed="0.037681"/>
+<status status="PASS" start="2025-10-14T17:50:45.005595" elapsed="0.037758"/>
 </kw>
 <arg>${ADDRESS_INPUT}</arg>
 <arg>${address}</arg>
-<status status="PASS" start="2025-10-13T17:34:18.353780" elapsed="0.049236"/>
+<status status="PASS" start="2025-10-14T17:50:44.993785" elapsed="0.049749"/>
 </kw>
 <arg>${VALID_ADDRESS}</arg>
-<status status="PASS" start="2025-10-13T17:34:18.353453" elapsed="0.049647"/>
+<status status="PASS" start="2025-10-14T17:50:44.993472" elapsed="0.050138"/>
 </kw>
 <kw name="Scroll To Bottom" owner="Common">
 <kw name="Execute Javascript" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:18.403854" level="INFO">Executing JavaScript:
+<msg time="2025-10-14T17:50:45.044769" level="INFO">Executing JavaScript:
 window.scrollTo(0, document.body.scrollHeight);
 Without any arguments.</msg>
 <arg>window.scrollTo(0, document.body.scrollHeight);</arg>
 <doc>Executes the given JavaScript code with possible arguments.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.403593" elapsed="0.003154"/>
+<status status="PASS" start="2025-10-14T17:50:45.044201" elapsed="0.003478"/>
 </kw>
 <doc>Scroll to the bottom of the page.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.403288" elapsed="0.003604"/>
+<status status="PASS" start="2025-10-14T17:50:45.043775" elapsed="0.004033"/>
 </kw>
 <kw name="Select User Role" owner="CreateUserPage">
 <kw name="Click on Element" owner="Common">
@@ -423,24 +347,18 @@ Without any arguments.</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:18.407556" elapsed="1.526146"/>
+<status status="PASS" start="2025-10-14T17:50:45.049823" elapsed="1.308887"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:19.934639" level="INFO">Clicking element 'xpath=//select[@aria-hidden='true']/option[@value='8']'.</msg>
+<msg time="2025-10-14T17:50:46.359652" level="INFO">Clicking element 'xpath=//select[@aria-hidden='true']/option[@value='8']'.</msg>
 <arg>${elm_input}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:19.934159" elapsed="0.032868"/>
+<status status="PASS" start="2025-10-14T17:50:46.359167" elapsed="0.033853"/>
 </kw>
 <arg>xpath=//select[@aria-hidden='true']/option[@value='8']</arg>
-<status status="PASS" start="2025-10-13T17:34:18.407316" elapsed="1.559958"/>
+<status status="PASS" start="2025-10-14T17:50:45.048211" elapsed="1.345052"/>
 </kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-10-13T17:34:21.968650" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-10-13T17:34:19.967500" elapsed="2.002604"/>
-</kw>
-<status status="PASS" start="2025-10-13T17:34:18.407066" elapsed="3.563914"/>
+<status status="PASS" start="2025-10-14T17:50:45.047965" elapsed="1.345419"/>
 </kw>
 <kw name="Input Password Web" owner="CreateUserPage">
 <kw name="Fill Text Input" owner="Common">
@@ -448,21 +366,21 @@ Without any arguments.</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:21.975127" elapsed="0.024760"/>
+<status status="PASS" start="2025-10-14T17:50:46.394799" elapsed="0.013181"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:22.000770" level="INFO">Typing text 'Test@123' into text field '//input[@name='password']'.</msg>
+<msg time="2025-10-14T17:50:46.408559" level="INFO">Typing text 'Test@123' into text field '//input[@name='password']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:22.000296" elapsed="0.052854"/>
+<status status="PASS" start="2025-10-14T17:50:46.408250" elapsed="0.038725"/>
 </kw>
 <arg>${PASSWORD_INPUT}</arg>
 <arg>${password}</arg>
-<status status="PASS" start="2025-10-13T17:34:21.974110" elapsed="0.079241"/>
+<status status="PASS" start="2025-10-14T17:50:46.394221" elapsed="0.052916"/>
 </kw>
 <arg>${VALID_New_User_PASSWORD}</arg>
-<status status="PASS" start="2025-10-13T17:34:21.972418" elapsed="0.081025"/>
+<status status="PASS" start="2025-10-14T17:50:46.393638" elapsed="0.053579"/>
 </kw>
 <kw name="Input Confirm Password" owner="CreateUserPage">
 <kw name="Fill Text Input" owner="Common">
@@ -470,209 +388,305 @@ Without any arguments.</msg>
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:22.054331" elapsed="0.010561"/>
+<status status="PASS" start="2025-10-14T17:50:46.447992" elapsed="0.010565"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:22.065387" level="INFO">Typing text 'Test@123' into text field '//input[@name='confirm_password']'.</msg>
+<msg time="2025-10-14T17:50:46.459018" level="INFO">Typing text 'Test@123' into text field '//input[@name='confirm_password']'.</msg>
 <arg>${elm_input}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:22.065129" elapsed="0.044316"/>
+<status status="PASS" start="2025-10-14T17:50:46.458776" elapsed="0.037395"/>
 </kw>
 <arg>${CONFIRM_PASSWORD_INPUT}</arg>
 <arg>${password}</arg>
-<status status="PASS" start="2025-10-13T17:34:22.054011" elapsed="0.055598"/>
+<status status="PASS" start="2025-10-14T17:50:46.447705" elapsed="0.048631"/>
 </kw>
 <arg>${VALID_CONFIRM_PASSWORD}</arg>
-<status status="PASS" start="2025-10-13T17:34:22.053646" elapsed="0.056040"/>
+<status status="PASS" start="2025-10-14T17:50:46.447385" elapsed="0.049029"/>
 </kw>
-<status status="PASS" start="2025-10-13T17:34:17.527564" elapsed="4.582192"/>
+<status status="PASS" start="2025-10-14T17:50:44.153562" elapsed="2.342923"/>
 </kw>
-<kw name="And Click Submit button and wait for response create user successfully" owner="CreateUserPage">
+<kw name="And Click Submit button and wait for response Existing UserID" owner="CreateUserPage">
+<kw name="Prepare For Request Interception" owner="Common">
 <kw name="Get Library Instance" owner="BuiltIn">
-<msg time="2025-10-13T17:34:22.110728" level="INFO">${driver} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x106dd11f0&gt;</msg>
+<msg time="2025-10-14T17:50:46.497453" level="INFO">${driver} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x106b67fd0&gt;</msg>
 <var>${driver}</var>
 <arg>SeleniumLibrary</arg>
 <doc>Returns the currently active instance of the specified library.</doc>
-<status status="PASS" start="2025-10-13T17:34:22.110462" elapsed="0.000358"/>
+<status status="PASS" start="2025-10-14T17:50:46.497285" elapsed="0.000254"/>
+</kw>
+<kw name="Inject Request Interceptor" owner="Network">
+<msg time="2025-10-14T17:50:46.502024" level="INFO">JavaScript interceptor injected for endpoint: api/admin/user/</msg>
+<arg>${driver.driver}</arg>
+<arg>${endpoint}</arg>
+<doc>Inject JavaScript to intercept and log requests to a specific API endpoint.</doc>
+<status status="PASS" start="2025-10-14T17:50:46.497662" elapsed="0.004751"/>
+</kw>
+<return>
+<value>${driver}</value>
+<status status="PASS" start="2025-10-14T17:50:46.502536" elapsed="0.000174"/>
+</return>
+<msg time="2025-10-14T17:50:46.503344" level="INFO">${driver} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x106b67fd0&gt;</msg>
+<var>${driver}</var>
+<arg>${Create_User_API}</arg>
+<status status="PASS" start="2025-10-14T17:50:46.497017" elapsed="0.006442"/>
 </kw>
 <kw name="Click on Element" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:22.111208" elapsed="0.010171"/>
+<status status="PASS" start="2025-10-14T17:50:46.503967" elapsed="0.009854"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:22.121838" level="INFO">Clicking element 'xpath=/html/body/div[1]/div/main/div/div/form/button'.</msg>
+<msg time="2025-10-14T17:50:46.514262" level="INFO">Clicking element 'xpath=/html/body/div[1]/div/main/div/div/form/button'.</msg>
 <arg>${elm_input}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:22.121610" elapsed="0.034846"/>
+<status status="PASS" start="2025-10-14T17:50:46.514041" elapsed="0.040459"/>
 </kw>
 <arg>xpath=/html/body/div[1]/div/main/div/div/form/button</arg>
-<status status="PASS" start="2025-10-13T17:34:22.110964" elapsed="0.045658"/>
+<status status="PASS" start="2025-10-14T17:50:46.503656" elapsed="0.051010"/>
 </kw>
-<kw name="Start Network Interception" owner="Network">
-<msg time="2025-10-13T17:34:22.160155" level="INFO">Network tracking enabled</msg>
-<msg time="2025-10-13T17:34:22.160594" level="INFO">Successfully started network monitoring</msg>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-14T17:50:48.555594" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-14T17:50:46.554822" elapsed="2.001334"/>
+</kw>
+<kw name="Get Request API" owner="Common">
+<kw name="Get Intercepted Requests" owner="Network">
+<msg time="2025-10-14T17:50:48.572908" level="INFO">Found 1 matching requests</msg>
+<msg time="2025-10-14T17:50:48.573363" level="INFO">${requests} = [{'method': 'POST', 'payload': '{"first_name":"Nhut","last_name":"Minh","phone_number":"9977686113","email":"minh2@yopmail.com","address":"123 Test Street","dob":"2025-11-10","user_id":"School1190","r...</msg>
+<var>${requests}</var>
 <arg>${driver.driver}</arg>
-<doc>Start intercepting network requests using CDP.</doc>
-<status status="PASS" start="2025-10-13T17:34:22.156771" elapsed="0.003956"/>
+<doc>Get intercepted requests matching the given criteria.</doc>
+<status status="PASS" start="2025-10-14T17:50:48.557695" elapsed="0.015839"/>
 </kw>
-<kw name="Clear Intercepted Requests" owner="Network">
-<msg time="2025-10-13T17:34:22.173882" level="INFO">Cleared all intercepted requests</msg>
-<arg>${driver.driver}</arg>
-<doc>Clear all intercepted requests</doc>
-<status status="PASS" start="2025-10-13T17:34:22.160908" elapsed="0.013165"/>
-</kw>
-<kw name="Wait For Request" owner="Network">
-<msg time="2025-10-13T17:34:23.930787" level="INFO">Found 1 matching requests</msg>
-<msg time="2025-10-13T17:34:23.931760" level="INFO">${profile_request} = {'url': 'https://api.panda.ennam.vn/api/admin/user/', 'method': 'POST', 'headers': {'Accept': 'application/json, text/plain, */*', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2t...</msg>
-<var>${profile_request}</var>
-<arg>${driver.driver}</arg>
-<arg>${Create_User_API}</arg>
-<arg>POST</arg>
-<arg>10</arg>
-<doc>Wait for a specific request to be intercepted.</doc>
-<status status="PASS" start="2025-10-13T17:34:22.174249" elapsed="1.757771"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-10-13T17:34:23.932883" level="INFO">{'url': 'https://api.panda.ennam.vn/api/admin/user/', 'method': 'POST', 'headers': {'Accept': 'application/json, text/plain, */*', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNDEyMDc0LCJpYXQiOjE3NjAzMjU2NzQsImp0aSI6IjkxZDA3M2E4MTMyNjQwZmI4NjdlYWM2NmI2Y2JkM2Q5IiwidXNlcl9pZCI6ODY3LCJwaG9uZV9udW1iZXIiOiI5ODc2NjEyNjMxIiwiZW1haWwiOiJzY2hvb2xAeW9wbWFpbC5jb20iLCJ1c2VyX3R5cGUiOiJPV05FUiIsImZpcnN0X25hbWUiOiJOaHV0IiwibGFzdF9uYW1lIjoiVHJ1b25nIiwidXNlcl9jb2RlIjoiU2Nob29sTGUifQ.FbbVvc399ivkGKfcGPx3nK3hiVV9VZhE0EFADRzhmNI', 'Content-Type': 'application/json', 'Referer': 'https://app.panda.ennam.vn/', 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"macOS"'}, 'postData': '{"first_name":"Nhut","last_name":"Minh","phone_number":"9977682025","email":"minh25@yopmail.com","address":"123 Test Street","dob":"2025-11-10","user_id":"School2025","role":"8","generate_password":false,"is_active":true,"send_email":true,"password":"Test@123","confirm_password":"Test@123","language":"en"}', 'timestamp': 1760351662.390304, 'type': 'request', 'requestId': '81658.201', 'status': 201, 'responseTimestamp': 1760351663.837343, 'response': '{"success": true, "statusCode": 201, "message": "CREATE_SUCCESS", "data": {"first_name": "Nhut", "last_name": "Minh", "phone_number": "9977682025", "email": "minh25@yopmail.com", "avatar": null, "dob": "2025-11-10", "address": "123 Test Street", "role": 8, "generate_password": false, "password": "Test@123", "confirm_password": "Test@123", "user_id": "School2025", "send_email": true, "is_active": true, "language": "en"}}'}</msg>
-<arg>${profile_request}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-10-13T17:34:23.932452" elapsed="0.000686"/>
+<kw name="Run Keyword Unless" owner="BuiltIn">
+<msg time="2025-10-14T17:50:48.574138" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<arg>${requests}</arg>
+<arg>Fail</arg>
+<arg>No intercepted requests found.</arg>
+<doc>*DEPRECATED since RF 5.0. Use Native IF/ELSE or `Run Keyword If` instead.*</doc>
+<status status="PASS" start="2025-10-14T17:50:48.573917" elapsed="0.001131"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-13T17:34:23.935539" level="INFO">${response} = {"success": true, "statusCode": 201, "message": "CREATE_SUCCESS", "data": {"first_name": "Nhut", "last_name": "Minh", "phone_number": "9977682025", "email": "minh25@yopmail.com", "avatar": null, "dob"...</msg>
-<var>${response}</var>
-<arg>${profile_request['response']}</arg>
+<msg time="2025-10-14T17:50:48.577913" level="INFO">${status} = 400</msg>
+<var>${status}</var>
+<arg>${requests[0]['status']}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-13T17:34:23.933430" elapsed="0.002262"/>
+<status status="PASS" start="2025-10-14T17:50:48.575417" elapsed="0.002711"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-14T17:50:48.580651" level="INFO">${url} = https://api.panda.ennam.vn/api/admin/user/</msg>
+<var>${url}</var>
+<arg>${requests[0]['url']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-14T17:50:48.578426" elapsed="0.002398"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-14T17:50:48.583314" level="INFO">${payload} = {"first_name":"Nhut","last_name":"Minh","phone_number":"9977686113","email":"minh2@yopmail.com","address":"123 Test Street","dob":"2025-11-10","user_id":"School1190","role":"8","generate_password":fal...</msg>
+<var>${payload}</var>
+<arg>${requests[0]['payload']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-14T17:50:48.581107" elapsed="0.002389"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-14T17:50:48.586027" level="INFO">${body} = {"success":false,"statusCode":400,"message":"INVALID_INPUT","data":{"user_id":["VAL546"]}}</msg>
+<var>${body}</var>
+<arg>${requests[0]['response']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-14T17:50:48.583891" elapsed="0.002308"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-14T17:50:48.587221" level="INFO">&amp;{result} = { status=400 | body={"success":false,"statusCode":400,"message":"INVALID_INPUT","data":{"user_id":["VAL546"]}} | payload={"first_name":"Nhut","last_name":"Minh","phone_number":"9977686113","email":"mi...</msg>
+<var>&amp;{result}</var>
+<arg>status=${status}</arg>
+<arg>body=${body}</arg>
+<arg>payload=${payload}</arg>
+<arg>url=${url}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-14T17:50:48.586493" elapsed="0.000880"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2025-10-14T17:50:48.587533" elapsed="0.000127"/>
+</return>
+<msg time="2025-10-14T17:50:48.587917" level="INFO">${result} = {'status': 400, 'body': '{"success":false,"statusCode":400,"message":"INVALID_INPUT","data":{"user_id":["VAL546"]}}', 'payload': '{"first_name":"Nhut","last_name":"Minh","phone_number":"9977686113","e...</msg>
+<var>${result}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-10-14T17:50:48.556826" elapsed="0.031231"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-14T17:50:48.590946" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${result.status}</arg>
+<arg>${Status_400}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-14T17:50:48.588671" elapsed="0.002525"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-14T17:50:48.593370" level="INFO">${request_payload} = {'first_name': 'Nhut', 'last_name': 'Minh', 'phone_number': '9977686113', 'email': 'minh2@yopmail.com', 'address': '123 Test Street', 'dob': '2025-11-10', 'user_id': 'School1190', 'role': '8', 'genera...</msg>
+<var>${request_payload}</var>
+<arg>json.loads('''${result.payload}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-14T17:50:48.591469" elapsed="0.002035"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${request_payload['user_id']}</arg>
+<arg>${UserID_exist}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-10-14T17:50:48.593739" elapsed="0.001763"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-10-13T17:34:23.936205" level="INFO">{"success": true, "statusCode": 201, "message": "CREATE_SUCCESS", "data": {"first_name": "Nhut", "last_name": "Minh", "phone_number": "9977682025", "email": "minh25@yopmail.com", "avatar": null, "dob": "2025-11-10", "address": "123 Test Street", "role": 8, "generate_password": false, "password": "Test@123", "confirm_password": "Test@123", "user_id": "School2025", "send_email": true, "is_active": true, "language": "en"}}</msg>
-<arg>${response}</arg>
+<msg time="2025-10-14T17:50:48.596110" level="INFO">{'first_name': 'Nhut', 'last_name': 'Minh', 'phone_number': '9977686113', 'email': 'minh2@yopmail.com', 'address': '123 Test Street', 'dob': '2025-11-10', 'user_id': 'School1190', 'role': '8', 'generate_password': False, 'is_active': True, 'send_email': True, 'password': 'Test@123', 'confirm_password': 'Test@123', 'language': 'en'}</msg>
+<arg>${request_payload}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-10-13T17:34:23.935940" elapsed="0.000440"/>
+<status status="PASS" start="2025-10-14T17:50:48.595731" elapsed="0.000543"/>
 </kw>
 <kw name="Parse Response API" owner="Common">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-10-13T17:34:23.937926" level="INFO">${response_json} = {'success': True, 'statusCode': 201, 'message': 'CREATE_SUCCESS', 'data': {'first_name': 'Nhut', 'last_name': 'Minh', 'phone_number': '9977682025', 'email': 'minh25@yopmail.com', 'avatar': None, 'dob'...</msg>
+<msg time="2025-10-14T17:50:48.599334" level="INFO">${response_json} = {'success': False, 'statusCode': 400, 'message': 'INVALID_INPUT', 'data': {'user_id': ['VAL546']}}</msg>
 <var>${response_json}</var>
 <arg>json.loads('''${body}''')</arg>
 <arg>json</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-10-13T17:34:23.937373" elapsed="0.000715"/>
+<status status="PASS" start="2025-10-14T17:50:48.598897" elapsed="0.000572"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-13T17:34:23.940383" level="INFO">${success} = True</msg>
+<msg time="2025-10-14T17:50:48.601329" level="INFO">${success} = False</msg>
 <var>${success}</var>
 <arg>${response_json['success']}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-13T17:34:23.938361" elapsed="0.002184"/>
+<status status="PASS" start="2025-10-14T17:50:48.599674" elapsed="0.001765"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-13T17:34:23.942698" level="INFO">${statusCode} = 201</msg>
+<msg time="2025-10-14T17:50:48.603209" level="INFO">${statusCode} = 400</msg>
 <var>${statusCode}</var>
 <arg>${response_json['statusCode']}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-13T17:34:23.940798" elapsed="0.002039"/>
+<status status="PASS" start="2025-10-14T17:50:48.601628" elapsed="0.001692"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-13T17:34:23.945675" level="INFO">${message} = CREATE_SUCCESS</msg>
+<msg time="2025-10-14T17:50:48.604993" level="INFO">${message} = INVALID_INPUT</msg>
 <var>${message}</var>
 <arg>${response_json['message']}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-13T17:34:23.943082" elapsed="0.002739"/>
+<status status="PASS" start="2025-10-14T17:50:48.603511" elapsed="0.001586"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-13T17:34:23.947829" level="INFO">${data} = {'first_name': 'Nhut', 'last_name': 'Minh', 'phone_number': '9977682025', 'email': 'minh25@yopmail.com', 'avatar': None, 'dob': '2025-11-10', 'address': '123 Test Street', 'role': 8, 'generate_passwor...</msg>
+<msg time="2025-10-14T17:50:48.606816" level="INFO">${data} = {'user_id': ['VAL546']}</msg>
 <var>${data}</var>
 <arg>${response_json['data']}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-13T17:34:23.946057" elapsed="0.001902"/>
+<status status="PASS" start="2025-10-14T17:50:48.605280" elapsed="0.001643"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-10-13T17:34:23.949578" level="INFO">&amp;{parsed} = { success=True | statusCode=201 | message=CREATE_SUCCESS | data={'first_name': 'Nhut', 'last_name': 'Minh', 'phone_number': '9977682025', 'email': 'minh25@yopmail.com', 'avatar': None, 'dob': '2025-11...</msg>
+<msg time="2025-10-14T17:50:48.607662" level="INFO">&amp;{parsed} = { success=False | statusCode=400 | message=INVALID_INPUT | data={'user_id': ['VAL546']} }</msg>
 <var>&amp;{parsed}</var>
 <arg>success=${success}</arg>
 <arg>statusCode=${statusCode}</arg>
 <arg>message=${message}</arg>
 <arg>data=${data}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-10-13T17:34:23.948557" elapsed="0.001226"/>
+<status status="PASS" start="2025-10-14T17:50:48.607128" elapsed="0.000645"/>
 </kw>
 <return>
 <value>&amp;{parsed}</value>
-<status status="PASS" start="2025-10-13T17:34:23.949981" elapsed="0.000165"/>
+<status status="PASS" start="2025-10-14T17:50:48.607893" elapsed="0.000090"/>
 </return>
-<msg time="2025-10-13T17:34:23.950417" level="INFO">${parsed_data} = {'success': True, 'statusCode': 201, 'message': 'CREATE_SUCCESS', 'data': {'first_name': 'Nhut', 'last_name': 'Minh', 'phone_number': '9977682025', 'email': 'minh25@yopmail.com', 'avatar': None, 'dob'...</msg>
-<var>${parsed_data}</var>
-<arg>${response}</arg>
-<status status="PASS" start="2025-10-13T17:34:23.936718" elapsed="0.013825"/>
+<msg time="2025-10-14T17:50:48.608185" level="INFO">&amp;{parsed} = { success=False | statusCode=400 | message=INVALID_INPUT | data={'user_id': ['VAL546']} }</msg>
+<var>&amp;{parsed}</var>
+<arg>${result.body}</arg>
+<status status="PASS" start="2025-10-14T17:50:48.596577" elapsed="0.011693"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2025-10-14T17:50:48.610014" level="INFO">Argument types are:
+&lt;class 'bool'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${parsed.success}</arg>
+<arg>${Boolean_False}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-10-14T17:50:48.608433" elapsed="0.001744"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-14T17:50:48.611799" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${parsed.statusCode}</arg>
+<arg>${Status_400}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-10-14T17:50:48.610376" elapsed="0.001549"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${parsed.message}</arg>
+<arg>INVALID_INPUT</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-10-14T17:50:48.612097" elapsed="0.001319"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${parsed.data.user_id}</arg>
+<arg>VAL546</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-10-14T17:50:48.613595" elapsed="0.001460"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-10-13T17:34:23.951019" level="INFO">{'success': True, 'statusCode': 201, 'message': 'CREATE_SUCCESS', 'data': {'first_name': 'Nhut', 'last_name': 'Minh', 'phone_number': '9977682025', 'email': 'minh25@yopmail.com', 'avatar': None, 'dob': '2025-11-10', 'address': '123 Test Street', 'role': 8, 'generate_password': False, 'password': 'Test@123', 'confirm_password': 'Test@123', 'user_id': 'School2025', 'send_email': True, 'is_active': True, 'language': 'en'}}</msg>
-<arg>${parsed_data}</arg>
+<msg time="2025-10-14T17:50:48.615456" level="INFO">{'success': False, 'statusCode': 400, 'message': 'INVALID_INPUT', 'data': {'user_id': ['VAL546']}}</msg>
+<arg>${parsed}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-10-13T17:34:23.950766" elapsed="0.000405"/>
+<status status="PASS" start="2025-10-14T17:50:48.615236" elapsed="0.000343"/>
 </kw>
-<kw name="Stop Network Interception" owner="Network">
-<msg time="2025-10-13T17:34:24.070448" level="INFO">Cleared all intercepted requests</msg>
-<msg time="2025-10-13T17:34:24.070703" level="INFO">Network interception stopped</msg>
-<arg>${driver.driver}</arg>
-<doc>Stop network interception and cleanup</doc>
-<status status="PASS" start="2025-10-13T17:34:23.951371" elapsed="0.123052"/>
+<status status="PASS" start="2025-10-14T17:50:46.496741" elapsed="2.118951"/>
 </kw>
-<status status="PASS" start="2025-10-13T17:34:22.110130" elapsed="1.964542"/>
-</kw>
-<kw name="Then Verify Sucessfully Message For Create User">
+<kw name="Then Verify Error Message For Existing User ID">
 <kw name="Check validation error message" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${Elm_message}</arg>
 <arg>15s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-13T17:34:24.076439" elapsed="0.016413"/>
+<status status="PASS" start="2025-10-14T17:50:48.616746" elapsed="0.016379"/>
 </kw>
 <kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2025-10-13T17:34:24.107252" level="INFO">${error_message_invalid} = User created successfully.</msg>
+<msg time="2025-10-14T17:50:48.672125" level="INFO">${error_message_invalid} = • User ID code already exists</msg>
 <var>${error_message_invalid}</var>
 <arg>${Elm_message}</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-13T17:34:24.093185" elapsed="0.014224"/>
+<status status="PASS" start="2025-10-14T17:50:48.633632" elapsed="0.038643"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
 <arg>${error_message_invalid}</arg>
 <arg>${Expected_message}</arg>
 <arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-10-13T17:34:24.107624" elapsed="0.000393"/>
+<status status="PASS" start="2025-10-14T17:50:48.672465" elapsed="0.000336"/>
 </kw>
 <kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-10-13T17:34:24.108367" level="INFO">Set test message to:
-validation error message with 'User created successfully.'</msg>
+<msg time="2025-10-14T17:50:48.673114" level="INFO">Set test message to:
+validation error message with '• User ID code already exists'</msg>
 <arg>validation error message with '${error_message_invalid}'</arg>
 <doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-10-13T17:34:24.108179" elapsed="0.000297"/>
+<status status="PASS" start="2025-10-14T17:50:48.672948" elapsed="0.000266"/>
 </kw>
 <arg>//div[@class="text-sm opacity-90"]</arg>
-<arg>User created successfully.</arg>
-<status status="PASS" start="2025-10-13T17:34:24.075848" elapsed="0.032728"/>
+<arg>• User ID code already exists</arg>
+<status status="PASS" start="2025-10-14T17:50:48.616415" elapsed="0.056886"/>
 </kw>
-<status status="PASS" start="2025-10-13T17:34:24.075155" elapsed="0.033518"/>
+<status status="PASS" start="2025-10-14T17:50:48.616006" elapsed="0.057371"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-10-13T17:34:24.109156" elapsed="0.086280"/>
+<status status="PASS" start="2025-10-14T17:50:48.673628" elapsed="0.090128"/>
 </kw>
-<doc>Verify user can be created with valid information</doc>
+<doc>Verify error message for duplicate information user</doc>
 <tag>create_user</tag>
-<tag>positive</tag>
+<tag>negative</tag>
 <tag>regression</tag>
-<status status="PASS" start="2025-10-13T17:34:15.133965" elapsed="9.061652">validation error message with 'User created successfully.'</status>
+<status status="PASS" start="2025-10-14T17:50:40.954293" elapsed="7.809694">validation error message with '• User ID code already exists'</status>
 </test>
 <doc>Test cases for Create User functionality</doc>
-<status status="PASS" start="2025-10-13T17:34:13.034186" elapsed="11.161995"/>
+<status status="PASS" start="2025-10-14T17:50:38.821468" elapsed="9.943204"/>
 </suite>
 <statistics>
 <total>
@@ -680,7 +694,7 @@ validation error message with 'User created successfully.'</msg>
 </total>
 <tag>
 <stat pass="1" fail="0" skip="0">create_user</stat>
-<stat pass="1" fail="0" skip="0">positive</stat>
+<stat pass="1" fail="0" skip="0">negative</stat>
 <stat pass="1" fail="0" skip="0">regression</stat>
 </tag>
 <suite>
@@ -688,5 +702,6 @@ validation error message with 'User created successfully.'</msg>
 </suite>
 </statistics>
 <errors>
+<msg time="2025-10-14T17:50:48.574138" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
 </errors>
 </robot>

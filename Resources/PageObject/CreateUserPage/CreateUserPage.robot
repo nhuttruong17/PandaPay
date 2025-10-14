@@ -5,40 +5,40 @@ Resource    ../../../TestKeyWords/Common.robot
 Library    SeleniumLibrary
 
 *** Variables ***
-${USER_ID_INPUT}    //*[@name="user_id"]
-${FIRST_NAME_INPUT}    //input[@id='first_name ']
-${LAST_NAME_INPUT}    //input[@id='last_name ']
-${EMAIL_INPUT}    //input[@id='email ']
-${PHONE_INPUT}    //input[@placeholder='Enter phone number']
-${DOB_INPUT}    //input[@placeholder='Enter date of birth']
-${ADDRESS_INPUT}    //input[@placeholder='Enter address']
-${USER_ROLE_SELECT}    //button[.//span[text()='Select user role']]
-${PASSWORD_INPUT}    //input[@name='password']
+${USER_ID_INPUT}             //*[@name="user_id"]
+${FIRST_NAME_INPUT}          //input[@id='first_name ']
+${LAST_NAME_INPUT}           //input[@id='last_name ']
+${EMAIL_INPUT}               //input[@id='email ']
+${PHONE_INPUT}               //input[@placeholder='Enter phone number']
+${DOB_INPUT}                 //input[@placeholder='Enter date of birth']
+${ADDRESS_INPUT}             //input[@placeholder='Enter address']
+${USER_ROLE_SELECT}          //button[.//span[text()='Select user role']]
+${PASSWORD_INPUT}            //input[@name='password']
 ${CONFIRM_PASSWORD_INPUT}    //input[@name='confirm_password']
-${ACCOUNT_STATUS_TOGGLE}    id=account-status
+${ACCOUNT_STATUS_TOGGLE}     id=account-status
 ${LANGUAGE_RADIO_ENGLISH}    xpath=//input[@name='language' and @value='English']
-${LANGUAGE_RADIO_FRENCH}    xpath=//input[@name='language' and @value='French']
+${LANGUAGE_RADIO_FRENCH}     xpath=//input[@name='language' and @value='French']
 ${LANGUAGE_RADIO_SPANISH}    xpath=//input[@name='language' and @value='Spanish']
-${ORGANIZATION_SELECT}    id=organization\
-${CREATE_USER_BUTTON}    xpath=//button[normalize-space()='Create New User']
-${Tab_USER_BUTTON}    xpath=//button[normalize-space()='User']
-${CREATE_USER_SUBMIT}    xpath=//button[@type="submit"]
+${ORGANIZATION_SELECT}       id=organization\
+${CREATE_USER_BUTTON}        xpath=//button[normalize-space()='Create New User']
+${Tab_USER_BUTTON}           xpath=//button[normalize-space()='User']
+${CREATE_USER_SUBMIT}        xpath=//button[@type="submit"]
 
-${Create_User_API}    api/admin/user/
+${Create_User_API}      api/admin/user/
 
-${UserID_exist}    School1190
+${UserID_exist}         School1190
 
 ${VALID_New_USER_ID}    Kids_User_01
-${VALID_FIRST_NAME}    John
-${VALID_LAST_NAME}    Doe
-${VALID_EMAIL}    john@yopmail.com
-${VALID_PHONE}    9998887777
-${VALID_DOB}    11-10-2025
-${VALID_ADDRESS}    123 Test Street
+${VALID_FIRST_NAME}     John
+${VALID_LAST_NAME}      Doe
+${VALID_EMAIL}          john@yopmail.com
+${VALID_PHONE}          9998887777
+${VALID_DOB}            11-10-2025
+${VALID_ADDRESS}        123 Test Street
 ${VALID_New_User_PASSWORD}    Test@123
 ${VALID_CONFIRM_PASSWORD}    Test@123
 
-${Valid_UserID}    SchoolLe
+${Valid_UserID}      SchoolLe
 ${Valid_Password}    School123@
 *** Keywords ***
 Go To Create User Page
@@ -184,10 +184,6 @@ Click Submit button and wait for response create user successfully
     Should Be Equal As Strings    ${parsed.message}    CREATE_SUCCESS
     Network.Stop Network Interception    ${driver.driver}
 
-
-    
-
-
 ##Session persistence: save/restore cookies and localStorage to skip login on next browser open ##
 Save Browser Session
     [Arguments]    ${session_dir}=.session
@@ -195,14 +191,10 @@ Save Browser Session
     ${sl}=    Get Library Instance    SeleniumLibrary
     ${cookies}=    Call Method    ${sl.driver}    get_cookies
     ${cookies_json}=    Evaluate    json.dumps(${cookies})    modules=json
-    Create File    ${session_dir}/cookies.json    ${cookies_json}    encoding=utf-8
-    ${local}=    SeleniumLibrary.Execute JavaScript    return JSON.stringify(window.localStorage)
-    Create File    ${session_dir}/localStorage.json    ${local}    encoding=utf-8
+    Create File    ${session_dir}/my_user/cookies.json    ${cookies_json}    encoding=utf-8
 
 Restore Browser Session
-    [Arguments]    ${session_dir}=.session
-    ${cookies_file}=    Set Variable    ${session_dir}/cookies.json
-    ${local_file}=      Set Variable    ${session_dir}/localStorage.json
+    ${cookies_file}=    Set Variable    .session/my_user/cookies.json
     ${cookies_exist}=    Run Keyword And Return Status    File Should Exist    ${cookies_file}
     IF    ${cookies_exist}
         ${sl}=    Get Library Instance    SeleniumLibrary
@@ -210,13 +202,6 @@ Restore Browser Session
         ${cookies}=    Evaluate    json.loads('''${cookies_json}''')    modules=json
         FOR    ${cookie}    IN    @{cookies}
             Call Method    ${sl.driver}    add_cookie    ${cookie}
+            Reload Page
         END
-    END
-    ${local_exist}=    Run Keyword And Return Status    File Should Exist    ${local_file}
-    IF    ${local_exist}
-        ${local_json}=    Get File    ${local_file}
-    ${status}    ${dummy}=    Run Keyword And Ignore Error    Evaluate    json.loads('''${local_json}''')    json
-    Run Keyword If    '${status}' == 'PASS'    SeleniumLibrary.Execute JavaScript    try{ var items = JSON.parse(arguments[0]); for(var k in items){ localStorage.setItem(k, items[k]); } }catch(e){ console.warn('localStorage restore skipped, invalid JSON'); }    ${local_json}
-    Run Keyword If    '${status}' != 'PASS'    Log    Local storage JSON invalid or empty, skipping restoration    WARN
-    Run Keyword If    '${status}' == 'PASS'    Reload Page
     END
