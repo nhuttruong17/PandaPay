@@ -5,7 +5,6 @@ Library     ../LibPy/FinalNetwork.py    WITH NAME    Network
 # Library     ../../../LibPy/FinalNetwork.py    WITH NAME    Network
 Library     AppiumLibrary
 Library     OperatingSystem
-Resource    ../Resources/PageObject/CreateUserPage/CreateUserPage.robot
 
 *** Keywords ***
 Basic Setup
