@@ -28,6 +28,29 @@ Basic TearDowns
     Sleep    3
     Close Browser
 
+##Session persistence: save/restore cookies and localStorage to skip login on next browser open ##
+Save Browser Session
+    [Arguments]    ${session_dir}=.session
+    Create Directory    ${session_dir}
+    ${sl}=    Get Library Instance    SeleniumLibrary
+    ${cookies}=    Call Method    ${sl.driver}    get_cookies
+    ${cookies_json}=    Evaluate    json.dumps(${cookies})    modules=json
+    Create File    ${session_dir}/my_user/cookies.json    ${cookies_json}    encoding=utf-8
+
+Restore Browser Session
+    ${cookies_file}=    Set Variable    .session/my_user/cookies.json
+    ${cookies_exist}=    Run Keyword And Return Status    File Should Exist    ${cookies_file}
+    IF    ${cookies_exist}
+        ${sl}=    Get Library Instance    SeleniumLibrary
+        ${cookies_json}=    Get File    ${cookies_file}
+        ${cookies}=    Evaluate    json.loads('''${cookies_json}''')    modules=json
+        FOR    ${cookie}    IN    @{cookies}
+            Call Method    ${sl.driver}    add_cookie    ${cookie}
+            Reload Page
+        END
+    END
+
+
 #API  Request#
 API Request
     [Arguments]     ${Method}    ${API_URL}    ${Payload}    ${Expected_Status_Code}

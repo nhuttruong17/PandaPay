@@ -24,7 +24,7 @@ ${CREATE_USER_BUTTON}        xpath=//button[normalize-space()='Create New User']
 ${Tab_USER_BUTTON}           xpath=//button[normalize-space()='User']
 # ${CREATE_USER_SUBMIT}        xpath=//button[@type="submit"]
 ${CREATE_USER_SUBMIT}        xpath=/html/body/div[1]/div/main/div/div/form/button
-${Create_User_API}      api/admin/user/
+${Create_User_API}           api/admin/user/
 
 ${UserID_exist}         School1190
 
@@ -42,43 +42,43 @@ ${Valid_UserID}      SchoolLe
 ${Valid_Password}    School123@
 
 #Xpath UserID
-${Empty_UserID}    xpath=//p[normalize-space(text())='The User ID cannot be empty']
-${Min_UserID}      xpath=//p[normalize-space(text())='User ID must be at least 8 characters.']
-${Max_UserID}      xpath=//p[normalize-space(text())='User ID must be at most 20 characters.']
+${Empty_UserID}        xpath=//p[normalize-space(text())='The User ID cannot be empty']
+${Min_UserID}          xpath=//p[normalize-space(text())='User ID must be at least 8 characters.']
+${Max_UserID}          xpath=//p[normalize-space(text())='User ID must be at most 20 characters.']
 
 #Xpath First Name
-${Empty_FirstName}    xpath=//p[normalize-space(text())='The First Name cannot be empty']
-${Min_FirstName}    xpath=//p[normalize-space(text())='First name must be at least 2 characters.']
-${Max_FirstName}    xpath=//p[normalize-space(text())='First name must be at most 50 characters.']
+${Empty_FirstName}      xpath=//p[normalize-space(text())='The First Name cannot be empty']
+${Min_FirstName}        xpath=//p[normalize-space(text())='First name must be at least 2 characters.']
+${Max_FirstName}        xpath=//p[normalize-space(text())='First name must be at most 50 characters.']
 
 #Xpath Last Name
-${Empty_LastName}    xpath=//p[normalize-space(text())='The Last Name cannot be empty']
-${Min_LastName}    xpath=//p[normalize-space(text())='Last Name must be at least 2 characters.']
-${Max_LastName}    xpath=//p[normalize-space(text())='Last Name must be at most 50 characters.']
+${Empty_LastName}       xpath=//p[normalize-space(text())='The Last Name cannot be empty']
+${Min_LastName}         xpath=//p[normalize-space(text())='Last Name must be at least 2 characters.']
+${Max_LastName}         xpath=//p[normalize-space(text())='Last Name must be at most 50 characters.']
 
 
 #Xpath Email
-${Empty_Email}    //p[normalize-space(text())='Email is required.']
-${Invalid_Email}    //p[normalize-space(text())='Not a valid email address.']
+${Empty_Email}         //p[normalize-space(text())='Email is required.']
+${Invalid_Email}       //p[normalize-space(text())='Not a valid email address.']
 
 #Xpath Phone Number
-${Invalid_Phone}    //p[normalize-space(text())='Phone number must be 10 characters.']
+${Invalid_Phone}       //p[normalize-space(text())='Phone number must be 10 characters.']
 
 #Xpath Address
 ${Min_Address}      //p[normalize-space(text())='Address must be at least 8 characters.']
 ${Max_Address}      //p[normalize-space(text())='Address must be at most 280 characters.']
 
 #Xpath Password
-${Empty_Password}    //p[normalize-space(text())='Password is required.']
-${Min_Password}    //p[normalize-space(text())='Password must be at least 8 characters.']
-${Missing_Uppercase}    //p[normalize-space(text())='Password must contain at least one uppercase letter.']
-${Missing_Lowercase}    //p[normalize-space(text())='Password must contain at least one lowercase letter.']
-${Missing_OneNumber}    //p[normalize-space(text())='Password must contain at least one number.']
-${Missing_SpecialChar}    //p[normalize-space(text())='Password must contain at least one special character.']
+${Empty_Password}           //p[normalize-space(text())='Password is required.']
+${Min_Password}             //p[normalize-space(text())='Password must be at least 8 characters.']
+${Missing_Uppercase}        //p[normalize-space(text())='Password must contain at least one uppercase letter.']
+${Missing_Lowercase}        //p[normalize-space(text())='Password must contain at least one lowercase letter.']
+${Missing_OneNumber}        //p[normalize-space(text())='Password must contain at least one number.']
+${Missing_SpecialChar}      //p[normalize-space(text())='Password must contain at least one special character.']
 
 #Xpath Confirm Password
-${Empty_ConfirmPassword}    //p[normalize-space(text())='Confirm password is required.']
-${Mismatch_ConfirmPassword}    //p[normalize-space(text())='Confirm Passwords do not match.']
+${Empty_ConfirmPassword}        //p[normalize-space(text())='Confirm password is required.']
+${Mismatch_ConfirmPassword}     //p[normalize-space(text())='Confirm Passwords do not match.']
 
 *** Keywords ***
 Go To Create User Page
@@ -224,24 +224,3 @@ Click Submit button and wait for response create user successfully
     Should Be Equal As Strings    ${parsed.message}    CREATE_SUCCESS
     Network.Stop Network Interception    ${driver.driver}
 
-##Session persistence: save/restore cookies and localStorage to skip login on next browser open ##
-Save Browser Session
-    [Arguments]    ${session_dir}=.session
-    Create Directory    ${session_dir}
-    ${sl}=    Get Library Instance    SeleniumLibrary
-    ${cookies}=    Call Method    ${sl.driver}    get_cookies
-    ${cookies_json}=    Evaluate    json.dumps(${cookies})    modules=json
-    Create File    ${session_dir}/my_user/cookies.json    ${cookies_json}    encoding=utf-8
-
-Restore Browser Session
-    ${cookies_file}=    Set Variable    .session/my_user/cookies.json
-    ${cookies_exist}=    Run Keyword And Return Status    File Should Exist    ${cookies_file}
-    IF    ${cookies_exist}
-        ${sl}=    Get Library Instance    SeleniumLibrary
-        ${cookies_json}=    Get File    ${cookies_file}
-        ${cookies}=    Evaluate    json.loads('''${cookies_json}''')    modules=json
-        FOR    ${cookie}    IN    @{cookies}
-            Call Method    ${sl.driver}    add_cookie    ${cookie}
-            Reload Page
-        END
-    END

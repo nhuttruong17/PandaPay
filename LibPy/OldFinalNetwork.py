@@ -223,17 +223,11 @@ class FinalNetwork(AbstractEventListener):
                                 'status': response.get('status'),
                                 'responseTimestamp': time.time()
                             })
-                            
-                            # Get response body for successful 2xx responses (include 202 etc.)
-                            status = response.get('status')
-                            if status is not None and 200 <= int(status) < 300:
-                                try:
-                                    body = self._get_response_body(request_id)
-                                except ResponseParsingError as e:
-                                    self.logger.error(f"Error parsing response body for {request_info.get('url')}: {str(e)}")
-                                    body = None
 
-                                if body is not None:
+                            # Get response body for successful responses
+                            if response.get('status') in [200, 201]:
+                                body = self._get_response_body(request_id)
+                                if body:
                                     try:
                                         if isinstance(body, str):
                                             parsed = json.loads(body)
@@ -271,78 +265,31 @@ class FinalNetwork(AbstractEventListener):
                 time.sleep(0.1)
 
     @keyword("Get Intercepted Requests")
-    def get_intercepted_requests(self, driver, endpoint=None, method=None, timeout=10, require_response: bool = True):
-        """Get intercepted requests matching the given criteria.
-
-        Args:
-            driver: WebDriver instance or wrapper
-            endpoint: substring to match in URL
-            method: HTTP method to match
-            timeout: seconds to wait
-            require_response: if True only accept requests that have a response body; if False accept requests that have a status even without response (e.g., 202 no-body)
-        """
-        # Normalize timeout to float in case Robot passes a string
-        try:
-            timeout = float(timeout)
-        except Exception:
-            timeout = 10.0
-
+    def get_intercepted_requests(self, driver, endpoint=None, method=None, timeout=10):
+        """Get intercepted requests matching the given criteria."""
         start_time = time.time()
         matching_requests = []
 
         while time.time() - start_time < timeout:
-            # First consume any requests the monitor thread already pulled into python buffer
-            try:
-                monitor_js_requests = []
-                # consume all items from the monitor buffer
-                while self._js_intercepted_requests:
-                    monitor_js_requests.append(self._js_intercepted_requests.pop(0))
-            except Exception:
-                monitor_js_requests = []
-
-            if monitor_js_requests:
-                for request in monitor_js_requests:
-                    if endpoint and endpoint not in request.get('url', ''):
-                        continue
-                    if method and method.upper() != request.get('method', '').upper():
-                        continue
-                    status_present = bool(request.get('status') is not None)
-                    response_present = bool(request.get('response'))
-                    if response_present or (not require_response and status_present):
-                        matching_requests.append(request)
-
-            # Then try to read any requests still on the page buffer
-            try:
-                js_requests = self.driver.execute_script("return window._requests;")
-            except Exception:
-                js_requests = None
-
+            # Get JavaScript intercepted requests first
+            js_requests = self.driver.execute_script("return window._requests;")
             if js_requests:
                 for request in js_requests:
                     if endpoint and endpoint not in request.get('url', ''):
                         continue
                     if method and method.upper() != request.get('method', '').upper():
                         continue
-                    status_present = bool(request.get('status') is not None)
-                    response_present = bool(request.get('response'))
-                    # Match when response exists, or when require_response is False but status exists
-                    if response_present or (not require_response and status_present):
+                    if request.get('status') and request.get('response'):
                         matching_requests.append(request)
-                # clear window buffer
-                try:
-                    self.driver.execute_script("window._requests = [];")
-                except Exception:
-                    pass
+                self.driver.execute_script("window._requests = [];")
 
             # Then get CDP intercepted requests
-            for request_id, request_info in list(self._request_map.items()):
+            for request_id, request_info in self._request_map.items():
                 if endpoint and endpoint not in request_info.get('url', ''):
                     continue
                 if method and method.upper() != request_info.get('method', '').upper():
                     continue
-                status_present = 'status' in request_info and request_info.get('status') is not None
-                response_present = 'response' in request_info and request_info.get('response')
-                if response_present or (not require_response and status_present):
+                if 'status' in request_info and 'response' in request_info:
                     matching_requests.append(request_info)
 
             if matching_requests:
@@ -354,22 +301,9 @@ class FinalNetwork(AbstractEventListener):
         return matching_requests
 
     @keyword("Wait For Request")
-    def wait_for_request(self, driver, endpoint, method=None, timeout=20, require_response: Union[bool, str] = True):
-        """Wait for a specific request to be intercepted.
-
-        Args:
-            driver: WebDriver instance or wrapper
-            endpoint: substring to match in URL
-            method: HTTP method to match
-            timeout: seconds to wait (can be string from Robot)
-            require_response: whether to require a response body (True) or accept status-only (False)
-        """
-        # Normalize require_response when passed as string from Robot
-        if isinstance(require_response, str):
-            require_response = require_response.strip().lower() in ("true", "1", "yes")
-
-        # Delegate to get_intercepted_requests which normalizes timeout
-        requests = self.get_intercepted_requests(driver, endpoint, method, timeout, require_response=require_response)
+    def wait_for_request(self, driver, endpoint, method=None, timeout=10):
+        """Wait for a specific request to be intercepted."""
+        requests = self.get_intercepted_requests(driver, endpoint, method, timeout)
         if not requests:
             self.logger.warning(f"No request found for endpoint: {endpoint}")
             return None

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Test cases for Create User functionality
-Resource    ../../../Resources/PageObject/CreateUserPage/CreateUserPage.robot
+Resource    ../../../Resources/PageObject/UserPage/CreateUserPage.robot
 Resource    ../../../TestData/Browser/Global.robot
 Resource    ../../../TestKeyWords/Common.robot
 Resource    ../../../Resources/PageObject/LoginPage/LoginPage.robot
@@ -271,15 +271,15 @@ Create User With Existing Phone Number
     Then Verify Error Message For Existing Phone Number
     [Teardown]    Close Browser
 
-# Create User With Valid Information
-#     [Documentation]    Verify user can be created with valid information
-#     [Tags]    regression    create_user    positive
-#     Basic Setup
-#     Given Open Browser To Create User Page
-#     When User Input Valid Information for New User
-#     And Click Submit button and wait for response create user successfully
-#     Then Verify Sucessfully Message For Create User
-#     [Teardown]    Close Browser
+Create User With Valid Information
+    [Documentation]    Verify user can be created with valid information
+    [Tags]    regression    create_user    positive
+    Basic Setup
+    Given Open Browser To Create User Page
+    When User Input Valid Information for New User
+    And Click Submit button and wait for response create user successfully
+    Then Verify Sucessfully Message For Create User
+    [Teardown]    Close Browser
 
 *** Keywords ***
 Open Browser To Create User Page
@@ -411,7 +411,7 @@ User Input Information with Existing Existing Email
     Input Phone Number    9977686113
     Input Date Of Birth    ${VALID_DOB}
     Input Address    ${VALID_ADDRESS}
-    Scroll To Bottom
+    # Scroll To Bottom
     
     Select User Role
     
@@ -426,20 +426,20 @@ User Input Information with Existing Phone Number
     Input Phone Number    9977686888
     Input Date Of Birth    ${VALID_DOB}
     Input Address    ${VALID_ADDRESS}
-    Scroll To Bottom
+    # Scroll To Bottom
     Select User Role
     Input Password Web         ${VALID_New_User_PASSWORD}
     Input Confirm Password     ${VALID_CONFIRM_PASSWORD}
 
 User Input Valid Information for New User
-    Input User ID        School2025
-    Input First Name     Nhut
-    Input Last Name      Minh
-    Input Email     minh25@yopmail.com
-    Input Phone Number    9977682025
+    Input User ID        Spiderman
+    Input First Name     Man
+    Input Last Name      Root
+    Input Email     spider@yopmail.com
+    Input Phone Number    9111681903
     Input Date Of Birth    ${VALID_DOB}
     Input Address    ${VALID_ADDRESS}
-    Scroll To Bottom
+    # Scroll To Bottom
 
     Select User Role
 
