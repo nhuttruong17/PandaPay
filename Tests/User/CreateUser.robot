@@ -1,12 +1,14 @@
 *** Settings ***
 Documentation    Test cases for Create User functionality
-Resource    ../../../Resources/PageObject/UserPage/CreateUserPage.robot
-Resource    ../../../TestData/Browser/Global.robot
-Resource    ../../../TestKeyWords/Common.robot
-Resource    ../../../Resources/PageObject/LoginPage/LoginPage.robot
-Resource    ../../../TestData/LoginData/LoginData.robot
+Resource    ../../Resources/PageObject/UserPage/CreateUserPage.robot
+Resource    ../../TestData/Browser/Global.robot
+Resource    ../../TestKeyWords/Common.robot
+Resource    ../../Resources/PageObject/LoginPage/LoginPage.robot
+Resource    ../../TestData/LoginData/LoginData.robot
+
 # Suite Setup     Basic Setup
 Library     FakerLibrary
+
 *** Test Cases ***
 # Save Session After Login (profile)
 #     [Documentation]    Login once using a Chrome profile and close browser (profile will keep session)

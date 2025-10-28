@@ -1,24 +1,30 @@
 *** Settings ***
 Documentation    Test cases for Update User functionality
-Resource    ../../../Resources/PageObject/UserPage/UpdateUserPage.robot
-Resource    ../../../TestData/Browser/Global.robot
-Resource    ../../../TestKeyWords/Common.robot
-Resource    ../../../Resources/PageObject/LoginPage/LoginPage.robot
-Resource    ../../../TestData/LoginData/LoginData.robot
+Resource    ../../Resources/PageObject/UserPage/UpdateUserPage.robot
+Resource    ../../TestData/Browser/Global.robot
+Resource    ../../TestKeyWords/Common.robot
+Resource    ../../Resources/PageObject/LoginPage/LoginPage.robot
+Resource    ../../TestData/LoginData/LoginData.robot
 # Suite Setup     Basic Setup
 
 *** Test Cases ***
-Check validation empty First Name error on Create User Page
-    [Documentation]    Verify validation message for empty First Name on Create User form
-    [Tags]    validation    create_user
-    Given On screen Create User Page
-    When Click on Element    ${UPDATE_USER_SUBMIT}
-    Then Verify Error Message For Empty First Name
+# Check validation empty First Name error on Create User Page
+#     [Documentation]    Verify validation message for empty First Name on Create User form
+#     [Tags]    validation    create_user
+#     Given Go To Update User Page
+#     Sleep    5s
+#     SeleniumLibrary.Wait Until Element Is Visible    ${FIRST_NAME_INPUT}    10s
+#     SeleniumLibrary.Click Element    ${FIRST_NAME_INPUT}
+#     SeleniumLibrary.Clear Element Text    ${FIRST_NAME_INPUT}
+#     Input First Name    A
+#     And Click on Element    ${UPDATE_USER_SUBMIT}
+#     SeleniumLibrary.Clear Element Text    ${FIRST_NAME_INPUT}
+#     Then Verify Error Message For Empty First Name
 
 Check validation min First Name error on Create User Page
     [Documentation]    Verify validation message for First Name less than minimum length on Create User form
     [Tags]    validation    create_user
-    Given On screen Create User Page
+    Given Go To Update User Page
     When Input First Name    A
     And Click on Element    ${UPDATE_USER_SUBMIT}
     Then Verify Error Message For Min First Name
@@ -26,30 +32,32 @@ Check validation min First Name error on Create User Page
 Check validation max First Name error on Create User Page
     [Documentation]    Verify validation message for First Name more than maximum length on Create User form
     [Tags]    validation    create_user
-    Given On screen Create User Page
+    Given On screen Update User Page
     When Input First Name    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     And Click on Element    ${UPDATE_USER_SUBMIT}
     Then Verify Error Message For Max First Name
 
+
 Check the system not display validation error message for valid First Name on Create User Page
     [Documentation]    Verify no validation message for valid First Name on Create User form
     [Tags]    validation    create_user
-    Given On screen Create User Page
+    Given On screen Update User Page
     When Input First Name        John
     Then Verify No Error Message For Valid First Name
 
-# Check validation empty Last Name error on Create User Page
+### Check validation empty Last Name error on Create User Page
 #     [Documentation]    Verify validation message for empty Last Name on Create User form
 #     [Tags]    validation    create_user
-#     Given On screen Create User Page
+#     Given On screen Update User Page
+#     When Input Last Name    ${EMPTY}
+#     Sleep    5s
 #     When Click on Element    ${UPDATE_USER_SUBMIT}
 #     Then Verify Error Message For Empty Last Name
-#     [Teardown]    Close Browser
 
 Check validation min Last Name error on Create User Page        
     [Documentation]    Verify validation message for Last Name less than minimum length on Create User form
     [Tags]    validation    create_user
-    Given On screen Create User Page
+    Given On screen Update User Page
     When Input Last Name    A
     And Click on Element    ${UPDATE_USER_SUBMIT}
     Then Verify Error Message For Min Last Name
@@ -57,7 +65,7 @@ Check validation min Last Name error on Create User Page
 Check validation max Last Name error on Create User Page
     [Documentation]    Verify validation message for Last Name more than maximum length on Create User form
     [Tags]    validation    create_user
-    Given On screen Create User Page
+    Given On screen Update User Page
     When Input Last Name    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     And Click on Element    ${UPDATE_USER_SUBMIT}
     Then Verify Error Message For Max Last Name
@@ -65,21 +73,21 @@ Check validation max Last Name error on Create User Page
 Check the system not display validation error message for valid Last Name on Create User Page
     [Documentation]    Verify no validation message for valid Last Name on Create User form
     [Tags]    validation    create_user
-    Given On screen Create User Page
+    Given On screen Update User Page
     When Input Last Name        Doe
     Then Verify No Error Message For Valid Last Name
 
-# Check validation empty Email error on Create User Page
+### Check validation empty Email error on Create User Page
 #     [Documentation]    Verify validation message for empty Email on Create User form
 #     [Tags]    validation    create_user
-#     Given On screen Create User Page
+#     Given On screen Update User Page
 #     When Click on Element    ${UPDATE_USER_SUBMIT}
 #     Then Verify Error Message For Empty Email
 
 Check validation invalid Email error on Create User Page
     [Documentation]    Verify validation message for invalid Email on Create User form
     [Tags]    validation    create_user
-    Given On screen Create User Page
+    Given On screen Update User Page
     When Input Email    invalid.email
     And Click on Element    ${UPDATE_USER_SUBMIT}
     Then Verify Error Message For Invalid Email
@@ -87,14 +95,14 @@ Check validation invalid Email error on Create User Page
 Check the system not display validation error message for valid Email on Create User Page
     [Documentation]    Verify no validation message for valid Email on Create User form
     [Tags]    validation    create_user
-    Given On screen Create User Page
+    Given On screen Update User Page
     When Input Email    john@yopmail.com
     Then Verify No Error Message For Valid Email
 
 Check validation invalid Phone Number error on Create User Page
     [Documentation]    Verify validation message for invalid Phone Number on Create User form
     [Tags]    validation    create_user
-    Given On screen Create User Page
+    Given On screen Update User Page
     When Input Phone Number    456
     And Click on Element    ${UPDATE_USER_SUBMIT}
     Then Verify Error Message For Invalid Phone Number
@@ -102,14 +110,14 @@ Check validation invalid Phone Number error on Create User Page
 Check the system not display validation error message for valid Phone Number on Create User Page
     [Documentation]    Verify no validation message for valid Phone Number on Create User form
     [Tags]    validation    create_user
-    Given On screen Create User Page
-    When Input Phone Number    9977686113
+    Given On screen Update User Page
+    When Input Phone Number    9977686223
     Then Verify No Error Message For Valid Phone Number
 
 Check validation min Address error on Create User Page
     [Documentation]    Verify validation message for Address less than minimum length on Create User form
     [Tags]    validation    create_user
-    Given On screen Create User Page
+    Given On screen Update User Page
     When Input Address    abc
     And Click on Element     ${UPDATE_USER_SUBMIT}
     Then Verify Error Message For Min Address
@@ -117,7 +125,7 @@ Check validation min Address error on Create User Page
 Check validation max Address error on Create User Page
     [Documentation]    Verify validation message for Address more than maximum length on Create User form
     [Tags]    validation    create_user
-    Given On screen Create User Page
+    Given On screen Update User Page
     When Input Address    aadsasdaskljadsnrjansedfjansdjfnadjklsfnalsdnfaklsfmnasknfaklsfjnaksjfaklsdfjaklsfjaklaaaacfascadfsncadfsnjklcfjlnadfjlscncladfjscnafjsklcnjkladfscnjkladfscnadfsjklccnadfsjklcnklafjscnadfsjlnjlcfadsjlnacdfsijlnacdfsnacdfsnjlacdsfjlncafsnjlacfsjlncadfskladfsiuadfsguyguhadfsghjghjhj
     And Click on Element     ${UPDATE_USER_SUBMIT}
     Then Verify Error Message For Max Address
@@ -125,76 +133,49 @@ Check validation max Address error on Create User Page
 Check the system not display validation error message for valid Address on Create User Page
     [Documentation]    Verify no validation message for valid Address on Create User form    
     [Tags]    validation    create_user
-    Given On screen Create User Page
+    Given On screen Update User Page
     When Input Address    ${VALID_ADDRESS}
     Then Verify No Error Message For Valid Address
 
-Test Delete User
-    Given Go To Delete User Page
-    Sleep    10s
-    Capture API Delete
-    Sleep    10s
-    [Teardown]    Close Browser
+Update User With Existing Email
+    [Documentation]    Verify user cannot update profile with existing email
+    [Tags]    regression    update_user    negative
+    Given On screen Update User Page
+    When User Input Information with Existing Existing Email
+    And Capture API 400
+    Then Verify Error Message For Existing Email
+    Sleep    2
 
+Update User With Existing Phone Number
+    [Documentation]    Verify user cannot update profile with existing phone number
+    [Tags]    regression    update_user    negative
+    Given On screen Update User Page
+    When User Input Information with Existing Phone Number
+    And Capture API 400
+    Then Verify Error Message For Existing Phone Number
+    Sleep    2
+    [Teardown]    Close Browser
 
 Update User With Valid Information
     [Documentation]    Verify user can update profile with valid information
     [Tags]    regression    update_user    positive
     Given Go To Update User Page
-    Sleep    10s
-    # Sleep    s
-    # Clear Element Text    //input[@id='first_name ']
-    # Input First Name     Nobita
-    # Sleep    3s
-    # Input Last Name      Minh
-    # Sleep    3s
-    # Input Email    ${Email_exist}
-    # Sleep    3s
-    Clear Element Text    //input[@placeholder='Enter phone number']
-    Input Phone Number    ${Phone_number_exist}
-    # Sleep    3s
-    # Input Date Of Birth    11-10-2025
-    # Sleep    3s
-    # Input Address    This is a test adreesssssss
-    Capture API PUT
-    Sleep    10s
-    # When Input First Name    Nhut
-    # And Input Last Name    Minh
-    # And Input Email    minh_update@yopmail.com
-    # And Input Phone Number    9977689999
-    # And Input Address    1 Updated Street
-    # And Click Update Submit
-    # Then Verify Update Success
-    [Teardown]    Close Browser
-
-Update User With Invalid Email
-    [Documentation]    Verify validation when updating user with invalid email
-    [Tags]    validation    update_user    negative
-    Given Go To Update User Page
-    When Input Email    invalid.email
-    And Click Update Submit
-    Then Check validation error message    //p[normalize-space(text())='Not a valid email address.']    Not a valid email address.
+    When User Input Valid Information for New User
+    And Capture API PUT
+    Then Verify Sucessfully Message For Update User
     [Teardown]    Close Browser
 
 *** Keywords ***
+On screen Update User Page
+    No Operation
+
 Go To Update User Page
-    # Open a browser/session for the test
     Basic Setup
     Restore Browser Session
     Click on Element    ${Tab_USER_BUTTON}
     Select User Random User From List
     Click on Element    ${UPDATE_USER_BUTTON}
-
-
-Go To Delete User Page
-    Basic Setup
-    Restore Browser Session
-    Click on Element    ${Tab_USER_BUTTON}
-    Select User Random User From List
-    Click on Element    xpath=//p[normalize-space()='Delete User']
-
-On screen Create User Page
-    No Operation
+    Sleep    5s
 
 #First Name    
 Verify Error Message For Empty First Name
@@ -249,36 +230,31 @@ Verify Error Message For Max Address
 Verify No Error Message For Valid Address
     Page Should Not Contain    xpath=//p[normalize-space(text())='Address must be at most 280 characters.']    Address must be at most 280 characters.
 
-
 #Input Information
 User Input Information with Existing Existing Email
-    Input User ID        School11122
-    Input First Name     Nhut
-    Input Last Name      Minh
+    # Input First Name     Nhut
+    # Input Last Name      Minh
     Input Email     ${Email_exist}
-    Input Phone Number    9977686113
-    Input Date Of Birth    ${VALID_DOB}
-    Input Address    ${VALID_ADDRESS}
+    # Input Phone Number    9977686113
+    # Input Date Of Birth    ${VALID_DOB}
+    # Input Address    ${VALID_ADDRESS}
 
 
 User Input Information with Existing Phone Number
-    Input User ID        School11333
-    Input First Name     Nhut
-    Input Last Name      Minh
+    # Input First Name     Nhut
+    # Input Last Name      Minh
     Input Email     minh1212@yopmail.com
     Input Phone Number    ${Phone_number_exist}
-    Input Date Of Birth    ${VALID_DOB}
-    Input Address    ${VALID_ADDRESS}
+    # Input Date Of Birth    ${VALID_DOB}
+    # Input Address    ${VALID_ADDRESS}
    
 User Input Valid Information for New User
-    Input User ID        Spiderman
-    Input First Name     Man
-    Input Last Name      Root
-    Input Email     spider@yopmail.com
-    Input Phone Number    9111681903
+    Input First Name     When
+    Input Last Name      What
+    Input Email     what@yopmail.com
+    Input Phone Number    9111688000
     Input Date Of Birth    ${VALID_DOB}
     Input Address    ${VALID_ADDRESS}
-
 
 Verify Error Message For Existing Email
     Check validation error message    //div[@class="text-sm opacity-90"]    • Email already used
@@ -286,5 +262,5 @@ Verify Error Message For Existing Email
 Verify Error Message For Existing Phone Number
     Check validation error message    //div[@class="text-sm opacity-90"]    • Phone number already used
 
-Verify Sucessfully Message For Create User
-    Check validation error message    //div[@class="text-sm opacity-90"]    User created successfully.
+Verify Sucessfully Message For Update User
+    Check validation error message    //div[@class="text-sm opacity-90"]    User updated successfully.

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Page Object for Update User functionality (reuses Create User locators)
+Documentation    Page Object for Update User functionality
 Resource    ../../../TestData/Browser/Global.robot
 Resource    ../../../TestKeyWords/Common.robot
 Library    SeleniumLibrary
@@ -12,7 +12,7 @@ ${LAST_NAME_INPUT}           //input[@id='last_name ']
 ${EMAIL_INPUT}               //input[@id='email ']
 ${PHONE_INPUT}               //input[@placeholder='Enter phone number']
 ${DOB_INPUT}                 //input[@placeholder='Enter date of birth']
-${ADDRESS_INPUT}             //input[@placeholder='Enter address']
+${ADDRESS_INPUT}             //input[@placeholder='Address']
 ${USER_ROLE_SELECT}          //button[.//span[text()='Select user role']]
 ${PASSWORD_INPUT}            //input[@name='password']
 ${CONFIRM_PASSWORD_INPUT}    //input[@name='confirm_password']
@@ -73,48 +73,45 @@ ${Email_exist}        henry@exnodes.vn
 
 ${VALID_DOB}            11-10-2025
 *** Keywords ***
-Go To Update User Page
-    SeleniumLibrary.Wait Until Element Is Visible    ${UPDATE_USER_BUTTON}    10s
-    SeleniumLibrary.Page Should Contain Element    ${USER_ID_INPUT}
-
-Input User ID
-    [Arguments]    ${user_id}
-    Fill Text Input    ${USER_ID_INPUT}    ${user_id}
-
 Input First Name
     [Arguments]    ${first_name}
+    SeleniumLibrary.Wait Until Element Is Visible    ${FIRST_NAME_INPUT}    10s
+    Clear Element Text        ${FIRST_NAME_INPUT}
     Fill Text Input    ${FIRST_NAME_INPUT}    ${first_name}
 
 Input Last Name
     [Arguments]    ${last_name}
+    SeleniumLibrary.Wait Until Element Is Visible    ${LAST_NAME_INPUT}    10s
+    Clear Element Text    ${LAST_NAME_INPUT}
     Fill Text Input    ${LAST_NAME_INPUT}    ${last_name}
 
 Input Email
     [Arguments]    ${email}
+    SeleniumLibrary.Wait Until Element Is Visible    ${EMAIL_INPUT}    10s
+    Clear Element Text    ${EMAIL_INPUT}
     Fill Text Input    ${EMAIL_INPUT}    ${email}
 
 Input Phone Number
     [Arguments]    ${phone}
+    SeleniumLibrary.Wait Until Element Is Visible    ${PHONE_INPUT}    10s
+    Clear Element Text    ${PHONE_INPUT}
     Fill Text Input    ${PHONE_INPUT}    ${phone}
 
 Input Date Of Birth
     [Arguments]    ${dob}
+    SeleniumLibrary.Wait Until Element Is Visible    ${DOB_INPUT}    10s
+    Clear Element Text    ${DOB_INPUT}
     Fill Text Input    ${DOB_INPUT}    ${dob}
 
 Input Address
     [Arguments]    ${address}
+    SeleniumLibrary.Wait Until Element Is Visible    ${ADDRESS_INPUT}    10s
+    Clear Element Text    ${ADDRESS_INPUT}
     Fill Text Input    ${ADDRESS_INPUT}    ${address}
 
 Select User Role
     Click on Element    xpath=//select[@aria-hidden='true']/option[@value='8']
 
-Input Password Web
-    [Arguments]    ${password}
-    Fill Text Input    ${PASSWORD_INPUT}    ${password}
-
-Input Confirm Password
-    [Arguments]    ${password}
-    Fill Text Input    ${CONFIRM_PASSWORD_INPUT}    ${password}
 
 Click Update Submit
     Click on Element    ${UPDATE_USER_SUBMIT}
@@ -163,8 +160,6 @@ Capture API 400
 
 
 Capture API PUT
-    #Prepare for request interception
-    
     SeleniumLibrary.Wait Until Element Is Visible    //p[contains(normalize-space(.), '#')]      15s
     ${text}=    SeleniumLibrary.Get Text    //p[contains(normalize-space(.), '#')]
     Log    ${text}
@@ -172,19 +167,16 @@ Capture API PUT
     Log    ${id}
 
     ${driver}=    Get Library Instance    SeleniumLibrary
-
-    
-    
+    Click Update Submit
     Network.Start Network Interception    ${driver.driver}
 
     Network.Clear Intercepted Requests    ${driver.driver}
-    Click Update Submit
+
     
     #Get Update Request
     ${profile_request}=    Network.Wait For Request    ${driver.driver}    ${Create_User_API}${id}/    ${Method_PUT}    timeout=10    
    
     Log    ${profile_request}
-
 
     ${response}=    Set Variable    ${profile_request['response']}
     Log    ${response}
@@ -208,24 +200,3 @@ Capture API PUT
     # Should Be Equal As Integers    ${parsed.statusCode}    ${Status_201}
     # Should Be Equal As Strings    ${parsed.message}    CREATE_SUCCESS
     # Network.Stop Network Interception    ${driver.driver}
-
-
-Capture API Delete
-    SeleniumLibrary.Wait Until Element Is Visible    //p[contains(normalize-space(.), '#')]      15s
-    ${text}=    SeleniumLibrary.Get Text    //p[contains(normalize-space(.), '#')]
-    Log    ${text}
-    ${id}=    Evaluate    re.search(r'#(\\d+)', """${text}""").group(1)    re
-    Log    ${id}
-
-    ${driver}=    Get Library Instance    SeleniumLibrary
-
-    Click on Element    //p[normalize-space()='Confirm']
-    
-    Network.Start Network Interception    ${driver.driver}
-
-    Network.Clear Intercepted Requests    ${driver.driver}
-    
-    
-    #Get Update Request
-    ${profile_request}=    Network.Wait For Request    ${driver.driver}    ${Create_User_API}${id}/    ${Method_DELETE}    timeout=10
-    Log    ${profile_request}
