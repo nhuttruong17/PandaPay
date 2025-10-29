@@ -142,18 +142,16 @@ Update User With Existing Email
     [Tags]    regression    update_user    negative
     Given On screen Update User Page
     When User Input Information with Existing Existing Email
-    And Capture API 400
+    And Click Submit button and wait for response Existing Email
     Then Verify Error Message For Existing Email
-    Sleep    2
 
 Update User With Existing Phone Number
     [Documentation]    Verify user cannot update profile with existing phone number
     [Tags]    regression    update_user    negative
     Given On screen Update User Page
     When User Input Information with Existing Phone Number
-    And Capture API 400
+    And Click Submit button and wait for response Existing Phone Number
     Then Verify Error Message For Existing Phone Number
-    Sleep    2
     [Teardown]    Close Browser
 
 Update User With Valid Information
@@ -161,7 +159,7 @@ Update User With Valid Information
     [Tags]    regression    update_user    positive
     Given Go To Update User Page
     When User Input Valid Information for New User
-    And Capture API PUT
+    And Click Submit button and wait for response update user successfully
     Then Verify Sucessfully Message For Update User
     [Teardown]    Close Browser
 
@@ -258,9 +256,11 @@ User Input Valid Information for New User
 
 Verify Error Message For Existing Email
     Check validation error message    //div[@class="text-sm opacity-90"]    • Email already used
+    Sleep    2
 
 Verify Error Message For Existing Phone Number
     Check validation error message    //div[@class="text-sm opacity-90"]    • Phone number already used
+    Sleep    2
 
 Verify Sucessfully Message For Update User
     Check validation error message    //div[@class="text-sm opacity-90"]    User updated successfully.

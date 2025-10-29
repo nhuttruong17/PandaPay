@@ -26,7 +26,6 @@ ${Tab_USER_BUTTON}           xpath=//button[normalize-space()='User']
 ${UPDATE_USER_SUBMIT}        xpath=//button[normalize-space()='Submit']
 
 ${Create_User_API}      api/admin/user/
-
 ${UserID_exist}         School1190
 
 # XPaths for validations (shared with CreateUserPage)
@@ -131,7 +130,7 @@ Select User Random User From List
     Run Keyword And Ignore Error    SeleniumLibrary.Scroll Element Into View    ${row}
     SeleniumLibrary.Click Element    ${row}
 
-Capture API 400
+Click Submit button and wait for response Existing Email    
     SeleniumLibrary.Wait Until Element Is Visible    //p[contains(normalize-space(.), '#')]      15s
     ${text}=    SeleniumLibrary.Get Text    //p[contains(normalize-space(.), '#')]
     Log    ${text}
@@ -150,16 +149,38 @@ Capture API 400
     Log    ${request_payload}
     #Verify response
     &{parsed}=    Parse Response API   ${result.body}
-    # Should Be Equal As Strings    ${parsed.success}    ${Boolean_False}
-    # Should Be Equal As Integers    ${parsed.statusCode}    ${Status_400}
-    # Should Be Equal As Strings    ${parsed.message}    INVALID_INPUT
-    # Should Contain    ${parsed.data.phone_number}    VAL117
+    Should Be Equal As Strings    ${parsed.success}    ${Boolean_False}
+    Should Be Equal As Integers    ${parsed.statusCode}    ${Status_400}
+    Should Be Equal As Strings    ${parsed.message}    INVALID_INPUT
+    Should Contain    ${parsed.data.email}    VAL116
     Log    ${parsed}
-    
-    
 
+Click Submit button and wait for response Existing Phone Number        
+    SeleniumLibrary.Wait Until Element Is Visible    //p[contains(normalize-space(.), '#')]      15s
+    ${text}=    SeleniumLibrary.Get Text    //p[contains(normalize-space(.), '#')]
+    Log    ${text}
+    ${id}=    Evaluate    re.search(r'#(\\d+)', """${text}""").group(1)    re
+    Log    ${id}
 
-Capture API PUT
+    #Prepare for request interception
+    ${driver}=    Prepare For Request Interception    api/admin/user/${id}/
+    Click Update Submit
+    Sleep    2s
+    #Get Sign In Request
+    ${result}=    Get Request API    ${driver}
+    Should Be Equal As Integers    ${result.status}    ${Status_400}
+    #Verify request payload
+    ${request_payload}=    Evaluate    json.loads('''${result.payload}''')    json
+    Log    ${request_payload}
+    #Verify response
+    &{parsed}=    Parse Response API   ${result.body}
+    Should Be Equal As Strings    ${parsed.success}    ${Boolean_False}
+    Should Be Equal As Integers    ${parsed.statusCode}    ${Status_400}
+    Should Be Equal As Strings    ${parsed.message}    INVALID_INPUT
+    Should Contain    ${parsed.data.phone_number}    VAL117
+    Log    ${parsed}
+
+Click Submit button and wait for response update user successfully
     SeleniumLibrary.Wait Until Element Is Visible    //p[contains(normalize-space(.), '#')]      15s
     ${text}=    SeleniumLibrary.Get Text    //p[contains(normalize-space(.), '#')]
     Log    ${text}
@@ -182,7 +203,15 @@ Capture API PUT
     Log    ${response}
     ${parsed}=    Parse Response API    ${response}
     Log    ${parsed}
-    
+
+    Should Be Equal As Strings    ${parsed.success}    ${Boolean_True}
+    Should Be Equal As Integers    ${parsed.statusCode}    ${Status_202}
+    Should Be Equal As Strings    ${parsed.message}    UPDATE_DATA_SUCCEEDED
+    Network.Stop Network Interception    ${driver.driver}    
+
+
+
+
     # ${driver}=    Get Library Instance    SeleniumLibrary
     # Click on Element    xpath=/html/body/div[1]/div/main/div/div/form/button
     # Network.Start Network Interception    ${driver.driver}

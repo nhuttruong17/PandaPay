@@ -8,10 +8,8 @@ Library    Collections
 *** Variables ***
 ${Create_User_API}      api/admin/user/
 
-
-
 *** Keywords ***
-Capture API Delete
+Click Delete button and wait for response update user successfully
     SeleniumLibrary.Wait Until Element Is Visible    //p[contains(normalize-space(.), '#')]      15s
     ${text}=    SeleniumLibrary.Get Text    //p[contains(normalize-space(.), '#')]
     Log    ${text}
@@ -26,13 +24,14 @@ Capture API Delete
 
     Network.Clear Intercepted Requests    ${driver.driver}
     
-    
     #Get Update Request
     ${profile_request}=    Network.Wait For Request    ${driver.driver}    ${Create_User_API}${id}/    ${Method_DELETE}    timeout=10
     Log    ${profile_request}
-
-
     ${response}=    Set Variable    ${profile_request['response']}
     Log    ${response}
     ${parsed}=    Parse Response API    ${response}
     Log    ${parsed}
+    Should Be Equal As Strings    ${parsed.success}    ${Boolean_True}
+    Should Be Equal As Integers    ${parsed.statusCode}    ${Status_202}
+    Should Be Equal As Strings    ${parsed.message}    DELETE_DATA_SUCCEEDED
+    Network.Stop Network Interception    ${driver.driver}

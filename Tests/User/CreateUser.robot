@@ -186,8 +186,6 @@ Check User select role
 #     When Click on Element    ${CREATE_USER_SUBMIT}
 #     Then Verify Error Message For Empty Password
 
-
-
 Check validation min Password error on Create User Page
     [Documentation]    Verify validation message for Password less than minimum length on Create User form
     [Tags]    validation    create_user

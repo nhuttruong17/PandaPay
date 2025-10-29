@@ -7,17 +7,13 @@ Resource    ../../TestKeyWords/Common.robot
 Resource    ../../Resources/PageObject/LoginPage/LoginPage.robot
 Resource    ../../TestData/LoginData/LoginData.robot
 
-
 *** Test Cases ***
-
-Test Delete User
+Delete User - Verify Successfully
     Given Go To Delete User Page
-    Capture API Delete
+    When Click Delete button and wait for response update user successfully
     Then Verify Sucessfully Message For Delete User
     [Teardown]    Close Browser
-
-
-
+    
 *** Keywords ***
 Go To Delete User Page
     Basic Setup
