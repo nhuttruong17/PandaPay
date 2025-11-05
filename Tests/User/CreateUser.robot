@@ -450,7 +450,6 @@ User Input Valid Information for New User
 Verify Error Message For Existing User ID
     Check validation error message    //div[@class="text-sm opacity-90"]    • User ID code already exists
 
-
 Verify Error Message For Existing Email
     Check validation error message    //div[@class="text-sm opacity-90"]    • Email already used
 
