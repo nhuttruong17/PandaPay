@@ -1,0 +1,2 @@
+${username};${password};${expected_error}
+${Min_textUserID};${Valid_Password};${error_min_UserID};

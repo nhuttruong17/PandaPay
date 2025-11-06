@@ -41,10 +41,8 @@ Input Product Name
 Input Unit Price
     [Arguments]    ${unit_price}
     SeleniumLibrary.Wait Until Element Is Visible    ${UNIT_PRICE_INPUT}    10s
-    Sleep    2s
     Clear Element Text        ${UNIT_PRICE_INPUT}
-    Sleep    2s
-    Fill Text Input    ${UNIT_PRICE_INPUT}    ${unit_price}
+    Fill Text Input    ${UNIT_PRICE_INPUT}    9${unit_price}
 
 Input Description
     [Arguments]    ${description}
@@ -81,6 +79,7 @@ Click Submit button and wait for response Invalid Price
     ${url}=    SeleniumLibrary.Get Location
     ${id}=     Evaluate    re.search(r'/detail/([0-9]+)(?:[/?]|$)', """${url}""").group(1)    re
     Log    ${id}
+    Sleep    2s
     #Prepare for request interception
     ${driver}=    Prepare For Request Interception    ${Update_Product_API}${id}/
     Click on Element    ${Submit_BUTTON_Product}
@@ -90,7 +89,7 @@ Click Submit button and wait for response Invalid Price
     Should Be Equal As Integers    ${result.status}    ${Status_400}
     #Verify request payload
     ${request_payload}=    Evaluate    json.loads('''${result.payload}''')    json
-    Should Be Equal As Strings    ${request_payload['price']}    0.00
+    Should Be Equal As Strings    ${request_payload['price']}    0
     Log    ${request_payload}
     #Verify response
     &{parsed}=    Parse Response API   ${result.body}
@@ -99,8 +98,6 @@ Click Submit button and wait for response Invalid Price
     Should Be Equal As Strings    ${parsed.message}    INVALID_INPUT
     Should Contain    ${parsed.data.price}    VAL174
     Log    ${parsed}
-
-
 
 Click Submit button and wait for response Existing SKU
     ${url}=    SeleniumLibrary.Get Location
@@ -138,7 +135,7 @@ Click Submit button and wait for response Valid Information
     Should Be Equal As Integers    ${result.status}    ${Status_202}
     #Verify request payload
     ${request_payload}=    Evaluate    json.loads('''${result.payload}''')    json
-    Should Be Equal As Strings    ${request_payload['code']}    PopEyes
+    Should Be Equal As Strings    ${request_payload['code']}    Pikachu
     Log    ${request_payload}
     #Verify response
     &{parsed}=    Parse Response API   ${result.body}

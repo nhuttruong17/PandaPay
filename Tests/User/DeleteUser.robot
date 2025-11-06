@@ -10,7 +10,8 @@ Resource    ../../TestData/LoginData/LoginData.robot
 *** Test Cases ***
 Delete User - Verify Successfully
     Given Go To Delete User Page
-    When Click Delete button and wait for response update user successfully
+    When Choose User Random User From List
+    And Click Delete button and wait for response update user successfully
     Then Verify Sucessfully Message For Delete User
     [Teardown]    Close Browser
     
@@ -19,6 +20,8 @@ Go To Delete User Page
     Basic Setup
     Restore Browser Session
     Click on Element    ${Tab_USER_BUTTON}
+
+Choose User Random User From List
     Select User Random User From List
     Click on Element    xpath=//p[normalize-space()='Delete User']
     Sleep    5s

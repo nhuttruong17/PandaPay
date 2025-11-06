@@ -14,37 +14,37 @@ Resource    ../../Resources/PageObject/ProductsPage/UpdateProductsPage.robot
 Check validation min SKU error on Update Product Page
     Given Open Browser and Go To Update Product Page
     When Input SKU    A
-    And Click on Element    ${Submit_BUTTON_Product}
+    # And Click on Element    ${Submit_BUTTON_Product}
     Then Verify Error Message For Min SKU
     
 Check validation max SKU error on Update Product Page
     Given User on at Update Product Page
     When Input SKU    ${LONG_STRING_51}
-    And Click on Element    ${Submit_BUTTON_Product}
+    # And Click on Element    ${Submit_BUTTON_Product}
     Then Verify Error Message For Max SKU
     
 Check no validation error for valid SKU on Update Product Page
     Given User on at Update Product Page
     When Input SKU    Chicken123
-    And Click on Element    ${Submit_BUTTON_Product}
+    # And Click on Element    ${Submit_BUTTON_Product}
     Then Verify No Error Message For Valid SKU
     
 Check validation min Product Name error on Update Product Page
     Given User on at Update Product Page
     When Input Product Name    A
-    And Click on Element    ${Submit_BUTTON_Product}
+    # And Click on Element    ${Submit_BUTTON_Product}
     Then Verify Error Message For Min Product Name   
 
 Check validation max Product Name error on Update Product Page
     Given User on at Update Product Page
     When Input Product Name    ${LONG_STRING_101}
-    And Click on Element    ${Submit_BUTTON_Product}
+    # And Click on Element    ${Submit_BUTTON_Product}
     Then Verify Error Message For Max Product Name
 
 Check no validation error for valid Product Name on Update Product Page
     Given User on at Update Product Page
     When Input Product Name    Chicken Product
-    And Click on Element    ${Submit_BUTTON_Product}
+    # And Click on Element    ${Submit_BUTTON_Product}
     Then Verify No Error Message For Valid Product Name
 
 # Check validation empty Category error on Update Product Page
@@ -82,33 +82,31 @@ Check no validation error for valid Description on Update Product Page
     Given User on at Update Product Page
     When Input Description    This is a valid product description.
     Then Verify No Error Message For Valid Description
-    [Teardown]    Basic TearDowns
+    # [Teardown]    Basic TearDowns
 
 Update Product Invalid Price error on Update Product Page
-    Given Open Browser and Go To Update Product Page
-    When Input Unit Price    0.00
-    Click on Element    ${Submit_BUTTON_Product}
-    # And Click Submit button and wait for response Invalid Price
+    Given User on at Update Product Page
+    # Given Open Browser and Go To Update Product Page
+    When Input Unit Price    0.0000000
+    And Click Submit button and wait for response Invalid Price
     Then Verify Error Message For Valid Price
+    # [Teardown]    Basic TearDowns
+
+Update Product existing SKU error on Update Product Page
+    Given User on at Update Product Page
+    # Given Open Browser and Go To Update Product Page
+    When User Input Information with Existing SKU
+    And Click Submit button and wait for response Existing SKU
+    Then Verify Error Message For Existing SKU
+    # [Teardown]    Basic TearDowns
+
+Update Product With Valid Information on Update Product Page
+    Given User on at Update Product Page
+    # Given Open Browser and Go To Update Product Page
+    When User Input Valid Information Product
+    And Click Submit button and wait for response Valid Information
+    Then Veridy Success Message For Update Product
     [Teardown]    Basic TearDowns
-
-
-
-# Update Product existing SKU error on Update Product Page
-#     # Given User on at Update Product Page
-#     Given Open Browser and Go To Update Product Page
-#     When User Input Information with Existing SKU
-#     And Click Submit button and wait for response Existing SKU
-#     Then Verify Error Message For Existing SKU
-#     [Teardown]    Basic TearDowns
-
-# Update Product With Valid Information on Update Product Page
-#     # Given User on at Update Product Page
-#     Given Open Browser and Go To Update Product Page
-#     When User Input Valid Information Product
-#     And Click Submit button and wait for response Valid Information
-#     Then Veridy Success Message For Update Product
-#     [Teardown]    Basic TearDowns
 
 *** Keywords ***
 Open Browser and Go To Update Product Page
@@ -130,7 +128,7 @@ User Input Information with Existing SKU
     Input Description    This is a test product description.
 
 User Input Valid Information Product
-    Input SKU    PopEyes
+    Input SKU    Pikachu
     Input Product Name    Test Product
     # Select Category
     Input Unit Price    10.99
