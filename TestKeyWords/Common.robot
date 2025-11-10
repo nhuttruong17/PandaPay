@@ -17,7 +17,6 @@ Basic Setup
 #    Call Method    ${options}    add_argument    --incognito
 #    Call Method    ${options}    add_argument    --disable-popup-blocking
 #    RETURN    ${options}
-    # Open Browser    ${BASE_URL}    ${CHROME_BROWSER}    options=${options}
     Open Browser    ${BASE_URL}    ${CHROME_BROWSER}    options=${options}
 #    Maximize Browser Window
 #    Set Window Size    1920    1080
