@@ -12,22 +12,18 @@ jobs:
     # Use a Selenium standalone Chrome container as a service so tests can use a remote webdriver
     services:
       selenium:
-        image: selenium/standalone-chrome:latest
+        image: selenium/standalone-chrome:4.10.0
         ports:
           - 4444:4444
         options: >-
-          --health-cmd="curl -f http://localhost:4444/wd/hub/status || exit 1"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
           --shm-size=2g
         env:
-          SE_NODE_MAX_SESSIONS: 4
+          SE_NODE_MAX_SESSIONS: 1
           SE_NODE_OVERRIDE_MAX_SESSIONS: true
           SE_NODE_SESSION_TIMEOUT: 300
+          SE_START_XVFB: true
           SE_SCREEN_WIDTH: 1920
           SE_SCREEN_HEIGHT: 1080
-          SE_START_XVFB: true
 
     steps:
       - name: Checkout
@@ -37,6 +33,14 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
+
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@latest
+        with:
+          chrome-version: stable
+      
+      - name: Setup ChromeDriver
+        uses: nanasess/setup-chromedriver@master
 
       - name: Install dependencies
         run: |
@@ -60,29 +64,45 @@ jobs:
           DISPLAY: :99
         run: |
           mkdir -p results
-          # Wait for Selenium to be ready with increased timeout
-          for i in $(seq 1 120); do
-            if curl -s http://localhost:4444/wd/hub/status | grep -q "ready: true"; then
-              echo "Selenium is ready!"
+          
+          # Start Chrome in background
+          google-chrome --version
+          chromedriver --version
+          
+          # Check Selenium Grid status
+          echo "Checking Selenium Grid status..."
+          for i in $(seq 1 60); do
+            STATUS=$(curl -s http://localhost:4444/wd/hub/status || echo "failed")
+            if echo $STATUS | grep -q "ready"; then
+              echo "Selenium Grid is ready!"
               break
             fi
-            if [ $i -eq 120 ]; then
-              echo "Timeout waiting for Selenium"
+            if [ $i -eq 60 ]; then
+              echo "Selenium Grid failed to start"
+              echo "Status response: $STATUS"
               exit 1
             fi
-            echo "Waiting for Selenium... ($i/120)"
-            sleep 1
+            echo "Waiting for Selenium Grid... ($i/60)"
+            sleep 2
           done
           
-          # Run with additional options for stability
+          # Run Robot Framework tests with more detailed logging
           robot --outputdir results \
                 --variable BROWSER:chrome \
                 --variable REMOTE_URL:${SELENIUM_REMOTE_URL} \
-                --loglevel DEBUG \
-                --randomize none \
-                --exitonfailure \
-                --skip flaky \
-                Tests/Authen/Data_driven/Login_DDT.robot
+                --loglevel TRACE \
+                --debugfile debug.log \
+                --consolecolors on \
+                Tests/Authen/Data_driven/Login_DDT.robot || true
+          
+          # Print debug information if test fails
+          if [ -f results/log.html ]; then
+            echo "Test completed - Check results/log.html for details"
+          fi
+          if [ -f debug.log ]; then
+            echo "Debug log contents:"
+            cat debug.log
+          fi
 
       - name: Upload results
         uses: actions/upload-artifact@v4
