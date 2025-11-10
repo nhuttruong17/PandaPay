@@ -34,13 +34,13 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Setup Chrome
-        uses: browser-actions/setup-chrome@latest
-        with:
-          chrome-version: stable
+      # - name: Setup Chrome
+      #   uses: browser-actions/setup-chrome@latest
+      #   with:
+      #     chrome-version: stable
       
-      - name: Setup ChromeDriver
-        uses: nanasess/setup-chromedriver@master
+      # - name: Setup ChromeDriver
+      #   uses: nanasess/setup-chromedriver@master
 
       - name: Install dependencies
         run: |
