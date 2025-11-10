@@ -1,2 +1,3 @@
-${username};${password};${expected_error}
-${Min_textUserID};${Valid_Password};${error_min_UserID};
+username,password,expected_error,action
+${Min_textUserID},${Valid_Password},${error_min_UserID},verify_login_failed
+${Valid_UserID},${Invalid_Password},${EXPECTED_ERROR_MESSAGE},verify_login_failed_with_payload

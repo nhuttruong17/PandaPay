@@ -1,0 +1,6 @@
+robotframework==7.3.2
+robotframework-seleniumlibrary==6.6.0
+robotframework-datadriver==1.17.0
+selenium==4.10.0
+# Optional: if your tests rely on a chromedriver binary locally
+chromedriver-binary==116.0.5845.96.0
