@@ -12,7 +12,7 @@ Basic Setup
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
     ${logging_prefs}=    Create Dictionary    performance=ALL
     Call Method    ${options}    set_capability    goog:loggingPrefs    ${logging_prefs}
-    Call Method    ${options}    add_argument     --headless
+    # Call Method    ${options}    add_argument     --headless
 #    Call Method    ${options}    add_argument    --start-maximized
 #    Call Method    ${options}    add_argument    --incognito
 #    Call Method    ${options}    add_argument    --disable-popup-blocking

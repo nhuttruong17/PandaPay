@@ -21,7 +21,7 @@ ${Category_exist}                NikeSchoe
 ${MIN_STRING_1}                  A    
 ${LONG_STRING_51}                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
-
+${New_Name_Category}            Nobi
 *** Keywords ***
 Input Category Name
     [Arguments]    ${category_name}
@@ -37,14 +37,14 @@ Click Submit button and wait for response Existing Category Name
     Should Be Equal As Integers    ${result.status}    ${Status_400}
     #Verify request payload
     ${request_payload}=    Evaluate    json.loads('''${result.payload}''')    json
-    Should Be Equal As Strings    ${request_payload['code']}    ${Category_exist}
+    Should Be Equal As Strings    ${request_payload['name']}    ${Category_exist}
     Log    ${request_payload}
     #Verify response
     &{parsed}=    Parse Response API   ${result.body}
     Should Be Equal As Strings    ${parsed.success}    ${Boolean_False}
     Should Be Equal As Integers    ${parsed.statusCode}    ${Status_400}
     Should Be Equal As Strings    ${parsed.message}    INVALID_INPUT
-    Should Contain    ${parsed.data.code}    VAL607
+    Should Contain    ${parsed.data.name}    VAL024
     Log    ${parsed}
 
 Click Submit button and wait for response Valid Category Name 
@@ -57,7 +57,7 @@ Click Submit button and wait for response Valid Category Name
     Should Be Equal As Integers    ${result.status}    ${Status_201}
     #Verify request payload
     ${request_payload}=    Evaluate    json.loads('''${result.payload}''')    json
-    Should Be Equal As Strings    ${request_payload['code']}    Cownsdown
+    Should Be Equal As Strings    ${request_payload['name']}    ${New_Name_Category}
     Log    ${request_payload}
     #Verify response
     &{parsed}=    Parse Response API   ${result.body}

@@ -54,9 +54,7 @@ Select Category
     # [Arguments]    ${category}
     Click on Element    //select[@aria-hidden='true']/option[@value='18797']
     # Click on Element    xpath=//li[normalize-space()='${category}']
-
-
-
+    
 Select Product Random Product From List
     [Documentation]    Collect visible user rows from the users table and click one at random.
     SeleniumLibrary.Wait Until Element Is Visible    xpath=//table//tbody//tr    20s

@@ -8,6 +8,7 @@ Check Retrieve Password Page with IOS, Fill min UserID
     Click on Element mobile     ${elm_RetrivePassword_IOS}
     Fill Text Input mobile    ${input_UserID_RetrievePassword_IOS}   ${Min_textUserID}
     Check validation error message mobile    ${elm_minUserID_IOS}    ${Expected_minUserID_IOS}
+    
 Check Retrieve Password Page with IOS, Fill max UserID
     Clear Text    //XCUIElementTypeTextField[@value="${Min_textUserID}"]
     Fill Text Input mobile    ${input_UserID_RetrievePassword_IOS}    ${Max_textUserID}

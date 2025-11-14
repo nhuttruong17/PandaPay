@@ -10,20 +10,20 @@ Library    Collections
 ${PASSWORD_INPUT}            //input[@name='new_password']
 ${CONFIRM_PASSWORD_INPUT}    //input[@name='confirm_new_password']
 #Xpath Password
-${Empty_Password}    //p[normalize-space(text())='Password is required.']
-${Min_Password}    //p[normalize-space(text())='Password must be at least 8 characters.']
-${Missing_Uppercase}    //p[normalize-space(text())='Password must contain at least one uppercase letter.']
-${Missing_Lowercase}    //p[normalize-space(text())='Password must contain at least one lowercase letter.']
-${Missing_OneNumber}    //p[normalize-space(text())='Password must contain at least one number.']
-${Missing_SpecialChar}    //p[normalize-space(text())='Password must contain at least one special character.']
+${Empty_Password}           //p[normalize-space(text())='Password is required.']
+${Min_Password}             //p[normalize-space(text())='Password must be at least 8 characters.']
+${Missing_Uppercase}        //p[normalize-space(text())='Password must contain at least one uppercase letter.']
+${Missing_Lowercase}        //p[normalize-space(text())='Password must contain at least one lowercase letter.']
+${Missing_OneNumber}        //p[normalize-space(text())='Password must contain at least one number.']
+${Missing_SpecialChar}      //p[normalize-space(text())='Password must contain at least one special character.']
 
 #Xpath Confirm Password
-${Empty_ConfirmPassword}    //p[normalize-space(text())='Confirm password is required.']
+${Empty_ConfirmPassword}        //p[normalize-space(text())='Confirm password is required.']
 ${Mismatch_ConfirmPassword}    //p[normalize-space(text())='Confirm Passwords do not match.']
 
 #Button
 ${Tab_ChangePassword}           xpath=//p[normalize-space()='Change Password']
-${CHANGE_PASSWORD_SUBMIT}    //button[p[normalize-space(text())="Confirm"]]
+${CHANGE_PASSWORD_SUBMIT}       //button[p[normalize-space(text())="Confirm"]]
 
 #End Point API
 ${ChangePassword_User_API}      api/admin/change-password/

@@ -326,7 +326,6 @@ Check validation text New Password & Confirm Password mobile
     Click on Element mobile   ${elm_Submit_IOS}
     Check validation error message mobile    ${elm_validationtext_confirm_password}    ${EXPECTED_validationtext_confirmpassword}
     
-
 Click on Retrieve Password with email
     Click on Element mobile    ${elm_Continue_IOS}
     Click on Element mobile    //XCUIElementTypeStaticText[@name="Retrieve Password via Email in****ve@yopmail.com?"]

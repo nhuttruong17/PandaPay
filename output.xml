@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-11-10T11:50:33.849624" rpa="false" schemaversion="5">
-<suite id="s1" name="Login DDT" source="/Users/apple/Downloads/School/PycharmProjects/PandaPay/Tests/Authen/Data_driven/Login_DDT.robot">
-<kw name="Basic Setup" owner="Common" type="SETUP">
+<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-11-14T16:18:06.293967" rpa="false" schemaversion="5">
+<suite id="s1" name="DeleteCategory" source="/Users/apple/Downloads/School/PycharmProjects/PandaPay/Tests/Products/Category/DeleteCategory.robot">
+<test id="s1-t1" name="Delete Product Successfully" line="5">
+<kw name="Given Open Browser and Go To Delete Category Page">
+<kw name="Basic Setup" owner="Common">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-11-10T11:50:34.046486" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x102f45d00&gt;</msg>
+<msg time="2025-11-14T16:18:06.454222" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x10297ab80&gt;</msg>
 <var>${options}</var>
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-11-10T11:50:34.046227" elapsed="0.001197"/>
+<status status="PASS" start="2025-11-14T16:18:06.453980" elapsed="0.002032"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-11-10T11:50:34.047921" level="INFO">${logging_prefs} = {'performance': 'ALL'}</msg>
+<msg time="2025-11-14T16:18:06.456892" level="INFO">${logging_prefs} = {'performance': 'ALL'}</msg>
 <var>${logging_prefs}</var>
 <arg>performance=ALL</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-11-10T11:50:34.047639" elapsed="0.000365"/>
+<status status="PASS" start="2025-11-14T16:18:06.456555" elapsed="0.000436"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
 <arg>${options}</arg>
@@ -23,563 +25,249 @@
 <arg>goog:loggingPrefs</arg>
 <arg>${logging_prefs}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-11-10T11:50:34.048138" elapsed="0.000619"/>
-</kw>
-<kw name="Call Method" owner="BuiltIn">
-<arg>${options}</arg>
-<arg>add_argument</arg>
-<arg>--headless</arg>
-<doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-11-10T11:50:34.049113" elapsed="0.000597"/>
+<status status="PASS" start="2025-11-14T16:18:06.457122" elapsed="0.000191"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:34.050778" level="INFO">Opening browser 'Chrome' to base url 'https://app.panda.ennam.vn/'.</msg>
+<msg time="2025-11-14T16:18:06.457838" level="INFO">Opening browser 'Chrome' to base url 'https://app.panda.ennam.vn/'.</msg>
 <arg>${BASE_URL}</arg>
 <arg>${CHROME_BROWSER}</arg>
 <arg>options=${options}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-11-10T11:50:34.050115" elapsed="3.014876"/>
+<status status="PASS" start="2025-11-14T16:18:06.457445" elapsed="2.352957"/>
 </kw>
-<status status="PASS" start="2025-11-10T11:50:34.045473" elapsed="3.019919"/>
+<status status="PASS" start="2025-11-14T16:18:06.453240" elapsed="2.357495"/>
 </kw>
-<test id="s1-t1" name="Special characters UserID" line="10">
-<kw name="Validation text error message">
-<kw name="Fill Text Input" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.068003" elapsed="0.038976"/>
+<kw name="Restore Browser Session" owner="Common">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-14T16:18:08.811614" level="INFO">${cookies_file} = .session/my_user/cookies.json</msg>
+<var>${cookies_file}</var>
+<arg>.session/my_user/cookies.json</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-14T16:18:08.811423" elapsed="0.000415"/>
 </kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:37.107497" level="INFO">Typing text '@#$%^&amp;*' into text field '//input[@id='user_code']'.</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.107229" elapsed="0.103287"/>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2025-11-14T16:18:08.812509" level="INFO" html="true">File '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json&lt;/a&gt;' exists.</msg>
+<arg>${cookies_file}</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2025-11-14T16:18:08.812161" elapsed="0.000462"/>
 </kw>
-<arg>${input_UserID}</arg>
-<arg>${username}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.067534" elapsed="0.143157"/>
+<msg time="2025-11-14T16:18:08.812738" level="INFO">${cookies_exist} = True</msg>
+<var>${cookies_exist}</var>
+<arg>File Should Exist</arg>
+<arg>${cookies_file}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-11-14T16:18:08.811976" elapsed="0.000848"/>
 </kw>
-<kw name="Fill Text Input" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.211276" elapsed="0.010901"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:37.222702" level="INFO">Typing text 'School123@' into text field '//input[@id='password']'.</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.222432" elapsed="0.038070"/>
-</kw>
-<arg>${input_Password}</arg>
-<arg>${password}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.210893" elapsed="0.049810"/>
-</kw>
-<kw name="Click on Element" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.261248" elapsed="0.010189"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:37.271915" level="INFO">Clicking element '//button[@type='submit']'.</msg>
-<arg>${elm_input}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.271677" elapsed="0.028654"/>
-</kw>
-<arg>${btn_SignIn}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.260912" elapsed="0.039705"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${expected_error}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.300837" elapsed="0.009143"/>
-</kw>
-<arg>${Specialcharacters_textUserID}</arg>
-<arg>${Valid_Password}</arg>
-<arg>${error_invalid_UserID}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.066382" elapsed="0.243758"/>
-</kw>
-<status status="PASS" start="2025-11-10T11:50:37.065567" elapsed="0.244757"/>
-</test>
-<test id="s1-t2" name="Min UserID" line="11">
-<kw name="Validation text error message">
-<kw name="Fill Text Input" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.311413" elapsed="0.008422"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:37.320322" level="INFO">Typing text 'ab' into text field '//input[@id='user_code']'.</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.320071" elapsed="0.033466"/>
-</kw>
-<arg>${input_UserID}</arg>
-<arg>${username}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.311159" elapsed="0.042536"/>
-</kw>
-<kw name="Fill Text Input" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.354258" elapsed="0.007429"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:37.362160" level="INFO">Typing text 'School123@' into text field '//input[@id='password']'.</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.361917" elapsed="0.082437"/>
-</kw>
-<arg>${input_Password}</arg>
-<arg>${password}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.353871" elapsed="0.090648"/>
-</kw>
-<kw name="Click on Element" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.444988" elapsed="0.008105"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:37.453553" level="INFO">Clicking element '//button[@type='submit']'.</msg>
-<arg>${elm_input}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.453324" elapsed="0.024086"/>
-</kw>
-<arg>${btn_SignIn}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.444700" elapsed="0.032875"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${expected_error}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.477731" elapsed="0.011812"/>
-</kw>
-<arg>${Min_textUserID}</arg>
-<arg>${Valid_Password}</arg>
-<arg>${error_min_UserID}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.310829" elapsed="0.178876"/>
-</kw>
-<status status="PASS" start="2025-11-10T11:50:37.310541" elapsed="0.179336"/>
-</test>
-<test id="s1-t3" name="Max UserID" line="12">
-<kw name="Validation text error message">
-<kw name="Fill Text Input" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.491267" elapsed="0.007493"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:37.499231" level="INFO">Typing text 'abcd12345678901234567890' into text field '//input[@id='user_code']'.</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.498988" elapsed="0.039987"/>
-</kw>
-<arg>${input_UserID}</arg>
-<arg>${username}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.490933" elapsed="0.048221"/>
-</kw>
-<kw name="Fill Text Input" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.539681" elapsed="0.007798"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:37.547947" level="INFO">Typing text 'School123@' into text field '//input[@id='password']'.</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.547700" elapsed="0.038838"/>
-</kw>
-<arg>${input_Password}</arg>
-<arg>${password}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.539349" elapsed="0.047373"/>
-</kw>
-<kw name="Click on Element" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.587198" elapsed="0.011158"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:37.598854" level="INFO">Clicking element '//button[@type='submit']'.</msg>
-<arg>${elm_input}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.598612" elapsed="0.024868"/>
-</kw>
-<arg>${btn_SignIn}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.586907" elapsed="0.036765"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${expected_error}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.623843" elapsed="0.009340"/>
-</kw>
-<arg>${Max_textUserID}</arg>
-<arg>${Valid_Password}</arg>
-<arg>${error_max_UserID}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.490372" elapsed="0.142971"/>
-</kw>
-<status status="PASS" start="2025-11-10T11:50:37.490078" elapsed="0.143433"/>
-</test>
-<test id="s1-t4" name="Valid UserId, Ivalid Password" line="13">
-<kw name="Verify login failed with invalid account">
-<kw name="Given Fill Text Input" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.635457" elapsed="0.009440"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:37.645365" level="INFO">Typing text 'SchoolLe' into text field '//input[@id='user_code']'.</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.645119" elapsed="0.033575"/>
-</kw>
-<arg>${input_UserID}</arg>
-<arg>${username}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.635063" elapsed="0.043798"/>
-</kw>
-<kw name="And Fill Text Input" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${elm_input}</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.679371" elapsed="0.008797"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:37.688644" level="INFO">Typing text 'Schools123@@@' into text field '//input[@id='password']'.</msg>
-<arg>${elm_input}</arg>
-<arg>${text}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.688398" elapsed="0.037812"/>
-</kw>
-<arg>${input_Password}</arg>
-<arg>${password}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.679054" elapsed="0.047326"/>
-</kw>
-<kw name="When Click on SignIn with Wait Request Payload login Failed" owner="LoginPage">
-<kw name="Prepare For Request Interception" owner="Common">
+<if>
+<branch type="IF" condition="${cookies_exist}">
 <kw name="Get Library Instance" owner="BuiltIn">
-<msg time="2025-11-10T11:50:37.727446" level="INFO">${driver} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x10298ea00&gt;</msg>
-<var>${driver}</var>
+<msg time="2025-11-14T16:18:08.813872" level="INFO">${sl} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x102687e50&gt;</msg>
+<var>${sl}</var>
 <arg>SeleniumLibrary</arg>
 <doc>Returns the currently active instance of the specified library.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.727203" elapsed="0.000354"/>
+<status status="PASS" start="2025-11-14T16:18:08.813586" elapsed="0.000738"/>
 </kw>
-<kw name="Inject Request Interceptor" owner="Network">
-<msg time="2025-11-10T11:50:37.732255" level="INFO">JavaScript interceptor injected for endpoint: api/user/sign-in/</msg>
-<arg>${driver.driver}</arg>
-<arg>${endpoint}</arg>
-<doc>Inject JavaScript to intercept and log requests to a specific API endpoint.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.727745" elapsed="0.004688"/>
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2025-11-14T16:18:08.815087" level="INFO" html="true">Getting file '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json&lt;/a&gt;'.</msg>
+<msg time="2025-11-14T16:18:08.815405" level="INFO">${cookies_json} = [{"domain": "app.panda.ennam.vn", "httpOnly": false, "name": "refresh_token", "path": "/", "sameSite": "Lax", "secure": false, "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcm...</msg>
+<var>${cookies_json}</var>
+<arg>${cookies_file}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2025-11-14T16:18:08.814716" elapsed="0.000766"/>
 </kw>
-<return>
-<value>${driver}</value>
-<status status="PASS" start="2025-11-10T11:50:37.732539" elapsed="0.000090"/>
-</return>
-<msg time="2025-11-10T11:50:37.732776" level="INFO">${driver} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x10298ea00&gt;</msg>
-<var>${driver}</var>
-<arg>${SIGNIN_API}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.726910" elapsed="0.006193"/>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-14T16:18:08.816809" level="INFO">${cookies} = [{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'refresh_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcm...</msg>
+<var>${cookies}</var>
+<arg>json.loads('''${cookies_json}''')</arg>
+<arg>modules=json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-14T16:18:08.815775" elapsed="0.001173"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${sl.driver}</arg>
+<arg>add_cookie</arg>
+<arg>${cookie}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-11-14T16:18:08.817439" elapsed="0.058618"/>
+</kw>
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2025-11-14T16:18:08.876319" elapsed="0.117770"/>
+</kw>
+<var name="${cookie}">{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'refresh_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmV...</var>
+<status status="PASS" start="2025-11-14T16:18:08.817266" elapsed="0.176979"/>
+</iter>
+<iter>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${sl.driver}</arg>
+<arg>add_cookie</arg>
+<arg>${cookie}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-11-14T16:18:08.994582" elapsed="0.008023"/>
+</kw>
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2025-11-14T16:18:09.002838" elapsed="0.296518"/>
+</kw>
+<var name="${cookie}">{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'access_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNz...</var>
+<status status="PASS" start="2025-11-14T16:18:08.994417" elapsed="0.305106"/>
+</iter>
+<iter>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${sl.driver}</arg>
+<arg>add_cookie</arg>
+<arg>${cookie}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-11-14T16:18:09.299919" elapsed="0.012494"/>
+</kw>
+<kw name="Reload Page" owner="SeleniumLibrary">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" start="2025-11-14T16:18:09.312672" elapsed="0.167604"/>
+</kw>
+<var name="${cookie}">{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'NEXT_LOCALE', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'en'}</var>
+<status status="PASS" start="2025-11-14T16:18:09.299717" elapsed="0.180753"/>
+</iter>
+<var>${cookie}</var>
+<value>@{cookies}</value>
+<status status="PASS" start="2025-11-14T16:18:08.817065" elapsed="0.663519"/>
+</for>
+<status status="PASS" start="2025-11-14T16:18:08.812960" elapsed="0.667743"/>
+</branch>
+<status status="PASS" start="2025-11-14T16:18:08.812929" elapsed="0.667858"/>
+</if>
+<status status="PASS" start="2025-11-14T16:18:08.811081" elapsed="0.669785"/>
 </kw>
 <kw name="Click on Element" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.733652" elapsed="0.008503"/>
+<status status="PASS" start="2025-11-14T16:18:09.482152" elapsed="0.243153"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:37.742632" level="INFO">Clicking element '//button[@type='submit']'.</msg>
+<msg time="2025-11-14T16:18:09.726192" level="INFO">Clicking element 'xpath=//button[normalize-space()='Product']'.</msg>
 <arg>${elm_input}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.742394" elapsed="0.028043"/>
+<status status="PASS" start="2025-11-14T16:18:09.725669" elapsed="0.047990"/>
 </kw>
-<arg>${btn_SignIn}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.733296" elapsed="0.037304"/>
+<arg>${Tab_PRODUCTS_BUTTON}</arg>
+<status status="PASS" start="2025-11-14T16:18:09.481326" elapsed="0.292514"/>
+</kw>
+<kw name="Click on Element" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-14T16:18:09.775334" elapsed="1.517509"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-14T16:18:11.293455" level="INFO">Clicking element 'xpath=//button[normalize-space()='Category List']'.</msg>
+<arg>${elm_input}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-14T16:18:11.293144" elapsed="0.037442"/>
+</kw>
+<arg>${LIST_CATEGORY_BUTTON}</arg>
+<status status="PASS" start="2025-11-14T16:18:09.774316" elapsed="1.556430"/>
+</kw>
+<status status="PASS" start="2025-11-14T16:18:06.452827" elapsed="4.878005"/>
+</kw>
+<kw name="When Choose Category Random Category From List">
+<kw name="Select Category Random Category From List" owner="DeleteCategoryPage">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${Random_click...}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-14T16:18:11.332351" elapsed="2.148625"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-11-14T16:18:13.487590" level="INFO">${valid_rows} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="e050f1e4216d85b3c558b1065c16a777", element="f.37B37492886069FCF368EBBE9D64DC2D.d.C023ED4DED2D434873E023E9C996D3B4.e.34")&gt;, &lt;selenium.webdriv...</msg>
+<var>${valid_rows}</var>
+<arg>${Random_click...}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-11-14T16:18:13.481336" elapsed="0.006732"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-14T16:18:13.488638" level="INFO">[&lt;selenium.webdriver.remote.webelement.WebElement (session="e050f1e4216d85b3c558b1065c16a777", element="f.37B37492886069FCF368EBBE9D64DC2D.d.C023ED4DED2D434873E023E9C996D3B4.e.34")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="e050f1e4216d85b3c558b1065c16a777", element="f.37B37492886069FCF368EBBE9D64DC2D.d.C023ED4DED2D434873E023E9C996D3B4.e.35")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="e050f1e4216d85b3c558b1065c16a777", element="f.37B37492886069FCF368EBBE9D64DC2D.d.C023ED4DED2D434873E023E9C996D3B4.e.36")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="e050f1e4216d85b3c558b1065c16a777", element="f.37B37492886069FCF368EBBE9D64DC2D.d.C023ED4DED2D434873E023E9C996D3B4.e.37")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="e050f1e4216d85b3c558b1065c16a777", element="f.37B37492886069FCF368EBBE9D64DC2D.d.C023ED4DED2D434873E023E9C996D3B4.e.38")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="e050f1e4216d85b3c558b1065c16a777", element="f.37B37492886069FCF368EBBE9D64DC2D.d.C023ED4DED2D434873E023E9C996D3B4.e.39")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="e050f1e4216d85b3c558b1065c16a777", element="f.37B37492886069FCF368EBBE9D64DC2D.d.C023ED4DED2D434873E023E9C996D3B4.e.40")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="e050f1e4216d85b3c558b1065c16a777", element="f.37B37492886069FCF368EBBE9D64DC2D.d.C023ED4DED2D434873E023E9C996D3B4.e.41")&gt;]</msg>
+<arg>${valid_rows}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-14T16:18:13.488337" elapsed="0.000504"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-11-14T16:18:13.489313" level="INFO">Length is 8.</msg>
+<msg time="2025-11-14T16:18:13.489484" level="INFO">${total_rows} = 8</msg>
+<var>${total_rows}</var>
+<arg>${valid_rows}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-11-14T16:18:13.489061" elapsed="0.000521"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-14T16:18:13.490058" level="INFO">Clicking element '//tr[ .//td[1]//span[@class="ml-2 text-sm font-medium leading-none"][text()!='UNKNOWN'] and number(normalize-space(.//td[2]//span[@class="ml-2 text-sm font-medium leading-none"]/text()[1])) = 0 ]//button[contains(@aria-haspopup,'menu')]'.</msg>
+<arg>${Random_click...}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-14T16:18:13.489780" elapsed="0.047219"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.773053" level="INFO">Slept 2 seconds.</msg>
+<msg time="2025-11-14T16:18:15.539897" level="INFO">Slept 2 seconds.</msg>
 <arg>2s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-11-10T11:50:37.770757" elapsed="2.002517"/>
+<status status="PASS" start="2025-11-14T16:18:13.537608" elapsed="2.003216"/>
 </kw>
-<kw name="Get Request API" owner="Common">
-<kw name="Get Intercepted Requests" owner="Network">
-<msg time="2025-11-10T11:50:39.781393" level="INFO">Found 1 matching requests</msg>
-<msg time="2025-11-10T11:50:39.781652" level="INFO">${requests} = [{'method': 'POST', 'payload': '{"user_code":"SchoolLe","password":"Schools123@@@","type":"ORG_ADMIN"}', 'response': '{"success":false,"statusCode":401,"message":"AUTHENTICATION_FAILED","data":{"code"...</msg>
-<var>${requests}</var>
-<arg>${driver.driver}</arg>
-<doc>Get intercepted requests matching the given criteria.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.773860" elapsed="0.007869"/>
-</kw>
-<kw name="Run Keyword Unless" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.782110" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
-<arg>${requests}</arg>
-<arg>Fail</arg>
-<arg>No intercepted requests found.</arg>
-<doc>*DEPRECATED since RF 5.0. Use Native IF/ELSE or `Run Keyword If` instead.*</doc>
-<status status="PASS" start="2025-11-10T11:50:39.781941" elapsed="0.001603"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.786217" level="INFO">${status} = 401</msg>
-<var>${status}</var>
-<arg>${requests[0]['status']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.784508" elapsed="0.001817"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.787685" level="INFO">${url} = https://api.panda.ennam.vn/api/user/sign-in/</msg>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-11-14T16:18:15.573544" level="INFO">${url} = https://app.panda.ennam.vn/product-management/category/edit/18933</msg>
 <var>${url}</var>
-<arg>${requests[0]['url']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.786565" elapsed="0.001209"/>
+<arg>//a[contains(@href,'edit')]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-11-14T16:18:15.541764" elapsed="0.032028"/>
 </kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.788784" level="INFO">${payload} = {"user_code":"SchoolLe","password":"Schools123@@@","type":"ORG_ADMIN"}</msg>
-<var>${payload}</var>
-<arg>${requests[0]['payload']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.787917" elapsed="0.000941"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-14T16:18:15.574453" level="INFO">https://app.panda.ennam.vn/product-management/category/edit/18933</msg>
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-14T16:18:15.574121" elapsed="0.000505"/>
 </kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.790317" level="INFO">${body} = {"success":false,"statusCode":401,"message":"AUTHENTICATION_FAILED","data":{"code":"AUT001"}}</msg>
-<var>${body}</var>
-<arg>${requests[0]['response']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.789004" elapsed="0.001433"/>
+<doc>Select a random category with 0 products (excluding "UNKNOWN") and click the (...) menu button.</doc>
+<status status="PASS" start="2025-11-14T16:18:11.331450" elapsed="4.243342"/>
 </kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.791011" level="INFO">&amp;{result} = { status=401 | body={"success":false,"statusCode":401,"message":"AUTHENTICATION_FAILED","data":{"code":"AUT001"}} | payload={"user_code":"SchoolLe","password":"Schools123@@@","type":"ORG_ADMIN"} | url...</msg>
-<var>&amp;{result}</var>
-<arg>status=${status}</arg>
-<arg>body=${body}</arg>
-<arg>payload=${payload}</arg>
-<arg>url=${url}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.790615" elapsed="0.000476"/>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-14T16:18:17.576533" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-14T16:18:15.574999" elapsed="2.003394"/>
 </kw>
-<return>
-<value>${result}</value>
-<status status="PASS" start="2025-11-10T11:50:39.791262" elapsed="0.000084"/>
-</return>
-<msg time="2025-11-10T11:50:39.791500" level="INFO">${result} = {'status': 401, 'body': '{"success":false,"statusCode":401,"message":"AUTHENTICATION_FAILED","data":{"code":"AUT001"}}', 'payload': '{"user_code":"SchoolLe","password":"Schools123@@@","type":"ORG_ADMI...</msg>
-<var>${result}</var>
-<arg>${driver}</arg>
-<status status="PASS" start="2025-11-10T11:50:39.773532" elapsed="0.018364"/>
+<status status="PASS" start="2025-11-14T16:18:11.331122" elapsed="6.247776"/>
 </kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.793327" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${result.status}</arg>
-<arg>${Status_401}</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.792129" elapsed="0.001563"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.794918" level="INFO">${request_payload} = {'user_code': 'SchoolLe', 'password': 'Schools123@@@', 'type': 'ORG_ADMIN'}</msg>
-<var>${request_payload}</var>
-<arg>json.loads('''${result.payload}''')</arg>
-<arg>json</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.793913" elapsed="0.001096"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${request_payload['user_code']}</arg>
-<arg>${Valid_UserID}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.795150" elapsed="0.001318"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${request_payload['password']}</arg>
-<arg>${Invalid_Password}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.796664" elapsed="0.002605"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${request_payload['type']}</arg>
-<arg>${Type}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.799913" elapsed="0.001334"/>
-</kw>
-<kw name="Parse Response API" owner="Common">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.802687" level="INFO">${response_json} = {'success': False, 'statusCode': 401, 'message': 'AUTHENTICATION_FAILED', 'data': {'code': 'AUT001'}}</msg>
-<var>${response_json}</var>
-<arg>json.loads('''${body}''')</arg>
-<arg>json</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.802429" elapsed="0.000358"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.803787" level="INFO">${success} = False</msg>
-<var>${success}</var>
-<arg>${response_json['success']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.802919" elapsed="0.000941"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.804938" level="INFO">${statusCode} = 401</msg>
-<var>${statusCode}</var>
-<arg>${response_json['statusCode']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.803984" elapsed="0.001026"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.806384" level="INFO">${message} = AUTHENTICATION_FAILED</msg>
-<var>${message}</var>
-<arg>${response_json['message']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.805133" elapsed="0.001507"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.807674" level="INFO">${data} = {'code': 'AUT001'}</msg>
-<var>${data}</var>
-<arg>${response_json['data']}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.806780" elapsed="0.001049"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.808717" level="INFO">&amp;{parsed} = { success=False | statusCode=401 | message=AUTHENTICATION_FAILED | data={'code': 'AUT001'} }</msg>
-<var>&amp;{parsed}</var>
-<arg>success=${success}</arg>
-<arg>statusCode=${statusCode}</arg>
-<arg>message=${message}</arg>
-<arg>data=${data}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.808014" elapsed="0.000915"/>
-</kw>
-<return>
-<value>&amp;{parsed}</value>
-<status status="PASS" start="2025-11-10T11:50:39.809039" elapsed="0.000079"/>
-</return>
-<msg time="2025-11-10T11:50:39.809347" level="INFO">&amp;{parsed} = { success=False | statusCode=401 | message=AUTHENTICATION_FAILED | data={'code': 'AUT001'} }</msg>
-<var>&amp;{parsed}</var>
-<arg>${result.body}</arg>
-<status status="PASS" start="2025-11-10T11:50:39.801476" elapsed="0.007941"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.810454" level="INFO">Argument types are:
-&lt;class 'bool'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${parsed.success}</arg>
-<arg>${Boolean_False}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.809564" elapsed="0.000986"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.811531" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${parsed.statusCode}</arg>
-<arg>${Status_401}</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.810675" elapsed="0.000942"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${parsed.message}</arg>
-<arg>${EXPECTED_ERROR_MESSAGE_SignIn_Payload}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.811737" elapsed="0.001090"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${parsed.data.code}</arg>
-<arg>${EXPECTED_ERROR_MESSAGE_API}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.812970" elapsed="0.000899"/>
-</kw>
-<status status="PASS" start="2025-11-10T11:50:37.726618" elapsed="2.087401"/>
-</kw>
-<kw name="Then Check validation error message" owner="Common">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${Elm_message}</arg>
-<arg>15s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.814630" elapsed="0.073965"/>
-</kw>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2025-11-10T11:50:39.899977" level="INFO">${error_message_invalid} = Incorrect User ID or Password</msg>
-<var>${error_message_invalid}</var>
-<arg>${Elm_message}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.888893" elapsed="0.011235"/>
-</kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<arg>${error_message_invalid}</arg>
-<arg>${Expected_message}</arg>
-<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.900408" elapsed="0.000398"/>
-</kw>
-<kw name="Set Test Message" owner="BuiltIn">
-<msg time="2025-11-10T11:50:39.901195" level="INFO">Set test message to:
-validation error message with 'Incorrect User ID or Password'</msg>
-<arg>validation error message with '${error_message_invalid}'</arg>
-<doc>Sets message for the current test case.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.900961" elapsed="0.000348"/>
-</kw>
-<arg>${elm_error_message}</arg>
-<arg>${expected_error}</arg>
-<status status="PASS" start="2025-11-10T11:50:39.814270" elapsed="0.087140"/>
-</kw>
-<arg>${Valid_UserID}</arg>
-<arg>${Invalid_Password}</arg>
-<arg>${EXPECTED_ERROR_MESSAGE}</arg>
-<status status="PASS" start="2025-11-10T11:50:37.634139" elapsed="2.267355"/>
-</kw>
-<status status="PASS" start="2025-11-10T11:50:37.633715" elapsed="2.268178">validation error message with 'Incorrect User ID or Password'</status>
-</test>
 <kw name="Basic TearDowns" owner="Common" type="TEARDOWN">
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-11-10T11:50:42.906070" level="INFO">Slept 3 seconds.</msg>
+<msg time="2025-11-14T16:18:20.582521" level="INFO">Slept 3 seconds.</msg>
 <arg>3</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-11-10T11:50:39.905319" elapsed="3.001269"/>
+<status status="PASS" start="2025-11-14T16:18:17.581522" elapsed="3.002099"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-11-10T11:50:42.907073" elapsed="0.101423"/>
+<status status="PASS" start="2025-11-14T16:18:20.584563" elapsed="0.147099"/>
 </kw>
-<status status="PASS" start="2025-11-10T11:50:39.904580" elapsed="3.104154"/>
+<status status="PASS" start="2025-11-14T16:18:17.580026" elapsed="3.151812"/>
 </kw>
-<status status="PASS" start="2025-11-10T11:50:33.852139" elapsed="9.156691"/>
+<status status="PASS" start="2025-11-14T16:18:06.452258" elapsed="14.279706"/>
+</test>
+<doc>Test cases for Delete Category functionality</doc>
+<status status="PASS" start="2025-11-14T16:18:06.296498" elapsed="14.435947"/>
 </suite>
 <statistics>
 <total>
-<stat pass="4" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Login DDT" id="s1" pass="4" fail="0" skip="0">Login DDT</stat>
+<stat name="DeleteCategory" id="s1" pass="1" fail="0" skip="0">DeleteCategory</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-11-10T11:50:39.782110" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
 </errors>
 </robot>

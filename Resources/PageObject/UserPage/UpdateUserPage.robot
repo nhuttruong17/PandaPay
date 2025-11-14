@@ -34,17 +34,17 @@ ${Min_UserID}      xpath=//p[normalize-space(text())='User ID must be at least 8
 ${Max_UserID}      xpath=//p[normalize-space(text())='User ID must be at most 20 characters.']
 
 #Xpath First Name
-${Empty_FirstName}    xpath=//p[normalize-space(text())='The First Name cannot be empty']
-${Min_FirstName}    xpath=//p[normalize-space(text())='First name must be at least 2 characters.']
-${Max_FirstName}    xpath=//p[normalize-space(text())='First name must be at most 50 characters.']
+${Empty_FirstName}   xpath=//p[normalize-space(text())='The First Name cannot be empty']
+${Min_FirstName}     xpath=//p[normalize-space(text())='First name must be at least 2 characters.']
+${Max_FirstName}     xpath=//p[normalize-space(text())='First name must be at most 50 characters.']
 
 #Xpath Last Name
 ${Empty_LastName}    xpath=//p[normalize-space(text())='The Last Name cannot be empty']
-${Min_LastName}    xpath=//p[normalize-space(text())='Last Name must be at least 2 characters.']
-${Max_LastName}    xpath=//p[normalize-space(text())='Last Name must be at most 50 characters.']
+${Min_LastName}      xpath=//p[normalize-space(text())='Last Name must be at least 2 characters.']
+${Max_LastName}      xpath=//p[normalize-space(text())='Last Name must be at most 50 characters.']
 
 #Xpath Email
-${Empty_Email}    //p[normalize-space(text())='Email is required.']
+${Empty_Email}      //p[normalize-space(text())='Email is required.']
 ${Invalid_Email}    //p[normalize-space(text())='Not a valid email address.']
 
 #Xpath Phone Number
@@ -56,15 +56,15 @@ ${Max_Address}      //p[normalize-space(text())='Address must be at most 280 cha
 ${VALID_ADDRESS}        123 Test Street
 
 #Xpath Password
-${Empty_Password}    //p[normalize-space(text())='Password is required.']
-${Min_Password}    //p[normalize-space(text())='Password must be at least 8 characters.']
-${Missing_Uppercase}    //p[normalize-space(text())='Password must contain at least one uppercase letter.']
-${Missing_Lowercase}    //p[normalize-space(text())='Password must contain at least one lowercase letter.']
-${Missing_OneNumber}    //p[normalize-space(text())='Password must contain at least one number.']
-${Missing_SpecialChar}    //p[normalize-space(text())='Password must contain at least one special character.']
+${Empty_Password}          //p[normalize-space(text())='Password is required.']
+${Min_Password}            //p[normalize-space(text())='Password must be at least 8 characters.']
+${Missing_Uppercase}       //p[normalize-space(text())='Password must contain at least one uppercase letter.']
+${Missing_Lowercase}       //p[normalize-space(text())='Password must contain at least one lowercase letter.']
+${Missing_OneNumber}       //p[normalize-space(text())='Password must contain at least one number.']
+${Missing_SpecialChar}     //p[normalize-space(text())='Password must contain at least one special character.']
 
 #Xpath Confirm Password
-${Empty_ConfirmPassword}    //p[normalize-space(text())='Confirm password is required.']
+${Empty_ConfirmPassword}        //p[normalize-space(text())='Confirm password is required.']
 ${Mismatch_ConfirmPassword}    //p[normalize-space(text())='Confirm Passwords do not match.']
 
 ${Phone_number_exist}    3693256983

@@ -20,24 +20,21 @@ Check validation max Category Name error on Create Product Page
     When Input Category Name    ${LONG_STRING_51}
     And Click on Element    ${Submit_BUTTON_Product}
     Then Verify Error Message For Max Category Name
+    # [Teardown]    Basic TearDowns
+
+Create Category with existing Category Name on Create Category Page
+    Given User on at Create Category Page
+    When Input Category Name    ${Category_exist}
+    And Click Submit button and wait for response Existing Category Name
+    Then Verify Error Message For Exist Category Name
+    # [Teardown]    Basic TearDowns
+
+Create Category with valid information on Create Category Page
+    Given User on at Create Category Page
+    When Input Category Name    ${New_Name_Category}
+    And Click Submit button and wait for response Valid Category Name
+    Then Veridy Success Message For Create Category
     [Teardown]    Basic TearDowns
-
-# Not yet verify
-# Create Category with existing Category Name on Create Category Page
-#     Given User on at Create Category Page
-#     When Input Category Name    ${Category_exist}
-#     And Click Submit button and wait for response Existing Category Name
-#     [Teardown]    Basic TearDowns
-
-# Create Category with valid information on Create Category Page
-#     Given User on at Create Category Page
-#     When Input Category Name    Helloworld
-#     And Click Submit button and wait for response Valid Category Name
-#     [Teardown]    Basic TearDowns
-
-
-
-
 
 *** Keywords ***
 Open Browser and Go To Create Category Page
@@ -60,3 +57,9 @@ Verify Error Message For Max Category Name
 
 # Verify No Error Message For Valid Category Name
 #     Page Should Not Contain           xpath=//p[normalize-space(text())='SKU must be at most 50 characters.']    SKU must be at most 50 characters.
+
+Verify Error Message For Exist Category Name
+    Check validation error message    xpath=//div[@class="text-sm opacity-90"]    • Category name already exists
+
+Veridy Success Message For Create Category
+    Check validation error message    xpath=//div[@class="text-sm opacity-90"]     Create new category success

@@ -1,12 +1,12 @@
 *** Settings ***
-Documentation    Test cases for Update Products functionality
+Documentation    Test cases for Delete Products functionality
 Resource    ../../Resources/PageObject/ProductsPage/DeleteProductPage.robot
 *** Test Cases ***
 Delete Product Successfully
     Given Open Browser and Go To Delete Products Page
     When Choose Product Random Product From List
     And Click Submit button and wait for response Delete Product
-    Then Veridy Success Message For Delete Product
+    Then Verify Success Message For Delete Product
     [Teardown]    Basic TearDowns
 
 ** Keywords **
@@ -20,6 +20,6 @@ Choose Product Random Product From List
     Sleep    2s
     Click on Element    ${DELETE_PRODUCTS_BUTTON}
 
-Veridy Success Message For Delete Product
+Verify Success Message For Delete Product
     Check validation error message    //div[@class="text-sm opacity-90"]    Delete product success
     

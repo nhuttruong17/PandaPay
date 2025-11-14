@@ -1,34 +1,38 @@
 *** Settings ***
-Documentation    Page Object for Delete Product functionality
-Resource    ../../../TestData/Browser/Global.robot
-Resource    ../../../TestKeyWords/Common.robot
+Documentation    Page Object for Delete Category functionality
+Resource    ../../../../TestData/Browser/Global.robot
+Resource    ../../../../TestKeyWords/Common.robot
 Library    SeleniumLibrary
 Library    Collections
 *** Variables ***
 ###Buttons###
 ${Tab_PRODUCTS_BUTTON}           xpath=//button[normalize-space()='Product']
+${LIST_CATEGORY_BUTTON}        xpath=//button[normalize-space()='Category List']
 ${DELETE_PRODUCTS_BUTTON}        xpath=//button[normalize-space()='Delete product']
 ${CONFIRM_PRODUCTS_BUTTON}        xpath=//button[normalize-space()='Confirm']
 ###API###
 ${Delete_Product_API}            api/products/
 
+${Random_click...}        //tr[     .//td[1]//span[@class="ml-2 text-sm font-medium leading-none"][text()!='UNKNOWN']     and     number(normalize-space(.//td[2]//span[@class="ml-2 text-sm font-medium leading-none"]/text()[1])) = 0 ]//button[contains(@aria-haspopup,'menu')]
 
 *** Keywords ***
-Select Product Random Product From List
-    [Documentation]    Collect visible user rows from the users table and click one at random.
-    SeleniumLibrary.Wait Until Element Is Visible    xpath=//table//tbody//tr    20s
-    ${rows}=    SeleniumLibrary.Get WebElements    xpath=//table//tbody//tr
-    Log    ${rows}
-    ${count}=    Get Length    ${rows}
-    Run Keyword If    ${count} == 0    Fail    No user rows found to click
-    ${index}=    Evaluate    random.randint(0, ${count}-1)    modules=random
-    ${row}=    Collections.Get From List    ${rows}    ${index}
-    Log    ${rows}
-    # Try to scroll the row into view, then click it (use SeleniumLibrary explicitly to avoid conflicts)
-    Run Keyword And Ignore Error    SeleniumLibrary.Scroll Element Into View    ${row}
-    SeleniumLibrary.Click Element    ${row}
 
-Click Submit button and wait for response Delete Product
+
+
+Select Category Random Category From List
+    [Documentation]    Select a random category with 0 products (excluding "UNKNOWN") and click the (...) menu button.
+    SeleniumLibrary.Wait Until Element Is Visible    ${Random_click...}    10s
+    ${valid_rows}=    SeleniumLibrary.Get WebElements    ${Random_click...}
+    Log    ${valid_rows}
+    ${total_rows}=    Get Length    ${valid_rows}
+    SeleniumLibrary.Click Element    ${Random_click...}
+    Sleep    2s
+    ${url}=    SeleniumLibrary.Get Element Attribute    //a[contains(@href,'edit')]    href
+    Log    ${url}
+    # SeleniumLibrary.Click Element    //a[contains(@href,'edit')]
+
+
+Click Submit button and wait for response Delete Category
     ${url}=    SeleniumLibrary.Get Location
     ${id}=     Evaluate    re.search(r'/detail/([0-9]+)(?:[/?]|$)', """${url}""").group(1)    re
     Log    ${id}

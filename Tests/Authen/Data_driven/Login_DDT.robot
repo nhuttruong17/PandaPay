@@ -14,9 +14,6 @@ Valid UserId, Ivalid Password                         [Template]       Verify lo
                                                       ${Valid_UserID}                     ${Invalid_Password}           ${EXPECTED_ERROR_MESSAGE}    
 
 
-
-
-
 *** Keywords ***
 Validation text error message
     [Arguments]    ${username}    ${password}    ${expected_error}
