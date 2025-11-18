@@ -4,6 +4,7 @@ Resource    ../../../TestData/Browser/Global.robot
 Resource    ../../../TestKeyWords/Common.robot
 Library    SeleniumLibrary
 Library    Collections
+Library    FakerLibrary
 
 *** Variables ***
 ${UPDATE_PRODUCTS_BUTTON}        xpath=//button[normalize-space()='Update product']
@@ -51,9 +52,8 @@ Input Description
     Fill Text Input    ${DESCRIPTION_INPUT}    ${description}
 
 Select Category
-    # [Arguments]    ${category}
-    Click on Element    //select[@aria-hidden='true']/option[@value='18797']
-    # Click on Element    xpath=//li[normalize-space()='${category}']
+    SeleniumLibrary.Wait Until Element Is Visible    xpath=//select[@aria-hidden='true']/option[2]        20s
+    Click on Element    xpath=//select[@aria-hidden='true']/option[2]
     
 Select Product Random Product From List
     [Documentation]    Collect visible user rows from the users table and click one at random.
@@ -133,7 +133,7 @@ Click Submit button and wait for response Valid Information
     Should Be Equal As Integers    ${result.status}    ${Status_202}
     #Verify request payload
     ${request_payload}=    Evaluate    json.loads('''${result.payload}''')    json
-    Should Be Equal As Strings    ${request_payload['code']}    Pikachu
+    Should Be Equal As Strings    ${request_payload['code']}    ${New_SKU}
     Log    ${request_payload}
     #Verify response
     &{parsed}=    Parse Response API   ${result.body}
@@ -163,4 +163,8 @@ Click Random Product AndGetCodeFromResponse
     # @{reqs}=    Network.Get Intercepted Requests    ${driver.driver}    api/products/    GET    10    require_response=True
     # Log    ${reqs}
     # Network.Stop Network Interception    ${driver.driver}
-    
+
+Generate Random Data New SKU
+    ${New_SKU}=    FakerLibrary.Word
+    Log    ${New_SKU}
+    Set Suite Variable    ${New_SKU}

@@ -4,6 +4,7 @@ Resource    ../../../../TestData/Browser/Global.robot
 Resource    ../../../../TestKeyWords/Common.robot
 Library    SeleniumLibrary
 Library    Collections
+Library     FakerLibrary
 
 *** Variables ***
 ###Buttons###
@@ -21,7 +22,6 @@ ${Category_exist}                NikeSchoe
 ${MIN_STRING_1}                  A    
 ${LONG_STRING_51}                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
-${New_Name_Category}            Nobi
 *** Keywords ***
 Input Category Name
     [Arguments]    ${category_name}
@@ -65,3 +65,8 @@ Click Submit button and wait for response Valid Category Name
     Should Be Equal As Integers    ${parsed.statusCode}    ${Status_201}
     Should Be Equal As Strings    ${parsed.message}    CREATE_SUCCESS
     Log    ${parsed}
+
+Generate Random Data New Category
+    ${New_Name_Category}=    FakerLibrary.Word
+    Log    ${New_Name_Category}
+    Set Suite Variable    ${New_Name_Category}

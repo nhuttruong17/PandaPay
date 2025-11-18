@@ -2,7 +2,6 @@
 Library     SeleniumLibrary
 Resource    ../TestData/Browser/Global.robot
 Library     ../LibPy/FinalNetwork.py    WITH NAME    Network
-# Library     ../../../LibPy/FinalNetwork.py    WITH NAME    Network
 Library     AppiumLibrary
 Library     OperatingSystem
 
@@ -60,16 +59,19 @@ API Request With Params
     ${response}=    Run Keyword   ${Method}  url=${API_URL}    params=${params}    expected_status=${Expected_Status_Code}
     RETURN          ${response}
 #API  Request#
+
 ##Fill Text Input WEB ##
 Fill Text Input
     [Arguments]    ${elm_input}    ${text}
     SeleniumLibrary.Wait Until Element Is Visible    ${elm_input}    10s
     SeleniumLibrary.Input Text    ${elm_input}    ${text}
+
 ##Click on element WEB ##
 Click on Element
     [Arguments]    ${elm_input}
     SeleniumLibrary.Wait Until Element Is Visible    ${elm_input}    10s
     SeleniumLibrary.Click Element    ${elm_input}
+
 ##Check Validation Text ##
 Check validation error message
     [Arguments]    ${Elm_message}      ${Expected_message}
@@ -77,7 +79,8 @@ Check validation error message
     ${error_message_invalid} =    SeleniumLibrary.Get Text    ${Elm_message}
     Should Be Equal As Strings    ${error_message_invalid}     ${Expected_message}    Validation text successfully -> Expected: '${Expected_message}', Observed: '${error_message_invalid}'
     Set Test Message    validation error message with '${error_message_invalid}'
-##Check Validation Text ##
+
+##Generate Password##
 Generate Secure Password
     ${uppercase}=    Evaluate    random.choice(string.ascii_uppercase)    modules=random,string
     ${lowercase}=    Evaluate    random.choice(string.ascii_lowercase)    modules=random,string
@@ -87,7 +90,7 @@ Generate Secure Password
     ${password}=     Set Variable    ${uppercase}${lowercase}${digit}${special}${remaining}
     ${shuffled}=     Evaluate    ''.join(random.sample(list('${password}'), len('${password}')))    modules=random
     RETURN    ${shuffled}
-##Request Payload###
+
 
 ## Scroll helpers ##
 Scroll Page By Pixels
@@ -135,13 +138,14 @@ Parse Response API
 ##Request Payload###
 
 
-
 ##Mobile
 Basic Setup iOS
     Open Application    ${APPIUM_SERVER_URL}    platformName=${PLATFORM_NAME}   appium:automationName=${AUTOMATION_NAME}    appium:udid=${UDID}     appium:bundleId=${BUNDLE_ID}
+
 Basic TearDowns iOS
     Sleep    3
     Close Application
+
 ##Fill Text Input mobile ##
 Fill Text Input mobile
     [Arguments]    ${elm_input}    ${text}
@@ -160,7 +164,6 @@ Check validation error message mobile
     Should Be Equal As Strings    ${error_message_invalid}     ${Expected_message}    Validation text successfully -> Expected: '${Expected_message}', Observed: '${error_message_invalid}'
     Set Test Message   validation error message with '${error_message_invalid}'
 ##Mobile IOS
-
 
 *** Variables ***
 #Method#

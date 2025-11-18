@@ -1,23 +1,23 @@
 *** Settings ***
 Resource    ../../TestKeyWords/Common.robot
 *** Variables ***
-${Valid_userID}    abc1111456
+${Valid_userID}         abc1111456
 ${Email_UserID_Valid}   abcd@yopmail.com
-${userID_Invalid}    abc1111457
-${userID_Johny}    HUYHOANGHUYNH123
-${Email_Johny}   johnny@bizbookly.com
-${PhoneNumber_Johny}   9722659011
-${Type_Email}     EMAIL
+${userID_Invalid}       abc1111457
+${userID_Johny}         HUYHOANGHUYNH123
+${Email_Johny}          johnny@bizbookly.com
+${PhoneNumber_Johny}    9722659011
+${Type_Email}          EMAIL
 ${Type_PhoneNumber}    PHONE_NUMBER
 ${EXPECTED_SUCCESS_MESSAGE_API}    Send OTP successfully
-${userID_Schoolinactive}    Schoolinactive
+${userID_Schoolinactive}           Schoolinactive
 ${userID_SchoolLe}    SchoolLe
-${Old_password}    School123@
-${token_Invalid}    100000
+${Old_password}       School123@
+${token_Invalid}      100000
 ${token_empty}
 ## Data validation text Password
 ${Empty_textPassword}
-${Min_textPassword}    ab
+${Min_textPassword}     ab
 ${Missing_Uppercase}    abcdefghijklmnop
 ${Missing_Lowercase}    ABCDEFGHIJKLMNOP
 ${Missing_OneNumber}    abcdefghijAA

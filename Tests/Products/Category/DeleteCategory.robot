@@ -2,11 +2,12 @@
 Documentation    Test cases for Delete Category functionality
 Resource    ../../../Resources/PageObject/ProductsPage/CategoryPage/DeleteCategoryPage.robot
 *** Test Cases ***
-Delete Product Successfully
+Verify System Delete Category Successfully
+    [Documentation]    Verify that the system can delete a category successfully from the list
+    [Tags]    Category    Delete    Positive
     Given Open Browser and Go To Delete Category Page
-    When Choose Category Random Category From List
-    # And Click Submit button and wait for response Delete Category
-    # Then Verify Success Message For Delete Category
+    When Choose Category Random And Delete Category From List
+    Then Verify Success Message For Delete Category
     [Teardown]    Basic TearDowns
 
 ** Keywords **
@@ -16,10 +17,9 @@ Open Browser and Go To Delete Category Page
     Click on Element    ${Tab_PRODUCTS_BUTTON}
     Click on Element    ${LIST_CATEGORY_BUTTON}
 
-Choose Category Random Category From List
-    Select Category Random Category From List
+Choose Category Random And Delete Category From List
+    Select Category and Click on Delete Category From List
     Sleep    2s
-    # Click on Element    ${DELETE_PRODUCTS_BUTTON}
 
 Verify Success Message For Delete Category
     Check validation error message    //div[@class="text-sm opacity-90"]    Delete category success

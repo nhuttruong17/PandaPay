@@ -4,6 +4,7 @@ Resource    ../../../TestData/Browser/Global.robot
 Resource    ../../../TestKeyWords/Common.robot
 Library    SeleniumLibrary
 Library    Collections
+Library    FakerLibrary
 
 *** Variables ***
 ###Buttons###
@@ -41,9 +42,10 @@ Input Description
     Fill Text Input    ${DESCRIPTION_INPUT}    ${description}
 
 Select Category
-    # [Arguments]    ${category}
-    Click on Element    //select[@aria-hidden='true']/option[@value='18797']
-    # Click on Element    xpath=//li[normalize-space()='${category}']
+    SeleniumLibrary.Wait Until Element Is Visible    xpath=//select[@aria-hidden='true']/option[2]        20s
+    Click on Element    xpath=//select[@aria-hidden='true']/option[2]
+    # SeleniumLibrary.Wait Until Element Is Visible    xpath=//select[@aria-hidden='true']/option[@value='18796']        20s
+    # Click on Element    xpath=//select[@aria-hidden='true']/option[@value='18796']
 
 Click Submit button and wait for response Existing SKU
     #Prepare for request interception
@@ -75,7 +77,7 @@ Click Submit button and wait for response Valid Information
     Should Be Equal As Integers    ${result.status}    ${Status_201}
     #Verify request payload
     ${request_payload}=    Evaluate    json.loads('''${result.payload}''')    json
-    Should Be Equal As Strings    ${request_payload['code']}    Cownsdown
+    Should Be Equal As Strings    ${request_payload['code']}    ${New_SKU}
     Log    ${request_payload}
     #Verify response
     &{parsed}=    Parse Response API   ${result.body}
@@ -83,3 +85,8 @@ Click Submit button and wait for response Valid Information
     Should Be Equal As Integers    ${parsed.statusCode}    ${Status_201}
     Should Be Equal As Strings    ${parsed.message}    CREATE_SUCCESS
     Log    ${parsed}
+
+Generate Random Data New SKU
+    ${New_SKU}=    FakerLibrary.Word
+    Log    ${New_SKU}
+    Set Suite Variable    ${New_SKU}

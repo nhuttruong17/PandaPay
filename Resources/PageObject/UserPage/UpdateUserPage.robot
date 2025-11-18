@@ -111,7 +111,6 @@ Input Address
 Select User Role
     Click on Element    xpath=//select[@aria-hidden='true']/option[@value='8']
 
-
 Click Update Submit
     Click on Element    ${UPDATE_USER_SUBMIT}
 
@@ -193,7 +192,6 @@ Click Submit button and wait for response update user successfully
 
     Network.Clear Intercepted Requests    ${driver.driver}
 
-    
     #Get Update Request
     ${profile_request}=    Network.Wait For Request    ${driver.driver}    ${Create_User_API}${id}/    ${Method_PUT}    timeout=10    
    
@@ -208,24 +206,3 @@ Click Submit button and wait for response update user successfully
     Should Be Equal As Integers    ${parsed.statusCode}    ${Status_202}
     Should Be Equal As Strings    ${parsed.message}    UPDATE_DATA_SUCCEEDED
     Network.Stop Network Interception    ${driver.driver}    
-
-
-
-
-    # ${driver}=    Get Library Instance    SeleniumLibrary
-    # Click on Element    xpath=/html/body/div[1]/div/main/div/div/form/button
-    # Network.Start Network Interception    ${driver.driver}
-    # # Clear any existing requests
-    # Network.Clear Intercepted Requests    ${driver.driver}
-    # # Wait for profile request
-    # ${profile_request}=    Network.Wait For Request    ${driver.driver}    ${Create_User_API}    POST    10
-    # Log    ${profile_request}
-    # # Parse and verify profile data
-    # ${response}=    Set Variable    ${profile_request['response']}
-    # Log    ${response}
-    # ${parsed}=    Parse Response API    ${response}
-    # Log    ${parsed}
-    # Should Be Equal As Strings    ${parsed.success}    ${Boolean_True}
-    # Should Be Equal As Integers    ${parsed.statusCode}    ${Status_201}
-    # Should Be Equal As Strings    ${parsed.message}    CREATE_SUCCESS
-    # Network.Stop Network Interception    ${driver.driver}

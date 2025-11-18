@@ -6,20 +6,8 @@ Resource    ../../TestKeyWords/Common.robot
 Resource    ../../Resources/PageObject/LoginPage/LoginPage.robot
 Resource    ../../TestData/LoginData/LoginData.robot
 
-# Suite Setup     Basic Setup
-Library     FakerLibrary
 
 *** Test Cases ***
-# Save Session After Login (profile)
-#     [Documentation]    Login once using a Chrome profile and close browser (profile will keep session)
-#     [Tags]    session    save
-#     # Open Browser To Create User Page
-#     Fill Text Input    ${input_UserID}    ${Valid_UserID}
-#     Fill Text Input    ${input_Password}    ${Valid_Password}
-#     Click on SignIn with Wait Response login successfully
-#     Save Browser Session
-#     [Teardown]    Close Browser
-
 # Check validation empty UserID error on Create User Page
 #     [Documentation]    Verify validation message for empty UserID on Create User form
 #     [Tags]    validation    create_user
@@ -459,7 +447,15 @@ Verify Error Message For Existing Phone Number
 Verify Sucessfully Message For Create User
     Check validation error message    //div[@class="text-sm opacity-90"]    User created successfully.
 
-
+# Save Session After Login (profile)
+#     [Documentation]    Login once using a Chrome profile and close browser (profile will keep session)
+#     [Tags]    session    save
+#     # Open Browser To Create User Page
+#     Fill Text Input    ${input_UserID}    ${Valid_UserID}
+#     Fill Text Input    ${input_Password}    ${Valid_Password}
+#     Click on SignIn with Wait Response login successfully
+#     Save Browser Session
+#     [Teardown]    Close Browser
 
 
 
