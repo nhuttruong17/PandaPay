@@ -3,6 +3,7 @@ Documentation    Page Object for Create User functionality
 Resource    ../../../TestData/Browser/Global.robot
 Resource    ../../../TestKeyWords/Common.robot
 Library    SeleniumLibrary
+Library    FakerLibrary
 
 *** Variables ***
 ${USER_ID_INPUT}             //*[@name="user_id"]
@@ -27,6 +28,8 @@ ${CREATE_USER_SUBMIT}        xpath=/html/body/div[1]/div/main/div/div/form/butto
 ${Create_User_API}           api/admin/user/
 
 ${UserID_exist}         School1190
+${Email_Exist}          kai@exnodes.vn
+${Phonenumber_Exist}    9977686888   
 
 ${VALID_New_USER_ID}    Kids_User_01
 ${VALID_FIRST_NAME}     John
@@ -224,3 +227,27 @@ Click Submit button and wait for response create user successfully
     Should Be Equal As Strings    ${parsed.message}    CREATE_SUCCESS
     Network.Stop Network Interception    ${driver.driver}
 
+Generate Data User Information 
+    ${Gen_UserID}=    FakerLibrary.Word
+    Log    ${Gen_UserID}
+    Set Suite Variable    ${Data_UserID}    ${Gen_UserId}Exnodes
+    Log    ${Data_UserID}
+
+    ${Gen_Firstname}=    FakerLibrary.First Name
+    Set Suite Variable    ${Gen_Firstname}
+    Log    ${Gen_Firstname}
+    
+    ${Gen_Lastname}=    FakerLibrary.Last Name
+    Set Suite Variable    ${Gen_Lastname}
+    Log    ${Gen_Lastname}
+
+    ${Gen_Email}=    FakerLibrary.Email
+    Set Suite Variable    ${Gen_Email}
+    Log    ${Gen_Email}
+
+    ${Gen_Phonenumber}=    FakerLibrary.Basic Phone Number
+    Set Suite Variable    ${Gen_Phonenumber}
+    Log    ${Gen_Phonenumber}
+
+
+    

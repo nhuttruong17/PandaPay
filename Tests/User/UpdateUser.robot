@@ -174,6 +174,7 @@ Go To Update User Page
     Select User Random User From List
     Click on Element    ${UPDATE_USER_BUTTON}
     Sleep    5s
+    Generate Data User Information
 
 #First Name    
 Verify Error Message For Empty First Name
@@ -241,18 +242,18 @@ User Input Information with Existing Existing Email
 User Input Information with Existing Phone Number
     # Input First Name     Nhut
     # Input Last Name      Minh
-    Input Email     minh1212@yopmail.com
+    Input Email           ${Gen_Email}
     Input Phone Number    ${Phone_number_exist}
     # Input Date Of Birth    ${VALID_DOB}
     # Input Address    ${VALID_ADDRESS}
    
 User Input Valid Information for New User
-    Input First Name     When
-    Input Last Name      What
-    Input Email     what@yopmail.com
-    Input Phone Number    9111688000
-    Input Date Of Birth    ${VALID_DOB}
-    Input Address    ${VALID_ADDRESS}
+    Input First Name      ${Gen_Firstname}
+    Input Last Name       ${Gen_Lastname}
+    Input Email           ${Gen_Email}
+    Input Phone Number    ${Gen_Phonenumber}
+    Input Date Of Birth   ${VALID_DOB}
+    Input Address         ${VALID_ADDRESS}
 
 Verify Error Message For Existing Email
     Check validation error message    //div[@class="text-sm opacity-90"]    • Email already used

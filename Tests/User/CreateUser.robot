@@ -6,7 +6,6 @@ Resource    ../../TestKeyWords/Common.robot
 Resource    ../../Resources/PageObject/LoginPage/LoginPage.robot
 Resource    ../../TestData/LoginData/LoginData.robot
 
-
 *** Test Cases ***
 # Check validation empty UserID error on Create User Page
 #     [Documentation]    Verify validation message for empty UserID on Create User form
@@ -275,6 +274,7 @@ Open Browser To Create User Page
     Restore Browser Session
     Click on Element    ${Tab_USER_BUTTON}
     Click on Element    ${CREATE_USER_BUTTON}
+    Generate Data User Information
 
 On screen Create User Page
     No Operation
@@ -375,10 +375,10 @@ Verify Error Message For Mismatch Confirm Password
 #Input Information
 User Input Information with Existing User ID
     Input User ID        ${UserID_exist}
-    Input First Name     Nhut
-    Input Last Name      Minh
-    Input Email     minh2@yopmail.com
-    Input Phone Number    9977686113
+    Input First Name     ${Gen_Firstname}
+    Input Last Name      ${Gen_Lastname}
+    Input Email          ${Gen_Email}
+    Input Phone Number    ${Gen_Phonenumber}
     Input Date Of Birth    ${VALID_DOB}
     Input Address    ${VALID_ADDRESS}
     Scroll To Bottom
@@ -392,13 +392,13 @@ User Input Information with Existing User ID
     # Select Organization    Default Organization
 
 User Input Information with Existing Existing Email
-    Input User ID        School11122
-    Input First Name     Nhut
-    Input Last Name      Minh
-    Input Email     minh@yopmail.com
-    Input Phone Number    9977686113
-    Input Date Of Birth    ${VALID_DOB}
-    Input Address    ${VALID_ADDRESS}
+    Input User ID         ${Data_UserID}
+    Input First Name      ${Gen_Firstname}
+    Input Last Name       ${Gen_Lastname}
+    Input Email           ${Email_Exist}
+    Input Phone Number    ${Gen_Phonenumber}
+    Input Date Of Birth   ${VALID_DOB}
+    Input Address         ${VALID_ADDRESS}
     # Scroll To Bottom
     
     Select User Role
@@ -407,26 +407,26 @@ User Input Information with Existing Existing Email
     Input Confirm Password     ${VALID_CONFIRM_PASSWORD}
 
 User Input Information with Existing Phone Number
-    Input User ID        School11333
-    Input First Name     Nhut
-    Input Last Name      Minh
-    Input Email     minh1212@yopmail.com
-    Input Phone Number    9977686888
-    Input Date Of Birth    ${VALID_DOB}
-    Input Address    ${VALID_ADDRESS}
+    Input User ID         ${Data_UserID}
+    Input First Name      ${Gen_Firstname}
+    Input Last Name       ${Gen_Lastname}
+    Input Email           ${Gen_Email}
+    Input Phone Number    ${Phonenumber_Exist}
+    Input Date Of Birth   ${VALID_DOB}
+    Input Address         ${VALID_ADDRESS}
     # Scroll To Bottom
     Select User Role
     Input Password Web         ${VALID_New_User_PASSWORD}
     Input Confirm Password     ${VALID_CONFIRM_PASSWORD}
 
 User Input Valid Information for New User
-    Input User ID        Spiderman
-    Input First Name     Man
-    Input Last Name      Root
-    Input Email     spider@yopmail.com
-    Input Phone Number    9111681903
-    Input Date Of Birth    ${VALID_DOB}
-    Input Address    ${VALID_ADDRESS}
+    Input User ID            ${Data_UserID}
+    Input First Name         ${Gen_Firstname}
+    Input Last Name          ${Gen_Lastname}
+    Input Email              ${Gen_Email}
+    Input Phone Number       ${Gen_Phonenumber}
+    Input Date Of Birth      ${VALID_DOB}
+    Input Address            ${VALID_ADDRESS}
     # Scroll To Bottom
 
     Select User Role

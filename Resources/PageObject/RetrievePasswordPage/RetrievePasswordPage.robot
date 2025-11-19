@@ -277,7 +277,6 @@ Check API send OTP, check token, retrieve password success with email
     ${retrieve_password}=   API Request    ${Method_PUT}    ${URL_Retrive}    ${PAYLOAD_RetriveSuccess}    ${Status_200}
     Should Contain    ${retrieve_password.content}    ${EXPECTED_SUCCESS_MESSAGE_Retrieve}
 
-
 ###Mobile Retrieve Password - IOS###
 Check validation text New Password & Confirm Password mobile
     Click on Element mobile    ${elm_showNewPassword}

@@ -5,6 +5,7 @@ Resource    ../../../../TestKeyWords/Common.robot
 Library    SeleniumLibrary
 Library    Collections
 Library    FakerLibrary
+
 *** Variables ***
 ###Buttons###
 ${Tab_PRODUCTS_BUTTON}           xpath=//button[normalize-space()='Product']
@@ -14,18 +15,15 @@ ${CONFIRM_PRODUCTS_BUTTON}       xpath=//button[normalize-space()='Confirm']
 ${Submit_BUTTON_Category}        xpath=/html/body/div[1]/div/main/div/form/button
 ###API###
 ${Update_Category_API}            api/categories/
-
 ${Random_ClickEdit}        //tr[     .//td[1]//span[@class="ml-2 text-sm font-medium leading-none"][text()!='UNKNOWN'] ]//button[contains(@aria-haspopup,'menu')]
-
 ${CATEGORY_NAME_INPUT}            xpath=//input[@placeholder='Enter Category Name']
-
 ###Data###
 ${Category_exist}                NikeSchoe
 ${MIN_STRING_1}                  A    
 ${LONG_STRING_51}                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 ${EMPTY}
-
 ${Category_exist}                NikeSchoe
+
 *** Keywords ***
 Input Category Name
     [Arguments]    ${category_name}

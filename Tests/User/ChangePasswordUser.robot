@@ -78,7 +78,6 @@ Verify Change Password User successfully
     [Documentation]    Verify Change Password User successfully
     [Tags]    change_password    positive
     Given Go to Change Password User Page
-    ${new_password}=    Generate Secure Password
     When Input New Password    ${new_password}
     And Input Confirm New Password    ${new_password}
     And Click Submit button and wait for response change password user successfully
@@ -94,6 +93,8 @@ Go to Change Password User Page
     Select User Random User From List
     Click on Element    ${Tab_ChangePassword}
     Sleep    5s
+    ${new_password}=    Generate Secure Password
+    Set Suite Variable    ${new_password}
 On screen Change Password User Page
     No Operation
 

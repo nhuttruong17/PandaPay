@@ -8,7 +8,6 @@ Library    FakerLibrary
 
 *** Variables ***
 ${UPDATE_PRODUCTS_BUTTON}        xpath=//button[normalize-space()='Update product']
-
 ###Input Fields###
 ${SKU_INPUT}                     xpath=//input[@placeholder='Enter SKU']
 ${PRODUCT_NAME_INPUT}            xpath=//input[@placeholder='Enter Product Name']
@@ -24,7 +23,6 @@ ${SKU_exist}                     AP2021
 ${LONG_STRING_51}                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 ${LONG_STRING_101}               AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 ${Long_String_501}               v
-
 
 *** Keywords ***
 Input SKU
@@ -68,10 +66,6 @@ Select Product Random Product From List
     # Try to scroll the row into view, then click it (use SeleniumLibrary explicitly to avoid conflicts)
     Run Keyword And Ignore Error    SeleniumLibrary.Scroll Element Into View    ${row}
     SeleniumLibrary.Click Element    ${row}
-    # Sleep    2s
-    # ${url}=    SeleniumLibrary.Get Location
-    # ${id}=     Evaluate    re.search(r'/detail/([0-9]+)', """${url}""").group(1)    re
-    # Log    ${id}
 
 Click Submit button and wait for response Invalid Price
     ${url}=    SeleniumLibrary.Get Location
@@ -141,28 +135,6 @@ Click Submit button and wait for response Valid Information
     Should Be Equal As Integers    ${parsed.statusCode}    ${Status_202}
     Should Be Equal As Strings    ${parsed.message}    UPDATE_DATA_SUCCEEDED
     Log    ${parsed}
-
-
-Click Random Product AndGetCodeFromResponse
-    [Documentation]    Click random product; nếu DOM không có code thì lấy code từ response GET chi tiết.
-    ${driver}=    Get Library Instance    SeleniumLibrary
-    Network.Start Network Interception    ${driver.driver}
-    Network.Clear Intercepted Requests    ${driver.driver}
-
-    # Click random product (bạn có sẵn keyword)
-    Select Product Random Product From List
-    Sleep    3s
-    
-    # SeleniumLibrary.Wait Until Element Is Visible    //p[contains(normalize-space(.), '#')]      15s
-    # ${text}=    SeleniumLibrary.Get Text    //p[contains(normalize-space(.), '#')]
-    # Log    ${text}
-    # ${sku}=    Evaluate    re.search(r'#([A-Za-z0-9]+)', """${text}""").group(1)    re
-    # Log    ${sku}
-    
-    # # Lấy requests api/products/ có response
-    # @{reqs}=    Network.Get Intercepted Requests    ${driver.driver}    api/products/    GET    10    require_response=True
-    # Log    ${reqs}
-    # Network.Stop Network Interception    ${driver.driver}
 
 Generate Random Data New SKU
     ${New_SKU}=    FakerLibrary.Word

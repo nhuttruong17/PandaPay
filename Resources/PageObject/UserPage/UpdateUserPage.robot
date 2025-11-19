@@ -4,6 +4,7 @@ Resource    ../../../TestData/Browser/Global.robot
 Resource    ../../../TestKeyWords/Common.robot
 Library    SeleniumLibrary
 Library    Collections
+Library    FakerLibrary
 
 *** Variables ***
 ${USER_ID_INPUT}             //*[@name="user_id"]
@@ -65,10 +66,10 @@ ${Missing_SpecialChar}     //p[normalize-space(text())='Password must contain at
 
 #Xpath Confirm Password
 ${Empty_ConfirmPassword}        //p[normalize-space(text())='Confirm password is required.']
-${Mismatch_ConfirmPassword}    //p[normalize-space(text())='Confirm Passwords do not match.']
+${Mismatch_ConfirmPassword}     //p[normalize-space(text())='Confirm Passwords do not match.']
 
 ${Phone_number_exist}    3693256983
-${Email_exist}        henry@exnodes.vn
+${Email_exist}        kai@exnodes.vn
 
 ${VALID_DOB}            11-10-2025
 *** Keywords ***
@@ -135,7 +136,6 @@ Click Submit button and wait for response Existing Email
     Log    ${text}
     ${id}=    Evaluate    re.search(r'#(\\d+)', """${text}""").group(1)    re
     Log    ${id}
-
     #Prepare for request interception
     ${driver}=    Prepare For Request Interception    api/admin/user/${id}/
     Click Update Submit
@@ -160,7 +160,6 @@ Click Submit button and wait for response Existing Phone Number
     Log    ${text}
     ${id}=    Evaluate    re.search(r'#(\\d+)', """${text}""").group(1)    re
     Log    ${id}
-
     #Prepare for request interception
     ${driver}=    Prepare For Request Interception    api/admin/user/${id}/
     Click Update Submit
@@ -185,24 +184,37 @@ Click Submit button and wait for response update user successfully
     Log    ${text}
     ${id}=    Evaluate    re.search(r'#(\\d+)', """${text}""").group(1)    re
     Log    ${id}
-
     ${driver}=    Get Library Instance    SeleniumLibrary
     Click Update Submit
     Network.Start Network Interception    ${driver.driver}
-
     Network.Clear Intercepted Requests    ${driver.driver}
-
-    #Get Update Request
+    #Get Request
     ${profile_request}=    Network.Wait For Request    ${driver.driver}    ${Create_User_API}${id}/    ${Method_PUT}    timeout=10    
-   
     Log    ${profile_request}
-
+    #Get Response
     ${response}=    Set Variable    ${profile_request['response']}
     Log    ${response}
     ${parsed}=    Parse Response API    ${response}
     Log    ${parsed}
-
     Should Be Equal As Strings    ${parsed.success}    ${Boolean_True}
     Should Be Equal As Integers    ${parsed.statusCode}    ${Status_202}
     Should Be Equal As Strings    ${parsed.message}    UPDATE_DATA_SUCCEEDED
     Network.Stop Network Interception    ${driver.driver}    
+
+Generate Data User Information 
+    ${Gen_Firstname}=    FakerLibrary.First Name
+    Set Suite Variable    ${Gen_Firstname}
+    Log    ${Gen_Firstname}
+    
+    ${Gen_Lastname}=    FakerLibrary.Last Name
+    Set Suite Variable    ${Gen_Lastname}
+    Log    ${Gen_Lastname}
+
+    ${Gen_Email}=    FakerLibrary.Email
+    Set Suite Variable    ${Gen_Email}
+    Log    ${Gen_Email}
+
+    ${Gen_Phonenumber}=    FakerLibrary.Basic Phone Number
+    Set Suite Variable    ${Gen_Phonenumber}
+    Log    ${Gen_Phonenumber}
+

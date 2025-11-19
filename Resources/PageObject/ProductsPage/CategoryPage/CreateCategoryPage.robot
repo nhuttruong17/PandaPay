@@ -12,9 +12,7 @@ ${Tab_PRODUCTS_BUTTON}           xpath=//button[normalize-space()='Product']
 ${CREATE_CATEGORY_BUTTON}        xpath=//button[normalize-space()='Create New Category']
 ${Submit_BUTTON_Product}         xpath=/html/body/div[1]/div/main/div/form/button
 ###Input Fields###
-
 ${CATEGORY_NAME_INPUT}            xpath=//input[@placeholder='Enter Category Name']
-
 ###API###
 ${Create_Category_API}            api/categories/
 ###Data###
