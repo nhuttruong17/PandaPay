@@ -2,6 +2,7 @@
 Documentation    Page Object for Reset & Send Password functionality
 Resource    ../../../TestData/Browser/Global.robot
 Resource    ../../../TestKeyWords/Common.robot
+Resource    ../../../Resources/PageObject/UserPage/UpdateUserPage.robot
 Library    SeleniumLibrary
 Library    Collections
 
@@ -11,8 +12,28 @@ ${Radio_PhoneNumber}                xpath=//label[@for='r2']
 ${RESETPASSWORD_USER_BUTTON}        xpath=//p[normalize-space()='Reset Password']
 ${ResetPassword_EndPoint}           api/admin/reset-password/
 ${Confirm_Button}                   xpath=//button[normalize-space()='Confirm']
+#Toast message
+${Reset_User_Password_Success}      //div[@class="text-sm opacity-90"]
+${Expected_User_Password_Success}   Reset user password successfully.
 
 *** Keywords ***
+Go To Reset Password User Page
+    Basic Setup
+    Restore Browser Session
+    Click on Element    ${Tab_USER_BUTTON}
+    Select User Random User From List
+    Click on Element    ${RESETPASSWORD_USER_BUTTON}
+    Sleep    5s
+
+Choose method Reset & Send Password to Email
+    Click on Element    ${Radio_Email}
+
+Choose method Reset & Send Password to PhoneNumber
+    Click on Element    ${Radio_PhoneNumber}
+
+Verify Sucessfully Message For Send Reset Password successfully
+    Check validation error message    ${Reset_User_Password_Success}        ${Expected_User_Password_Success}
+
 Click Submit button and wait for response Send Reset Password to Email
     ${url}=    SeleniumLibrary.Get Location
     Log    ${url}

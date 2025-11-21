@@ -1,11 +1,6 @@
 *** Settings ***
 Documentation    Test cases for Update User functionality
 Resource    ../../Resources/PageObject/UserPage/UpdateUserPage.robot
-Resource    ../../TestData/Browser/Global.robot
-Resource    ../../TestKeyWords/Common.robot
-Resource    ../../Resources/PageObject/LoginPage/LoginPage.robot
-Resource    ../../TestData/LoginData/LoginData.robot
-# Suite Setup     Basic Setup
 
 *** Test Cases ***
 # Check validation empty First Name error on Create User Page
@@ -37,12 +32,11 @@ Check validation max First Name error on Create User Page
     And Click on Element    ${UPDATE_USER_SUBMIT}
     Then Verify Error Message For Max First Name
 
-
 Check the system not display validation error message for valid First Name on Create User Page
     [Documentation]    Verify no validation message for valid First Name on Create User form
     [Tags]    validation    create_user
     Given On screen Update User Page
-    When Input First Name        John
+    When Input First Name   ${Gen_Firstname}
     Then Verify No Error Message For Valid First Name
 
 ### Check validation empty Last Name error on Create User Page
@@ -74,7 +68,7 @@ Check the system not display validation error message for valid Last Name on Cre
     [Documentation]    Verify no validation message for valid Last Name on Create User form
     [Tags]    validation    create_user
     Given On screen Update User Page
-    When Input Last Name        Doe
+    When Input Last Name    ${Gen_Lastname}
     Then Verify No Error Message For Valid Last Name
 
 ### Check validation empty Email error on Create User Page
@@ -96,7 +90,7 @@ Check the system not display validation error message for valid Email on Create 
     [Documentation]    Verify no validation message for valid Email on Create User form
     [Tags]    validation    create_user
     Given On screen Update User Page
-    When Input Email    john@yopmail.com
+    When Input Email    ${Gen_Email}
     Then Verify No Error Message For Valid Email
 
 Check validation invalid Phone Number error on Create User Page
@@ -111,7 +105,7 @@ Check the system not display validation error message for valid Phone Number on 
     [Documentation]    Verify no validation message for valid Phone Number on Create User form
     [Tags]    validation    create_user
     Given On screen Update User Page
-    When Input Phone Number    9977686223
+    When Input Phone Number    ${Gen_Phonenumber}
     Then Verify No Error Message For Valid Phone Number
 
 Check validation min Address error on Create User Page
@@ -162,106 +156,3 @@ Update User With Valid Information
     And Click Submit button and wait for response update user successfully
     Then Verify Sucessfully Message For Update User
     [Teardown]    Close Browser
-
-*** Keywords ***
-On screen Update User Page
-    No Operation
-
-Go To Update User Page
-    Basic Setup
-    Restore Browser Session
-    Click on Element    ${Tab_USER_BUTTON}
-    Select User Random User From List
-    Click on Element    ${UPDATE_USER_BUTTON}
-    Sleep    5s
-    Generate Data User Information
-
-#First Name    
-Verify Error Message For Empty First Name
-    Check validation error message    xpath=//p[normalize-space(text())='First name is required.']    First name is required.    
-
-Verify Error Message For Min First Name
-    Check validation error message    xpath=//p[normalize-space(text())='First name must be at least 2 characters.']    First name must be at least 2 characters.
-
-Verify Error Message For Max First Name
-    Check validation error message    xpath=//p[normalize-space(text())='First name must be at most 50 characters.']    First name must be at most 50 characters.
-
-Verify No Error Message For Valid First Name
-    Page Should Not Contain    xpath=//p[normalize-space(text())='First name must be at most 50 characters.']    First name must be at most 50 characters.
-
-#Last Name
-Verify Error Message For Empty Last Name
-    Check validation error message    xpath=//p[normalize-space(text())='The Last Name cannot be empty']    The Last Name cannot be empty    
-
-Verify Error Message For Min Last Name
-    Check validation error message    xpath=//p[normalize-space(text())='Last name must be at least 2 characters.']    Last name must be at least 2 characters.
-
-Verify Error Message For Max Last Name
-    Check validation error message    xpath=//p[normalize-space(text())='Last name must be at most 50 characters.']    Last name must be at most 50 characters.
-
-Verify No Error Message For Valid Last Name
-    Page Should Not Contain    xpath=//p[normalize-space(text())='Last name must be at most 50 characters.']    Last name must be at most 50 characters.
-
-#Email
-Verify Error Message For Empty Email
-    Check validation error message    xpath=//p[normalize-space(text())='Email is required.']    Email is required.
-
-Verify Error Message For Invalid Email
-    Check validation error message    xpath=//p[normalize-space(text())='Not a valid email address.']    Not a valid email address.
-
-Verify No Error Message For Valid Email
-    Page Should Not Contain    xpath=//p[normalize-space(text())='Not a valid email address.']    Not a valid email address.
-
-#Phone Number
-Verify Error Message For Invalid Phone Number
-    Check validation error message    xpath=//p[normalize-space(text())='Phone number must be 10 characters.']    Phone number must be 10 characters.
-
-Verify No Error Message For Valid Phone Number
-    Page Should Not Contain    xpath=//p[normalize-space(text())='Phone number must be 10 characters.']    Phone number must be 10 characters.
-
-#Address
-Verify Error Message For Min Address
-    Check validation error message    xpath=//p[normalize-space(text())='Address must be at least 8 characters.']    Address must be at least 8 characters.
-
-Verify Error Message For Max Address
-    Check validation error message    xpath=//p[normalize-space(text())='Address must be at most 280 characters.']    Address must be at most 280 characters.
-
-Verify No Error Message For Valid Address
-    Page Should Not Contain    xpath=//p[normalize-space(text())='Address must be at most 280 characters.']    Address must be at most 280 characters.
-
-#Input Information
-User Input Information with Existing Existing Email
-    # Input First Name     Nhut
-    # Input Last Name      Minh
-    Input Email     ${Email_exist}
-    # Input Phone Number    9977686113
-    # Input Date Of Birth    ${VALID_DOB}
-    # Input Address    ${VALID_ADDRESS}
-
-
-User Input Information with Existing Phone Number
-    # Input First Name     Nhut
-    # Input Last Name      Minh
-    Input Email           ${Gen_Email}
-    Input Phone Number    ${Phone_number_exist}
-    # Input Date Of Birth    ${VALID_DOB}
-    # Input Address    ${VALID_ADDRESS}
-   
-User Input Valid Information for New User
-    Input First Name      ${Gen_Firstname}
-    Input Last Name       ${Gen_Lastname}
-    Input Email           ${Gen_Email}
-    Input Phone Number    ${Gen_Phonenumber}
-    Input Date Of Birth   ${VALID_DOB}
-    Input Address         ${VALID_ADDRESS}
-
-Verify Error Message For Existing Email
-    Check validation error message    //div[@class="text-sm opacity-90"]    • Email already used
-    Sleep    2
-
-Verify Error Message For Existing Phone Number
-    Check validation error message    //div[@class="text-sm opacity-90"]    • Phone number already used
-    Sleep    2
-
-Verify Sucessfully Message For Update User
-    Check validation error message    //div[@class="text-sm opacity-90"]    User updated successfully.

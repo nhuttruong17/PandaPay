@@ -63,7 +63,7 @@ API Request With Params
 ##Fill Text Input WEB ##
 Fill Text Input
     [Arguments]    ${elm_input}    ${text}
-    SeleniumLibrary.Wait Until Element Is Visible    ${elm_input}    10s
+    SeleniumLibrary.Wait Until Element Is Visible    ${elm_input}    15s
     SeleniumLibrary.Input Text    ${elm_input}    ${text}
 
 ##Click on element WEB ##

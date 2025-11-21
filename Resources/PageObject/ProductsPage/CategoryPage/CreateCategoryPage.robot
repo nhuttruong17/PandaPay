@@ -12,18 +12,52 @@ ${Tab_PRODUCTS_BUTTON}           xpath=//button[normalize-space()='Product']
 ${CREATE_CATEGORY_BUTTON}        xpath=//button[normalize-space()='Create New Category']
 ${Submit_BUTTON_Product}         xpath=/html/body/div[1]/div/main/div/form/button
 ###Input Fields###
-${CATEGORY_NAME_INPUT}            xpath=//input[@placeholder='Enter Category Name']
+${CATEGORY_NAME_INPUT}           xpath=//input[@placeholder='Enter Category Name']
 ###API###
-${Create_Category_API}            api/categories/
+${Create_Category_API}           api/categories/
 ###Data###
 ${Category_exist}                NikeSchoe
 ${MIN_STRING_1}                  A    
 ${LONG_STRING_51}                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
+${Category_empty}                xpath=//p[normalize-space(text())='Category Name is required']
+${Expected_empty_Category}       Category Name is required
+#Toast message
+${Toast_message}                     xpath=//div[@class="text-sm opacity-90"]
+${Toast_invalid_Category}            • Category name must be between 3 and 50 characters
+${Toast_Category_Exist}              • Category name already exists
+${Toast_Create_Category_Success}     Create new category success
 *** Keywords ***
 Input Category Name
     [Arguments]    ${category_name}
     Fill Text Input    ${CATEGORY_NAME_INPUT}    ${category_name}
+
+Open Browser and Go To Create Category Page
+    Basic Setup
+    Restore Browser Session
+    Click on Element    ${Tab_PRODUCTS_BUTTON}
+    Click on Element    ${CREATE_CATEGORY_BUTTON}
+    Generate Random Data New Category
+
+User on at Create Category Page
+    No Operation
+
+Verify Error Message For Empty Category Name
+    Check validation error message    ${Category_empty}    ${Expected_empty_Category}
+
+Verify Error Message For Min Category Name
+    Check validation error message    ${Toast_message}    ${Toast_invalid_Category}    
+    Sleep    2s
+
+Verify Error Message For Max Category Name
+    Check validation error message    ${Toast_message}    ${Toast_invalid_Category}
+    Sleep    2s
+
+Verify Error Message For Exist Category Name
+    Check validation error message    ${Toast_message}    ${Toast_Category_Exist}
+    Sleep    2s
+
+Veridy Success Message For Create Category
+    Check validation error message    ${Toast_message}     ${Toast_Create_Category_Success}
 
 Click Submit button and wait for response Existing Category Name
     #Prepare for request interception

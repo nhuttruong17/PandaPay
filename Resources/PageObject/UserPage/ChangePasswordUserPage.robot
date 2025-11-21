@@ -4,6 +4,7 @@ Resource    ../../../TestData/Browser/Global.robot
 Resource    ../../../TestKeyWords/Common.robot
 Library    SeleniumLibrary
 Library    Collections
+Resource    ../../../Resources/PageObject/UserPage/UpdateUserPage.robot
 
 *** Variables ***
 #Xpath Input Password
@@ -36,6 +37,47 @@ Input New Password
 Input Confirm New Password
     [Arguments]    ${password}
     Fill Text Input    ${CONFIRM_PASSWORD_INPUT}    ${password}
+
+Go to Change Password User Page
+    [Documentation]    Navigate to Change Password User Page
+    Basic Setup
+    Restore Browser Session
+    Click on Element    ${Tab_USER_BUTTON}
+    Select User Random User From List
+    Click on Element    ${Tab_ChangePassword}
+    Sleep    5s
+    ${new_password}=    Generate Secure Password
+    Set Suite Variable    ${new_password}
+On screen Change Password User Page
+    No Operation
+
+#Password
+Verify Error Message For Empty Password
+    Check validation error message    xpath=//p[normalize-space(text())='Password is required.']    Password is required.
+
+Verify Error Message For Min Password
+    Check validation error message    xpath=//p[normalize-space(text())='Password must be at least 8 characters.']    Password must be at least 8 characters.
+
+Verify Error Message For Missing Uppercase Password
+    Check validation error message    xpath=//p[normalize-space(text())='Password must contain at least one uppercase letter.']    Password must contain at least one uppercase letter.   
+
+Verify Error Message For Missing Lowercase Password
+    Check validation error message    xpath=//p[normalize-space(text())='Password must contain at least one lowercase letter.']    Password must contain at least one lowercase letter.    
+
+Verify Error Message For Missing Number Password
+    Check validation error message    xpath=//p[normalize-space(text())='Password must contain at least one number.']    Password must contain at least one number.
+
+Verify Error Message For Missing Special Character Password
+    Check validation error message    xpath=//p[normalize-space(text())='Password must contain at least one special character.']    Password must contain at least one special character.
+
+Verify Error Message For Empty Confirm Password
+    Check validation error message    xpath=//p[normalize-space(text())='Confirm password is required.']    Confirm password is required.
+
+Verify Error Message For Mismatch Confirm Password
+    Check validation error message    xpath=//p[normalize-space(text())='Passwords do not match.']    Passwords do not match.
+
+Verify Change Password Successfully
+    Check validation error message    xpath=//div[@class="text-sm opacity-90"]    Change user password successfully.
 
 Click Submit button and wait for response change password user successfully
     SeleniumLibrary.Wait Until Element Is Visible    //p[contains(normalize-space(.), '#')]      15s

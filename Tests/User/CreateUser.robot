@@ -1,10 +1,6 @@
 *** Settings ***
 Documentation    Test cases for Create User functionality
 Resource    ../../Resources/PageObject/UserPage/CreateUserPage.robot
-Resource    ../../TestData/Browser/Global.robot
-Resource    ../../TestKeyWords/Common.robot
-Resource    ../../Resources/PageObject/LoginPage/LoginPage.robot
-Resource    ../../TestData/LoginData/LoginData.robot
 
 *** Test Cases ***
 # Check validation empty UserID error on Create User Page
@@ -35,7 +31,7 @@ Check the system not display validation error message for valid UserID on Create
     [Documentation]    Verify no validation message for valid UserID on Create User form
     [Tags]    validation    create_user
     Given On screen Create User Page
-    When Input User ID        School1234
+    When Input User ID        ${Data_UserID}
     Then Verify No Error Message For Valid User ID
 
 Check validation empty First Name error on Create User Page
@@ -65,7 +61,7 @@ Check the system not display validation error message for valid First Name on Cr
     [Documentation]    Verify no validation message for valid First Name on Create User form
     [Tags]    validation    create_user
     Given On screen Create User Page
-    When Input First Name        John
+    When Input First Name        ${Gen_Firstname}
     Then Verify No Error Message For Valid First Name
 
 # Check validation empty Last Name error on Create User Page
@@ -96,7 +92,7 @@ Check the system not display validation error message for valid Last Name on Cre
     [Documentation]    Verify no validation message for valid Last Name on Create User form
     [Tags]    validation    create_user
     Given On screen Create User Page
-    When Input Last Name        Doe
+    When Input Last Name        ${Gen_Lastname}
     Then Verify No Error Message For Valid Last Name
 
 # Check validation empty Email error on Create User Page
@@ -118,7 +114,7 @@ Check the system not display validation error message for valid Email on Create 
     [Documentation]    Verify no validation message for valid Email on Create User form
     [Tags]    validation    create_user
     Given On screen Create User Page
-    When Input Email    john@yopmail.com
+    When Input Email    ${Gen_Email}
     Then Verify No Error Message For Valid Email
 
 Check validation invalid Phone Number error on Create User Page
@@ -133,7 +129,7 @@ Check the system not display validation error message for valid Phone Number on 
     [Documentation]    Verify no validation message for valid Phone Number on Create User form
     [Tags]    validation    create_user
     Given On screen Create User Page
-    When Input Phone Number    9977686113
+    When Input Phone Number    ${Gen_Phonenumber}
     Then Verify No Error Message For Valid Phone Number
 
 Check validation min Address error on Create User Page
@@ -164,7 +160,6 @@ Check User select role
     [Tags]    validation    create_user
     Given On screen Create User Page
     When Select User Role
-    # Then Verify User Role Selected Successfully
 
 # Check validation empty Password error on Create User Page
 #     [Documentation]    Verify validation message for empty Password on Create User form
@@ -267,195 +262,3 @@ Create User With Valid Information
     And Click Submit button and wait for response create user successfully
     Then Verify Sucessfully Message For Create User
     [Teardown]    Close Browser
-
-*** Keywords ***
-Open Browser To Create User Page
-    Basic Setup
-    Restore Browser Session
-    Click on Element    ${Tab_USER_BUTTON}
-    Click on Element    ${CREATE_USER_BUTTON}
-    Generate Data User Information
-
-On screen Create User Page
-    No Operation
-
-#UserID
-Verify Error Message For Empty User ID
-    Check validation error message    xpath=//p[normalize-space(text())='User ID is required.']    User ID is required.
-
-Verify Error Message For Min User ID
-    Check validation error message    xpath=//p[normalize-space(text())='User ID must be at least 8 characters.']    User ID must be at least 8 characters.    
-
-Verify Error Message For Max User ID
-    Check validation error message    xpath=//p[normalize-space(text())='User ID must be at most 20 characters.']    User ID must be at most 20 characters.    
-
-Verify No Error Message For Valid User ID
-    Page Should Not Contain    xpath=//p[normalize-space(text())='User ID must be at least 8 characters.']    User ID must be at least 8 characters.
-    
-#First Name    
-Verify Error Message For Empty First Name
-    Check validation error message    xpath=//p[normalize-space(text())='First name is required.']    First name is required.    
-
-Verify Error Message For Min First Name
-    Check validation error message    xpath=//p[normalize-space(text())='First name must be at least 2 characters.']    First name must be at least 2 characters.
-
-Verify Error Message For Max First Name
-    Check validation error message    xpath=//p[normalize-space(text())='First name must be at most 50 characters.']    First name must be at most 50 characters.
-
-Verify No Error Message For Valid First Name
-    Page Should Not Contain    xpath=//p[normalize-space(text())='First name must be at most 50 characters.']    First name must be at most 50 characters.
-
-#Last Name
-Verify Error Message For Empty Last Name
-    Check validation error message    xpath=//p[normalize-space(text())='The Last Name cannot be empty']    The Last Name cannot be empty    
-
-Verify Error Message For Min Last Name
-    Check validation error message    xpath=//p[normalize-space(text())='Last name must be at least 2 characters.']    Last name must be at least 2 characters.
-
-Verify Error Message For Max Last Name
-    Check validation error message    xpath=//p[normalize-space(text())='Last name must be at most 50 characters.']    Last name must be at most 50 characters.
-
-Verify No Error Message For Valid Last Name
-    Page Should Not Contain    xpath=//p[normalize-space(text())='Last name must be at most 50 characters.']    Last name must be at most 50 characters.
-
-#Email
-Verify Error Message For Empty Email
-    Check validation error message    xpath=//p[normalize-space(text())='Email is required.']    Email is required.
-
-Verify Error Message For Invalid Email
-    Check validation error message    xpath=//p[normalize-space(text())='Not a valid email address.']    Not a valid email address.
-
-Verify No Error Message For Valid Email
-    Page Should Not Contain    xpath=//p[normalize-space(text())='Not a valid email address.']    Not a valid email address.
-
-#Phone Number
-Verify Error Message For Invalid Phone Number
-    Check validation error message    xpath=//p[normalize-space(text())='Phone number must be 10 characters.']    Phone number must be 10 characters.
-
-Verify No Error Message For Valid Phone Number
-    Page Should Not Contain    xpath=//p[normalize-space(text())='Phone number must be 10 characters.']    Phone number must be 10 characters.
-
-#Address
-Verify Error Message For Min Address
-    Check validation error message    xpath=//p[normalize-space(text())='Address must be at least 8 characters.']    Address must be at least 8 characters.
-
-Verify Error Message For Max Address
-    Check validation error message    xpath=//p[normalize-space(text())='Address must be at most 280 characters.']    Address must be at most 280 characters.
-
-Verify No Error Message For Valid Address
-    Page Should Not Contain    xpath=//p[normalize-space(text())='Address must be at most 280 characters.']    Address must be at most 280 characters.
-
-
-
-#Password
-Verify Error Message For Empty Password
-    Check validation error message    xpath=//p[normalize-space(text())='Password is required.']    Password is required.
-
-Verify Error Message For Min Password
-    Check validation error message    xpath=//p[normalize-space(text())='Password must be at least 8 characters.']    Password must be at least 8 characters.
-
-Verify Error Message For Missing Uppercase Password
-    Check validation error message    xpath=//p[normalize-space(text())='Password must contain at least one uppercase letter.']    Password must contain at least one uppercase letter.   
-
-Verify Error Message For Missing Lowercase Password
-    Check validation error message    xpath=//p[normalize-space(text())='Password must contain at least one lowercase letter.']    Password must contain at least one lowercase letter.    
-
-Verify Error Message For Missing Number Password
-    Check validation error message    xpath=//p[normalize-space(text())='Password must contain at least one number.']    Password must contain at least one number.
-
-Verify Error Message For Missing Special Character Password
-    Check validation error message    xpath=//p[normalize-space(text())='Password must contain at least one special character.']    Password must contain at least one special character.
-
-Verify Error Message For Empty Confirm Password
-    Check validation error message    xpath=//p[normalize-space(text())='Confirm password is required.']    Confirm password is required.
-
-Verify Error Message For Mismatch Confirm Password
-    Check validation error message    xpath=//p[normalize-space(text())='Passwords do not match.']    Passwords do not match.
-
-#Input Information
-User Input Information with Existing User ID
-    Input User ID        ${UserID_exist}
-    Input First Name     ${Gen_Firstname}
-    Input Last Name      ${Gen_Lastname}
-    Input Email          ${Gen_Email}
-    Input Phone Number    ${Gen_Phonenumber}
-    Input Date Of Birth    ${VALID_DOB}
-    Input Address    ${VALID_ADDRESS}
-    Scroll To Bottom
-    
-    Select User Role
-    
-    Input Password Web         ${VALID_New_User_PASSWORD}
-    Input Confirm Password     ${VALID_CONFIRM_PASSWORD}
-    # Set Account Status    Active 
-    # Select Language    English
-    # Select Organization    Default Organization
-
-User Input Information with Existing Existing Email
-    Input User ID         ${Data_UserID}
-    Input First Name      ${Gen_Firstname}
-    Input Last Name       ${Gen_Lastname}
-    Input Email           ${Email_Exist}
-    Input Phone Number    ${Gen_Phonenumber}
-    Input Date Of Birth   ${VALID_DOB}
-    Input Address         ${VALID_ADDRESS}
-    # Scroll To Bottom
-    
-    Select User Role
-    
-    Input Password Web         ${VALID_New_User_PASSWORD}
-    Input Confirm Password     ${VALID_CONFIRM_PASSWORD}
-
-User Input Information with Existing Phone Number
-    Input User ID         ${Data_UserID}
-    Input First Name      ${Gen_Firstname}
-    Input Last Name       ${Gen_Lastname}
-    Input Email           ${Gen_Email}
-    Input Phone Number    ${Phonenumber_Exist}
-    Input Date Of Birth   ${VALID_DOB}
-    Input Address         ${VALID_ADDRESS}
-    # Scroll To Bottom
-    Select User Role
-    Input Password Web         ${VALID_New_User_PASSWORD}
-    Input Confirm Password     ${VALID_CONFIRM_PASSWORD}
-
-User Input Valid Information for New User
-    Input User ID            ${Data_UserID}
-    Input First Name         ${Gen_Firstname}
-    Input Last Name          ${Gen_Lastname}
-    Input Email              ${Gen_Email}
-    Input Phone Number       ${Gen_Phonenumber}
-    Input Date Of Birth      ${VALID_DOB}
-    Input Address            ${VALID_ADDRESS}
-    # Scroll To Bottom
-
-    Select User Role
-
-    Input Password Web         ${VALID_New_User_PASSWORD}
-    Input Confirm Password     ${VALID_CONFIRM_PASSWORD}
-
-
-Verify Error Message For Existing User ID
-    Check validation error message    //div[@class="text-sm opacity-90"]    • User ID code already exists
-
-Verify Error Message For Existing Email
-    Check validation error message    //div[@class="text-sm opacity-90"]    • Email already used
-
-Verify Error Message For Existing Phone Number
-    Check validation error message    //div[@class="text-sm opacity-90"]    • Phone number already used
-
-Verify Sucessfully Message For Create User
-    Check validation error message    //div[@class="text-sm opacity-90"]    User created successfully.
-
-# Save Session After Login (profile)
-#     [Documentation]    Login once using a Chrome profile and close browser (profile will keep session)
-#     [Tags]    session    save
-#     # Open Browser To Create User Page
-#     Fill Text Input    ${input_UserID}    ${Valid_UserID}
-#     Fill Text Input    ${input_Password}    ${Valid_Password}
-#     Click on SignIn with Wait Response login successfully
-#     Save Browser Session
-#     [Teardown]    Close Browser
-
-
-

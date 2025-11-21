@@ -12,8 +12,24 @@ ${DELETE_PRODUCTS_BUTTON}        xpath=//button[normalize-space()='Delete produc
 ${CONFIRM_PRODUCTS_BUTTON}        xpath=//button[normalize-space()='Confirm']
 ###API###
 ${Delete_Product_API}            api/products/
+#Toast message
+${Toast_message}              //div[@class="text-sm opacity-90"]
+${Toast_Delete_Success}        Delete product success
 
 *** Keywords ***
+Open Browser and Go To Delete Products Page
+    Basic Setup
+    Restore Browser Session
+    Click on Element    ${Tab_PRODUCTS_BUTTON}
+    
+Choose Product Random Product From List
+    Select Product Random Product From List
+    Sleep    2s
+    Click on Element    ${DELETE_PRODUCTS_BUTTON}
+
+Verify Success Message For Delete Product
+    Check validation error message    ${Toast_message}    ${Toast_Delete_Success}
+
 Select Product Random Product From List
     SeleniumLibrary.Wait Until Element Is Visible    xpath=//table//tbody//tr    20s
     ${rows}=    SeleniumLibrary.Get WebElements    xpath=//table//tbody//tr
@@ -43,7 +59,7 @@ Click Submit button and wait for response Delete Product
     Log    ${response}
     ${parsed}=    Parse Response API    ${response}
     Log    ${parsed}
-    Should Be Equal As Strings    ${parsed.success}    ${Boolean_True}
-    Should Be Equal As Integers    ${parsed.statusCode}    ${Status_202}
-    Should Be Equal As Strings    ${parsed.message}    DELETE_DATA_SUCCEEDED
+    Should Be Equal As Strings     ${parsed.success}        ${Boolean_True}
+    Should Be Equal As Integers    ${parsed.statusCode}     ${Status_202}
+    Should Be Equal As Strings     ${parsed.message}        DELETE_DATA_SUCCEEDED
     Network.Stop Network Interception    ${driver.driver}

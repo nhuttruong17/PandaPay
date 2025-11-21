@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    Test cases for Update Category functionality
 Resource    ../../../Resources/PageObject/ProductsPage/CategoryPage/UpdateCategoryPage.robot
+
 *** Test Cases ***
 # Check validation empty Category Name error on Create Product Page
 #     [Documentation]    Verify that Category Name shows validation error when input is empty on Create Product Page
@@ -42,36 +43,3 @@ Update Category with valid information on Update Category Page
     And Click Submit button and wait for response Valid Category Name
     Then Verify Success Message For Update Category
     [Teardown]    Basic TearDowns
-
-** Keywords **
-Open Browser and Go To Update Category Page
-    Basic Setup
-    Restore Browser Session
-    Click on Element    ${Tab_PRODUCTS_BUTTON}
-    Click on Element    ${LIST_CATEGORY_BUTTON}
-    Select Category Random Category From List
-    Generate Random Data New Category
-    Sleep    5s
-
-Choose Category Random Category From List
-    Select Category Random Category From List
-    Sleep    5s
-
-User on at Update Category Page
-    No Operation
-
-Verify Error Message For Empty Category Name
-    Check validation error message    xpath=//p[normalize-space(text())='Category Name is required']    Category Name is required
-
-Verify Error Message For Min Category Name
-    Check validation error message    xpath=//div[@class="text-sm opacity-90"]    • Category name must be between 3 and 50 characters    
-
-Verify Error Message For Max Category Name
-    Check validation error message    xpath=//div[@class="text-sm opacity-90"]    • Category name must be between 3 and 50 characters
-
-Verify Error Message For Exist Category Name
-    Check validation error message    xpath=//div[@class="text-sm opacity-90"]    • Category name already exists
-
-Verify Success Message For Update Category
-    Check validation error message    //div[@class="text-sm opacity-90"]    Edit Category success
-    

@@ -23,65 +23,74 @@ ${LANGUAGE_RADIO_SPANISH}    xpath=//input[@name='language' and @value='Spanish'
 ${ORGANIZATION_SELECT}       id=organization\
 ${CREATE_USER_BUTTON}        xpath=//button[normalize-space()='Create New User']
 ${Tab_USER_BUTTON}           xpath=//button[normalize-space()='User']
-# ${CREATE_USER_SUBMIT}        xpath=//button[@type="submit"]
 ${CREATE_USER_SUBMIT}        xpath=/html/body/div[1]/div/main/div/div/form/button
 ${Create_User_API}           api/admin/user/
-
+#Data
 ${UserID_exist}         School1190
 ${Email_Exist}          kai@exnodes.vn
 ${Phonenumber_Exist}    9977686888   
-
-${VALID_New_USER_ID}    Kids_User_01
-${VALID_FIRST_NAME}     John
-${VALID_LAST_NAME}      Doe
-${VALID_EMAIL}          john@yopmail.com
-${VALID_PHONE}          9998887777
 ${VALID_DOB}            11-10-2025
 ${VALID_ADDRESS}        123 Test Street
 ${VALID_New_User_PASSWORD}    Test@123
 ${VALID_CONFIRM_PASSWORD}    Test@123
-
-${Valid_UserID}      SchoolLe
-${Valid_Password}    School123@
-
 #Xpath UserID
-${Empty_UserID}        xpath=//p[normalize-space(text())='The User ID cannot be empty']
-${Min_UserID}          xpath=//p[normalize-space(text())='User ID must be at least 8 characters.']
-${Max_UserID}          xpath=//p[normalize-space(text())='User ID must be at most 20 characters.']
-
+${Empty_UserID}            xpath=//p[normalize-space(text())='User ID is required.']
+${Expected_UserID}         User ID is required.
+${Min_UserID}              xpath=//p[normalize-space(text())='User ID must be at least 8 characters.']
+${Expected_min_UserID}     User ID must be at least 8 characters.
+${Max_UserID}              xpath=//p[normalize-space(text())='User ID must be at most 20 characters.']
+${Expected_max_UserID}     User ID must be at most 20 characters.
 #Xpath First Name
-${Empty_FirstName}      xpath=//p[normalize-space(text())='The First Name cannot be empty']
-${Min_FirstName}        xpath=//p[normalize-space(text())='First name must be at least 2 characters.']
-${Max_FirstName}        xpath=//p[normalize-space(text())='First name must be at most 50 characters.']
-
+${Empty_FirstName}           xpath=//p[normalize-space(text())='First name is required.']
+${Expected_FirstName}        First name is required.
+${Min_FirstName}             xpath=//p[normalize-space(text())='First name must be at least 2 characters.']
+${Expected_min_FirstName}    First name must be at least 2 characters.
+${Max_FirstName}             xpath=//p[normalize-space(text())='First name must be at most 50 characters.']
+${Expected_max_FirstName}    First name must be at most 50 characters.
 #Xpath Last Name
-${Empty_LastName}       xpath=//p[normalize-space(text())='The Last Name cannot be empty']
-${Min_LastName}         xpath=//p[normalize-space(text())='Last Name must be at least 2 characters.']
-${Max_LastName}         xpath=//p[normalize-space(text())='Last Name must be at most 50 characters.']
-
-
+${Empty_LastName}           xpath=//p[normalize-space(text())='The Last Name cannot be empty']
+${Expected_LastName}        The Last Name cannot be empty
+${Min_LastName}             xpath=//p[normalize-space(text())='Last name must be at least 2 characters.']
+${Expected_min_LastName}    Last name must be at least 2 characters.
+${Max_LastName}             xpath=//p[normalize-space(text())='Last name must be at most 50 characters.']
+${Expected_max_LastName}    Last name must be at most 50 characters.
 #Xpath Email
-${Empty_Email}         //p[normalize-space(text())='Email is required.']
-${Invalid_Email}       //p[normalize-space(text())='Not a valid email address.']
-
+${Empty_Email}              xpath=//p[normalize-space(text())='Email is required.']
+${Expected_empty_Email}     Email is required.
+${Invalid_Email}            xpath=//p[normalize-space(text())='Not a valid email address.']
+${Expected_invalid_Email}   Not a valid email address.
 #Xpath Phone Number
-${Invalid_Phone}       //p[normalize-space(text())='Phone number must be 10 characters.']
-
-#Xpath Address
-${Min_Address}      //p[normalize-space(text())='Address must be at least 8 characters.']
-${Max_Address}      //p[normalize-space(text())='Address must be at most 280 characters.']
-
+${Invalid_Phone}            xpath=//p[normalize-space(text())='Phone number must be 10 characters.']
+${Expected_invalid_Phone}   Phone number must be 10 characters.
+#Xpath Address    
+${Min_Address}              xpath=//p[normalize-space(text())='Address must be at least 8 characters.']
+${Expected_min_Address}     Address must be at least 8 characters.
+${Max_Address}              xpath=//p[normalize-space(text())='Address must be at most 280 characters.']
+${Expected_max_Address}     Address must be at most 280 characters.
 #Xpath Password
-${Empty_Password}           //p[normalize-space(text())='Password is required.']
-${Min_Password}             //p[normalize-space(text())='Password must be at least 8 characters.']
-${Missing_Uppercase}        //p[normalize-space(text())='Password must contain at least one uppercase letter.']
-${Missing_Lowercase}        //p[normalize-space(text())='Password must contain at least one lowercase letter.']
-${Missing_OneNumber}        //p[normalize-space(text())='Password must contain at least one number.']
-${Missing_SpecialChar}      //p[normalize-space(text())='Password must contain at least one special character.']
-
+${Empty_Password}                     xpath=//p[normalize-space(text())='Password is required.']
+${Expected_empty_Password}            Password is required.
+${Min_Password}                       xpath=//p[normalize-space(text())='Password must be at least 8 characters.']
+${Expected_min_Password}              Password must be at least 8 characters.
+${Missing_Uppercase}                  xpath=//p[normalize-space(text())='Password must contain at least one uppercase letter.']
+${Expected_Uppercase_Password}        Password must contain at least one uppercase letter.
+${Missing_Lowercase}                  xpath=//p[normalize-space(text())='Password must contain at least one lowercase letter.']
+${Expected_Lowercase_Password}        Password must contain at least one lowercase letter.
+${Missing_OneNumber}                  xpath=//p[normalize-space(text())='Password must contain at least one number.']
+${Expected_OneNumber_Password}        Password must contain at least one number.
+${Missing_SpecialChar}                xpath=//p[normalize-space(text())='Password must contain at least one special character.']
+${Expected_SpecialChar_Password}      Password must contain at least one special character.
 #Xpath Confirm Password
-${Empty_ConfirmPassword}        //p[normalize-space(text())='Confirm password is required.']
-${Mismatch_ConfirmPassword}     //p[normalize-space(text())='Confirm Passwords do not match.']
+${Empty_ConfirmPassword}              xpath=//p[normalize-space(text())='Confirm password is required.']
+${Expected_empty_ConfirmPassword}     Confirm password is required.
+${Mismatch_ConfirmPassword}           xpath=//p[normalize-space(text())='Passwords do not match.']
+${Expected_mismatch_ConfirmPassword}  Passwords do not match.
+#Toast message
+${Toast_message}                       //div[@class="text-sm opacity-90"]
+${Expected_toast_UserIDExist}          • User ID code already exists
+${Expected_toast_EmailExist}           • Email already used
+${Expected_toast_PhoneNumberExist}     • Phone number already used
+${Expected_toast_CreateUserSuccess}    User created successfully.
 
 *** Keywords ***
 Go To Create User Page
@@ -117,14 +126,8 @@ Input Address
     Fill Text Input    ${ADDRESS_INPUT}    ${address}
 
 Select User Role
-    # SeleniumLibrary.Wait Until Element Is Visible    ${USER_ROLE_SELECT}    10s
-    # Click on Element    ${USER_ROLE_SELECT}
-    # Select From List By Label    xpath=//select[@aria-hidden='true']    Staff
     Click on Element    xpath=//select[@aria-hidden='true']/option[@value='8']
-    # SeleniumLibrary.Get Element Attribute    //option[contains(@value,'8')]    value
-    # Sleep    2s
-    # SeleniumLibrary.Select From List By Label    ${USER_ROLE_SELECT}    ${role}
-    # SeleniumLibrary.Select From List By Value    //div[@id=':rh:-form-item']//select[contains(@aria-hidden,'true')]    ${role}
+    
 Input Password Web
     [Arguments]    ${password}
     Fill Text Input    ${PASSWORD_INPUT}    ${password}
@@ -149,6 +152,179 @@ Select Organization
     [Arguments]    ${organization}
     Click on Element    ${ORGANIZATION_SELECT}
     SeleniumLibrary.Select From List By Label    ${ORGANIZATION_SELECT}    ${organization}
+
+Open Browser To Create User Page
+    Basic Setup
+    Restore Browser Session
+    Click on Element    ${Tab_USER_BUTTON}
+    Click on Element    ${CREATE_USER_BUTTON}
+    Generate Data User Information
+
+On screen Create User Page
+    No Operation
+
+#UserID
+Verify Error Message For Empty User ID
+    Check validation error message    ${Empty_UserID}    ${Expected_UserID}
+
+Verify Error Message For Min User ID
+    Check validation error message    ${Min_UserID}    ${Expected_min_UserID}
+
+Verify Error Message For Max User ID
+    Check validation error message    ${Max_UserID}    ${Expected_max_UserID}
+
+Verify No Error Message For Valid User ID
+    Page Should Not Contain           ${Min_UserID}    ${Expected_min_UserID}
+    
+#First Name    
+Verify Error Message For Empty First Name
+    Check validation error message    ${Empty_FirstName}    ${Expected_FirstName}    
+
+Verify Error Message For Min First Name
+    Check validation error message    ${Min_FirstName}    ${Expected_min_FirstName}
+
+Verify Error Message For Max First Name
+    Check validation error message    ${Max_FirstName}    ${Expected_max_FirstName}
+
+Verify No Error Message For Valid First Name
+    Page Should Not Contain           ${Max_FirstName}    ${Expected_max_FirstName}
+
+#Last Name
+Verify Error Message For Empty Last Name
+    Check validation error message    ${Empty_LastName}    ${Expected_LastName}    
+
+Verify Error Message For Min Last Name
+    Check validation error message    ${Min_LastName}    ${Expected_min_LastName}
+
+Verify Error Message For Max Last Name
+    Check validation error message    ${Max_LastName}    ${Expected_max_LastName}
+
+Verify No Error Message For Valid Last Name
+    Page Should Not Contain           ${Max_LastName}    ${Expected_max_LastName}
+
+#Email
+Verify Error Message For Empty Email
+    Check validation error message    ${Empty_Email}      ${Expected_empty_Email}
+
+Verify Error Message For Invalid Email
+    Check validation error message    ${Invalid_Email}    ${Expected_invalid_Email}
+
+Verify No Error Message For Valid Email
+    Page Should Not Contain           ${Invalid_Email}    ${Expected_invalid_Email}
+
+#Phone Number
+Verify Error Message For Invalid Phone Number
+    Check validation error message    ${Invalid_Phone}    ${Expected_invalid_Phone}
+
+Verify No Error Message For Valid Phone Number
+    Page Should Not Contain           ${Invalid_Phone}    ${Expected_invalid_Phone}
+
+#Address
+Verify Error Message For Min Address
+    Check validation error message    ${Min_Address}    ${Expected_min_Address}
+
+Verify Error Message For Max Address
+    Check validation error message    ${Max_Address}    ${Expected_max_Address}
+
+Verify No Error Message For Valid Address
+    Page Should Not Contain           ${Max_Address}    ${Expected_max_Address}
+
+#Password
+Verify Error Message For Empty Password
+    Check validation error message    ${Empty_Password}              ${Expected_empty_Password}
+
+Verify Error Message For Min Password
+    Check validation error message    ${Min_Password}                ${Expected_min_Password}
+
+Verify Error Message For Missing Uppercase Password
+    Check validation error message    ${Missing_Uppercase}           ${Expected_Uppercase_Password}   
+
+Verify Error Message For Missing Lowercase Password
+    Check validation error message    ${Missing_Lowercase}           ${Expected_Lowercase_Password}    
+
+Verify Error Message For Missing Number Password
+    Check validation error message    ${Missing_OneNumber}           ${Expected_OneNumber_Password}
+
+Verify Error Message For Missing Special Character Password
+    Check validation error message    ${Missing_SpecialChar}         ${Expected_SpecialChar_Password}
+
+Verify Error Message For Empty Confirm Password
+    Check validation error message    ${Empty_ConfirmPassword}       ${Expected_empty_ConfirmPassword}
+
+Verify Error Message For Mismatch Confirm Password
+    Check validation error message    ${Mismatch_ConfirmPassword}    ${Expected_mismatch_ConfirmPassword}
+
+#Input Information
+User Input Information with Existing User ID
+    Input User ID        ${UserID_exist}
+    Input First Name     ${Gen_Firstname}
+    Input Last Name      ${Gen_Lastname}
+    Input Email          ${Gen_Email}
+    Input Phone Number    ${Gen_Phonenumber}
+    Input Date Of Birth    ${VALID_DOB}
+    Input Address    ${VALID_ADDRESS}
+    Scroll To Bottom
+    Select User Role
+    Input Password Web         ${VALID_New_User_PASSWORD}
+    Input Confirm Password     ${VALID_CONFIRM_PASSWORD}
+
+User Input Information with Existing Existing Email
+    Input User ID         ${Data_UserID}
+    Input First Name      ${Gen_Firstname}
+    Input Last Name       ${Gen_Lastname}
+    Input Email           ${Email_Exist}
+    Input Phone Number    ${Gen_Phonenumber}
+    Input Date Of Birth   ${VALID_DOB}
+    Input Address         ${VALID_ADDRESS}
+    Select User Role
+    Input Password Web         ${VALID_New_User_PASSWORD}
+    Input Confirm Password     ${VALID_CONFIRM_PASSWORD}
+
+User Input Information with Existing Phone Number
+    Input User ID         ${Data_UserID}
+    Input First Name      ${Gen_Firstname}
+    Input Last Name       ${Gen_Lastname}
+    Input Email           ${Gen_Email}
+    Input Phone Number    ${Phonenumber_Exist}
+    Input Date Of Birth   ${VALID_DOB}
+    Input Address         ${VALID_ADDRESS}
+    Select User Role
+    Input Password Web         ${VALID_New_User_PASSWORD}
+    Input Confirm Password     ${VALID_CONFIRM_PASSWORD}
+
+User Input Valid Information for New User
+    Input User ID            ${Data_UserID}
+    Input First Name         ${Gen_Firstname}
+    Input Last Name          ${Gen_Lastname}
+    Input Email              ${Gen_Email}
+    Input Phone Number       ${Gen_Phonenumber}
+    Input Date Of Birth      ${VALID_DOB}
+    Input Address            ${VALID_ADDRESS}
+    Select User Role
+    Input Password Web         ${VALID_New_User_PASSWORD}
+    Input Confirm Password     ${VALID_CONFIRM_PASSWORD}
+
+Verify Error Message For Existing User ID
+    Check validation error message    ${Toast_message}    ${Expected_toast_UserIDExist}
+
+Verify Error Message For Existing Email
+    Check validation error message    ${Toast_message}    ${Expected_toast_EmailExist}
+
+Verify Error Message For Existing Phone Number
+    Check validation error message    ${Toast_message}    ${Expected_toast_PhoneNumberExist}
+
+Verify Sucessfully Message For Create User
+    Check validation error message    ${Toast_message}    ${Expected_toast_CreateUserSuccess}
+
+# Save Session After Login (profile)
+#     [Documentation]    Login once using a Chrome profile and close browser (profile will keep session)
+#     [Tags]    session    save
+#     # Open Browser To Create User Page
+#     Fill Text Input    ${input_UserID}    ${Valid_UserID}
+#     Fill Text Input    ${input_Password}    ${Valid_Password}
+#     Click on SignIn with Wait Response login successfully
+#     Save Browser Session
+#     [Teardown]    Close Browser
 
 Click Submit button and wait for response Existing UserID
     #Prepare for request interception
@@ -248,6 +424,3 @@ Generate Data User Information
     ${Gen_Phonenumber}=    FakerLibrary.Basic Phone Number
     Set Suite Variable    ${Gen_Phonenumber}
     Log    ${Gen_Phonenumber}
-
-
-    

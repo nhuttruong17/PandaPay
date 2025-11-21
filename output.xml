@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-11-19T17:39:41.720137" rpa="false" schemaversion="5">
-<suite id="s1" name="ChangeStatus" source="/Users/apple/Downloads/School/PycharmProjects/PandaPay/Tests/User/ChangeStatus.robot">
-<test id="s1-t1" name="Reset and Send Password to Email successfully" line="7">
-<kw name="Given Go To Reset Password User Page">
+<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-11-21T16:51:28.381933" rpa="false" schemaversion="5">
+<suite id="s1" name="UpdateCategory" source="/Users/apple/Downloads/School/PycharmProjects/PandaPay/Tests/Products/Category/UpdateCategory.robot">
+<test id="s1-t1" name="Check validation min Category Name error on Create Product Page" line="14">
+<kw name="Given Open Browser and Go To Update Category Page" owner="UpdateCategoryPage">
 <kw name="Basic Setup" owner="Common">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-11-19T17:39:41.986720" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x1054a7220&gt;</msg>
+<msg time="2025-11-21T16:51:28.588083" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x10522ffd0&gt;</msg>
 <var>${options}</var>
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-11-19T17:39:41.986401" elapsed="0.001470"/>
+<status status="PASS" start="2025-11-21T16:51:28.587837" elapsed="0.001355"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-11-19T17:39:41.989027" level="INFO">${logging_prefs} = {'performance': 'ALL'}</msg>
+<msg time="2025-11-21T16:51:28.590353" level="INFO">${logging_prefs} = {'performance': 'ALL'}</msg>
 <var>${logging_prefs}</var>
 <arg>performance=ALL</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-11-19T17:39:41.988427" elapsed="0.000723"/>
+<status status="PASS" start="2025-11-21T16:51:28.589645" elapsed="0.000804"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
 <arg>${options}</arg>
@@ -25,64 +25,64 @@
 <arg>goog:loggingPrefs</arg>
 <arg>${logging_prefs}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-11-19T17:39:41.989295" elapsed="0.000215"/>
+<status status="PASS" start="2025-11-21T16:51:28.590582" elapsed="0.000643"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-11-19T17:39:41.989961" level="INFO">Opening browser 'Chrome' to base url 'https://app.panda.ennam.vn/'.</msg>
+<msg time="2025-11-21T16:51:28.591928" level="INFO">Opening browser 'Chrome' to base url 'https://app.panda.ennam.vn/'.</msg>
 <arg>${BASE_URL}</arg>
 <arg>${CHROME_BROWSER}</arg>
 <arg>options=${options}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-11-19T17:39:41.989656" elapsed="1.686477"/>
+<status status="PASS" start="2025-11-21T16:51:28.591571" elapsed="1.930240"/>
 </kw>
-<status status="PASS" start="2025-11-19T17:39:41.985435" elapsed="1.693014"/>
+<status status="PASS" start="2025-11-21T16:51:28.586878" elapsed="1.935274"/>
 </kw>
 <kw name="Restore Browser Session" owner="Common">
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-11-19T17:39:43.684666" level="INFO">${cookies_file} = .session/my_user/cookies.json</msg>
+<msg time="2025-11-21T16:51:30.523241" level="INFO">${cookies_file} = .session/my_user/cookies.json</msg>
 <var>${cookies_file}</var>
 <arg>.session/my_user/cookies.json</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-11-19T17:39:43.681953" elapsed="0.003157"/>
+<status status="PASS" start="2025-11-21T16:51:30.523022" elapsed="0.000355"/>
 </kw>
 <kw name="Run Keyword And Return Status" owner="BuiltIn">
 <kw name="File Should Exist" owner="OperatingSystem">
-<msg time="2025-11-19T17:39:43.696195" level="INFO" html="true">File '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json&lt;/a&gt;' exists.</msg>
+<msg time="2025-11-21T16:51:30.524253" level="INFO" html="true">File '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json&lt;/a&gt;' exists.</msg>
 <arg>${cookies_file}</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<status status="PASS" start="2025-11-19T17:39:43.693212" elapsed="0.003915"/>
+<status status="PASS" start="2025-11-21T16:51:30.523837" elapsed="0.000527"/>
 </kw>
-<msg time="2025-11-19T17:39:43.697753" level="INFO">${cookies_exist} = True</msg>
+<msg time="2025-11-21T16:51:30.524483" level="INFO">${cookies_exist} = True</msg>
 <var>${cookies_exist}</var>
 <arg>File Should Exist</arg>
 <arg>${cookies_file}</arg>
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<status status="PASS" start="2025-11-19T17:39:43.687853" elapsed="0.010398"/>
+<status status="PASS" start="2025-11-21T16:51:30.523526" elapsed="0.001017"/>
 </kw>
 <if>
 <branch type="IF" condition="${cookies_exist}">
 <kw name="Get Library Instance" owner="BuiltIn">
-<msg time="2025-11-19T17:39:43.700837" level="INFO">${sl} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x104c49490&gt;</msg>
+<msg time="2025-11-21T16:51:30.526014" level="INFO">${sl} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x104ab6850&gt;</msg>
 <var>${sl}</var>
 <arg>SeleniumLibrary</arg>
 <doc>Returns the currently active instance of the specified library.</doc>
-<status status="PASS" start="2025-11-19T17:39:43.699949" elapsed="0.001095"/>
+<status status="PASS" start="2025-11-21T16:51:30.525718" elapsed="0.000401"/>
 </kw>
 <kw name="Get File" owner="OperatingSystem">
-<msg time="2025-11-19T17:39:43.701798" level="INFO" html="true">Getting file '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json&lt;/a&gt;'.</msg>
-<msg time="2025-11-19T17:39:43.703190" level="INFO">${cookies_json} = [{"domain": "app.panda.ennam.vn", "httpOnly": false, "name": "refresh_token", "path": "/", "sameSite": "Lax", "secure": false, "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcm...</msg>
+<msg time="2025-11-21T16:51:30.526622" level="INFO" html="true">Getting file '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/.session/my_user/cookies.json&lt;/a&gt;'.</msg>
+<msg time="2025-11-21T16:51:30.528253" level="INFO">${cookies_json} = [{"domain": "app.panda.ennam.vn", "httpOnly": false, "name": "refresh_token", "path": "/", "sameSite": "Lax", "secure": false, "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcm...</msg>
 <var>${cookies_json}</var>
 <arg>${cookies_file}</arg>
 <doc>Returns the contents of a specified file.</doc>
-<status status="PASS" start="2025-11-19T17:39:43.701352" elapsed="0.002214"/>
+<status status="PASS" start="2025-11-21T16:51:30.526331" elapsed="0.002287"/>
 </kw>
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-11-19T17:39:43.705292" level="INFO">${cookies} = [{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'refresh_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcm...</msg>
+<msg time="2025-11-21T16:51:30.530686" level="INFO">${cookies} = [{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'refresh_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcm...</msg>
 <var>${cookies}</var>
 <arg>json.loads('''${cookies_json}''')</arg>
 <arg>modules=json</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-11-19T17:39:43.704091" elapsed="0.001417"/>
+<status status="PASS" start="2025-11-21T16:51:30.529173" elapsed="0.002225"/>
 </kw>
 <for flavor="IN">
 <iter>
@@ -91,14 +91,14 @@
 <arg>add_cookie</arg>
 <arg>${cookie}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-11-19T17:39:43.707126" elapsed="0.266131"/>
+<status status="PASS" start="2025-11-21T16:51:30.532674" elapsed="0.021768"/>
 </kw>
 <kw name="Reload Page" owner="SeleniumLibrary">
 <doc>Simulates user reloading page.</doc>
-<status status="PASS" start="2025-11-19T17:39:43.973512" elapsed="0.149576"/>
+<status status="PASS" start="2025-11-21T16:51:30.554725" elapsed="0.103915"/>
 </kw>
 <var name="${cookie}">{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'refresh_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmV...</var>
-<status status="PASS" start="2025-11-19T17:39:43.706794" elapsed="0.416453"/>
+<status status="PASS" start="2025-11-21T16:51:30.532502" elapsed="0.126285"/>
 </iter>
 <iter>
 <kw name="Call Method" owner="BuiltIn">
@@ -106,14 +106,14 @@
 <arg>add_cookie</arg>
 <arg>${cookie}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-11-19T17:39:44.123586" elapsed="0.003990"/>
+<status status="PASS" start="2025-11-21T16:51:30.659106" elapsed="0.007408"/>
 </kw>
 <kw name="Reload Page" owner="SeleniumLibrary">
 <doc>Simulates user reloading page.</doc>
-<status status="PASS" start="2025-11-19T17:39:44.127807" elapsed="0.401053"/>
+<status status="PASS" start="2025-11-21T16:51:30.666750" elapsed="0.282702"/>
 </kw>
 <var name="${cookie}">{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'access_token', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNz...</var>
-<status status="PASS" start="2025-11-19T17:39:44.123409" elapsed="0.405662"/>
+<status status="PASS" start="2025-11-21T16:51:30.658942" elapsed="0.290674"/>
 </iter>
 <iter>
 <kw name="Call Method" owner="BuiltIn">
@@ -121,164 +121,1070 @@
 <arg>add_cookie</arg>
 <arg>${cookie}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-11-19T17:39:44.529655" elapsed="0.015192"/>
+<status status="PASS" start="2025-11-21T16:51:30.950007" elapsed="0.003609"/>
 </kw>
 <kw name="Reload Page" owner="SeleniumLibrary">
 <doc>Simulates user reloading page.</doc>
-<status status="PASS" start="2025-11-19T17:39:44.545144" elapsed="0.121970"/>
+<status status="PASS" start="2025-11-21T16:51:30.953865" elapsed="0.216119"/>
 </kw>
 <var name="${cookie}">{'domain': 'app.panda.ennam.vn', 'httpOnly': False, 'name': 'NEXT_LOCALE', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'en'}</var>
-<status status="PASS" start="2025-11-19T17:39:44.529383" elapsed="0.137923"/>
+<status status="PASS" start="2025-11-21T16:51:30.949809" elapsed="0.220361"/>
 </iter>
 <var>${cookie}</var>
 <value>@{cookies}</value>
-<status status="PASS" start="2025-11-19T17:39:43.706410" elapsed="0.960999"/>
+<status status="PASS" start="2025-11-21T16:51:30.531958" elapsed="0.638324"/>
 </for>
-<status status="PASS" start="2025-11-19T17:39:43.699125" elapsed="0.968383"/>
+<status status="PASS" start="2025-11-21T16:51:30.524816" elapsed="0.645596"/>
 </branch>
-<status status="PASS" start="2025-11-19T17:39:43.699048" elapsed="0.968536"/>
+<status status="PASS" start="2025-11-21T16:51:30.524646" elapsed="0.645851"/>
 </if>
-<status status="PASS" start="2025-11-19T17:39:43.680446" elapsed="0.987204"/>
+<status status="PASS" start="2025-11-21T16:51:30.522559" elapsed="0.648011"/>
 </kw>
 <kw name="Click on Element" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-19T17:39:44.668379" elapsed="0.234705"/>
+<status status="PASS" start="2025-11-21T16:51:31.171276" elapsed="0.242087"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-11-19T17:39:44.903999" level="INFO">Clicking element 'xpath=//button[normalize-space()='User']'.</msg>
+<msg time="2025-11-21T16:51:31.414350" level="INFO">Clicking element 'xpath=//button[normalize-space()='Product']'.</msg>
 <arg>${elm_input}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T17:39:44.903457" elapsed="0.044296"/>
+<status status="PASS" start="2025-11-21T16:51:31.413873" elapsed="0.051663"/>
 </kw>
-<arg>${Tab_USER_BUTTON}</arg>
-<status status="PASS" start="2025-11-19T17:39:44.667883" elapsed="0.280078"/>
+<arg>${Tab_PRODUCTS_BUTTON}</arg>
+<status status="PASS" start="2025-11-21T16:51:31.170811" elapsed="0.294908"/>
 </kw>
-<kw name="Select User Random User From List" owner="UpdateUserPage">
+<kw name="Click on Element" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>xpath=//table//tbody//tr</arg>
-<arg>20s</arg>
+<arg>${elm_input}</arg>
+<arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-19T17:39:44.948517" elapsed="4.101697"/>
+<status status="PASS" start="2025-11-21T16:51:31.466272" elapsed="2.807616"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:51:34.274466" level="INFO">Clicking element 'xpath=//button[normalize-space()='Category List']'.</msg>
+<arg>${elm_input}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:34.274166" elapsed="0.032363"/>
+</kw>
+<arg>${LIST_CATEGORY_BUTTON}</arg>
+<status status="PASS" start="2025-11-21T16:51:31.465921" elapsed="2.840765"/>
+</kw>
+<kw name="Select Category Random Category From List" owner="UpdateCategoryPage">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${Random_ClickEdit}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:34.307142" elapsed="3.678506"/>
 </kw>
 <kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2025-11-19T17:39:49.057652" level="INFO">${rows} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="5e8c9d712362c8105a2027798cdb9ea8", element="f.28664934491A676ADB762B577C9631D4.d.B26D6A6608C44F2C8763D8483C004542.e.37")&gt;, &lt;selenium.webdriv...</msg>
-<var>${rows}</var>
-<arg>xpath=//table//tbody//tr</arg>
+<msg time="2025-11-21T16:51:37.993458" level="INFO">${valid_rows} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="7f4a3584a9d3db7c6ec39f80f8fe6718", element="f.A14918219FDB1BBB325B6A2BEB94B81E.d.2996AF266C43B2AB53FB04952210BA23.e.32")&gt;, &lt;selenium.webdriv...</msg>
+<var>${valid_rows}</var>
+<arg>${Random_ClickEdit}</arg>
 <doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2025-11-19T17:39:49.050675" elapsed="0.007481"/>
+<status status="PASS" start="2025-11-21T16:51:37.986118" elapsed="0.007928"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-21T16:51:37.994852" level="INFO">[&lt;selenium.webdriver.remote.webelement.WebElement (session="7f4a3584a9d3db7c6ec39f80f8fe6718", element="f.A14918219FDB1BBB325B6A2BEB94B81E.d.2996AF266C43B2AB53FB04952210BA23.e.32")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="7f4a3584a9d3db7c6ec39f80f8fe6718", element="f.A14918219FDB1BBB325B6A2BEB94B81E.d.2996AF266C43B2AB53FB04952210BA23.e.33")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="7f4a3584a9d3db7c6ec39f80f8fe6718", element="f.A14918219FDB1BBB325B6A2BEB94B81E.d.2996AF266C43B2AB53FB04952210BA23.e.34")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="7f4a3584a9d3db7c6ec39f80f8fe6718", element="f.A14918219FDB1BBB325B6A2BEB94B81E.d.2996AF266C43B2AB53FB04952210BA23.e.35")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="7f4a3584a9d3db7c6ec39f80f8fe6718", element="f.A14918219FDB1BBB325B6A2BEB94B81E.d.2996AF266C43B2AB53FB04952210BA23.e.36")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="7f4a3584a9d3db7c6ec39f80f8fe6718", element="f.A14918219FDB1BBB325B6A2BEB94B81E.d.2996AF266C43B2AB53FB04952210BA23.e.37")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="7f4a3584a9d3db7c6ec39f80f8fe6718", element="f.A14918219FDB1BBB325B6A2BEB94B81E.d.2996AF266C43B2AB53FB04952210BA23.e.38")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="7f4a3584a9d3db7c6ec39f80f8fe6718", element="f.A14918219FDB1BBB325B6A2BEB94B81E.d.2996AF266C43B2AB53FB04952210BA23.e.39")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="7f4a3584a9d3db7c6ec39f80f8fe6718", element="f.A14918219FDB1BBB325B6A2BEB94B81E.d.2996AF266C43B2AB53FB04952210BA23.e.40")&gt;]</msg>
+<arg>${valid_rows}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-21T16:51:37.994447" elapsed="0.000642"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-11-19T17:39:49.058905" level="INFO">Length is 10.</msg>
-<msg time="2025-11-19T17:39:49.059125" level="INFO">${count} = 10</msg>
-<var>${count}</var>
-<arg>${rows}</arg>
+<msg time="2025-11-21T16:51:37.995619" level="INFO">Length is 9.</msg>
+<msg time="2025-11-21T16:51:37.995827" level="INFO">${total_rows} = 9</msg>
+<var>${total_rows}</var>
+<arg>${valid_rows}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-11-19T17:39:49.058490" elapsed="0.000753"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<arg>${count} == 0</arg>
-<arg>Fail</arg>
-<arg>No user rows found to click</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-11-19T17:39:49.059485" elapsed="0.000336"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-11-19T17:39:49.060463" level="INFO">${index} = 0</msg>
-<var>${index}</var>
-<arg>random.randint(0, ${count}-1)</arg>
-<arg>modules=random</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-11-19T17:39:49.060035" elapsed="0.000546"/>
-</kw>
-<kw name="Get From List" owner="Collections">
-<msg time="2025-11-19T17:39:49.061151" level="INFO">${row} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5e8c9d712362c8105a2027798cdb9ea8", element="f.28664934491A676ADB762B577C9631D4.d.B26D6A6608C44F2C8763D8483C004542.e.37")&gt;</msg>
-<var>${row}</var>
-<arg>${rows}</arg>
-<arg>${index}</arg>
-<doc>Returns the value specified with an ``index`` from ``list``.</doc>
-<status status="PASS" start="2025-11-19T17:39:49.060801" elapsed="0.000473"/>
-</kw>
-<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
-<kw name="Scroll Element Into View" owner="SeleniumLibrary">
-<arg>${row}</arg>
-<doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" start="2025-11-19T17:39:49.061781" elapsed="0.276099"/>
-</kw>
-<arg>SeleniumLibrary.Scroll Element Into View</arg>
-<arg>${row}</arg>
-<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
-<status status="PASS" start="2025-11-19T17:39:49.061484" elapsed="0.276907"/>
+<status status="PASS" start="2025-11-21T16:51:37.995329" elapsed="0.000619"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-11-19T17:39:49.339922" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="5e8c9d712362c8105a2027798cdb9ea8", element="f.28664934491A676ADB762B577C9631D4.d.B26D6A6608C44F2C8763D8483C004542.e.37")&gt;'.</msg>
-<arg>${row}</arg>
+<msg time="2025-11-21T16:51:37.996532" level="INFO">Clicking element '//tr[ .//td[1]//span[@class="ml-2 text-sm font-medium leading-none"][text()!='UNKNOWN'] ]//button[contains(@aria-haspopup,'menu')]'.</msg>
+<arg>${Random_ClickEdit}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T17:39:49.339009" elapsed="0.046311"/>
+<status status="PASS" start="2025-11-21T16:51:37.996189" elapsed="0.076238"/>
 </kw>
-<doc>Collect visible user rows from the users table and click one at random.</doc>
-<status status="PASS" start="2025-11-19T17:39:44.948195" elapsed="4.437356"/>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-21T16:51:40.074477" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-21T16:51:38.072846" elapsed="2.002362"/>
 </kw>
 <kw name="Click on Element" owner="Common">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${elm_input}</arg>
 <arg>10s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-19T17:39:49.386259" elapsed="2.705751"/>
+<status status="PASS" start="2025-11-21T16:51:40.077346" elapsed="0.025497"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-11-19T17:39:52.092960" level="INFO">Clicking element 'xpath=//p[normalize-space()='Change Status']'.</msg>
+<msg time="2025-11-21T16:51:40.103808" level="INFO">Clicking element '//a[contains(@href,'edit')]'.</msg>
 <arg>${elm_input}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T17:39:52.092465" elapsed="0.046222"/>
+<status status="PASS" start="2025-11-21T16:51:40.103319" elapsed="0.056370"/>
 </kw>
-<arg>xpath=//p[normalize-space()='Change Status']</arg>
-<status status="PASS" start="2025-11-19T17:39:49.385817" elapsed="2.753111"/>
+<arg>//a[contains(@href,'edit')]</arg>
+<status status="PASS" start="2025-11-21T16:51:40.076006" elapsed="0.083872"/>
 </kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-11-19T17:39:57.140047" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-11-19T17:39:52.139203" elapsed="5.002404"/>
+<doc>Select a random category with 0 products (excluding "UNKNOWN") and click the (...) menu button.</doc>
+<status status="PASS" start="2025-11-21T16:51:34.306877" elapsed="5.853099"/>
 </kw>
-<status status="PASS" start="2025-11-19T17:39:41.985071" elapsed="15.156989"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>//button[@value='on']</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-11-19T17:39:57.143059" elapsed="0.024469"/>
-</kw>
-<kw name="Get Element Attribute" owner="SeleniumLibrary">
-<msg time="2025-11-19T17:39:57.185184" level="INFO">${get_attribute} = false</msg>
-<var>${get_attribute}</var>
-<arg>//button[@value='on']</arg>
-<arg>aria-checked</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<status status="PASS" start="2025-11-19T17:39:57.168081" elapsed="0.017304"/>
+<kw name="Generate Random Data New Category" owner="UpdateCategoryPage">
+<kw name="Word" owner="FakerLibrary">
+<msg time="2025-11-21T16:51:40.160871" level="INFO">${New_Name_Category} = compare</msg>
+<var>${New_Name_Category}</var>
+<doc>Generate a word.</doc>
+<status status="PASS" start="2025-11-21T16:51:40.160494" elapsed="0.000483"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-11-19T17:39:57.186182" level="INFO">false</msg>
-<arg>${get_attribute}</arg>
+<msg time="2025-11-21T16:51:40.161279" level="INFO">compare</msg>
+<arg>${New_Name_Category}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-11-19T17:39:57.185865" elapsed="0.000465"/>
+<status status="PASS" start="2025-11-21T16:51:40.161118" elapsed="0.000258"/>
 </kw>
-<status status="PASS" start="2025-11-19T17:39:41.984563" elapsed="15.202246"/>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:51:40.161751" level="INFO">${New_Name_Category} = compare</msg>
+<arg>${New_Name_Category}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-11-21T16:51:40.161513" elapsed="0.000327"/>
+</kw>
+<status status="PASS" start="2025-11-21T16:51:40.160177" elapsed="0.001752"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-21T16:51:45.162972" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-21T16:51:40.162045" elapsed="5.001451"/>
+</kw>
+<status status="PASS" start="2025-11-21T16:51:28.586566" elapsed="16.577227"/>
+</kw>
+<kw name="When Input Category Name" owner="UpdateCategoryPage">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CATEGORY_NAME_INPUT}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:45.165439" elapsed="0.026150"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${CATEGORY_NAME_INPUT}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:45.191984" elapsed="0.029568"/>
+</kw>
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${elm_input}</arg>
+<arg>15s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:45.222581" elapsed="0.009766"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:51:45.232905" level="INFO">Typing text 'A' into text field 'xpath=//input[@placeholder='Enter Category Name']'.</msg>
+<arg>${elm_input}</arg>
+<arg>${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:45.232592" elapsed="0.093933"/>
+</kw>
+<arg>${CATEGORY_NAME_INPUT}</arg>
+<arg>${category_name}</arg>
+<status status="PASS" start="2025-11-21T16:51:45.222080" elapsed="0.104644"/>
+</kw>
+<arg>${MIN_STRING_1}</arg>
+<status status="PASS" start="2025-11-21T16:51:45.164575" elapsed="0.162250"/>
+</kw>
+<kw name="And Click on Element" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:45.327671" elapsed="0.011439"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:51:45.339703" level="INFO">Clicking element 'xpath=/html/body/div[1]/div/main/div/form/button'.</msg>
+<arg>${elm_input}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:45.339440" elapsed="0.032536"/>
+</kw>
+<arg>${Submit_BUTTON_Category}</arg>
+<status status="PASS" start="2025-11-21T16:51:45.327215" elapsed="0.045066"/>
+</kw>
+<kw name="Then Verify Error Message For Min Category Name" owner="UpdateCategoryPage">
+<kw name="Check validation error message" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:45.373266" elapsed="1.721729"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:51:47.122459" level="INFO">${error_message_invalid} = • Category name must be between 3 and 50 characters</msg>
+<var>${error_message_invalid}</var>
+<arg>${Elm_message}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:47.095460" elapsed="0.027214"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${error_message_invalid}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-21T16:51:47.122948" elapsed="0.000481"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-11-21T16:51:47.123859" level="INFO">Set test message to:
+validation error message with '• Category name must be between 3 and 50 characters'</msg>
+<arg>validation error message with '${error_message_invalid}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-11-21T16:51:47.123624" elapsed="0.000370"/>
+</kw>
+<arg>xpath=//div[@class="text-sm opacity-90"]</arg>
+<arg>• Category name must be between 3 and 50 characters</arg>
+<status status="PASS" start="2025-11-21T16:51:45.372983" elapsed="1.751136"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-21T16:51:49.125037" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-21T16:51:47.124303" elapsed="2.002055"/>
+</kw>
+<status status="PASS" start="2025-11-21T16:51:45.372666" elapsed="3.754404"/>
+</kw>
+<doc>Verify validation error when Category Name has minimum invalid length</doc>
+<tag>Category</tag>
+<tag>MinLength</tag>
+<tag>Validation</tag>
+<status status="PASS" start="2025-11-21T16:51:28.585892" elapsed="20.542245">validation error message with '• Category name must be between 3 and 50 characters'</status>
 </test>
-<doc>Test cases for Reset &amp; Send Password functionality</doc>
-<status status="PASS" start="2025-11-19T17:39:41.722632" elapsed="15.465654"/>
+<test id="s1-t2" name="Check validation max Category Name error on Create Product Page" line="22">
+<kw name="Given User on at Update Category Page" owner="UpdateCategoryPage">
+<kw name="No Operation" owner="BuiltIn">
+<doc>Does absolutely nothing.</doc>
+<status status="PASS" start="2025-11-21T16:51:49.133225" elapsed="0.000486"/>
+</kw>
+<status status="PASS" start="2025-11-21T16:51:49.131962" elapsed="0.002009"/>
+</kw>
+<kw name="When Input Category Name" owner="UpdateCategoryPage">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CATEGORY_NAME_INPUT}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:49.135559" elapsed="0.027766"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${CATEGORY_NAME_INPUT}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:49.164770" elapsed="0.042272"/>
+</kw>
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${elm_input}</arg>
+<arg>15s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:49.207768" elapsed="0.008924"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:51:49.217212" level="INFO">Typing text 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' into text field 'xpath=//input[@placeholder='Enter Category Name']'.</msg>
+<arg>${elm_input}</arg>
+<arg>${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:49.216938" elapsed="0.051599"/>
+</kw>
+<arg>${CATEGORY_NAME_INPUT}</arg>
+<arg>${category_name}</arg>
+<status status="PASS" start="2025-11-21T16:51:49.207354" elapsed="0.061347"/>
+</kw>
+<arg>${LONG_STRING_51}</arg>
+<status status="PASS" start="2025-11-21T16:51:49.134727" elapsed="0.134051"/>
+</kw>
+<kw name="And Click on Element" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:49.269410" elapsed="0.007562"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:51:49.277418" level="INFO">Clicking element 'xpath=/html/body/div[1]/div/main/div/form/button'.</msg>
+<arg>${elm_input}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:49.277192" elapsed="0.025421"/>
+</kw>
+<arg>${Submit_BUTTON_Category}</arg>
+<status status="PASS" start="2025-11-21T16:51:49.269085" elapsed="0.033705"/>
+</kw>
+<kw name="Then Verify Error Message For Max Category Name" owner="UpdateCategoryPage">
+<kw name="Check validation error message" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:49.303737" elapsed="0.007978"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:51:49.319784" level="INFO">${error_message_invalid} = • Category name must be between 3 and 50 characters</msg>
+<var>${error_message_invalid}</var>
+<arg>${Elm_message}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:49.312096" elapsed="0.007819"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${error_message_invalid}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-21T16:51:49.320081" elapsed="0.000284"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-11-21T16:51:49.320615" level="INFO">Set test message to:
+validation error message with '• Category name must be between 3 and 50 characters'</msg>
+<arg>validation error message with '${error_message_invalid}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-11-21T16:51:49.320482" elapsed="0.000340"/>
+</kw>
+<arg>xpath=//div[@class="text-sm opacity-90"]</arg>
+<arg>• Category name must be between 3 and 50 characters</arg>
+<status status="PASS" start="2025-11-21T16:51:49.303385" elapsed="0.017546"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-21T16:51:51.321370" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-21T16:51:49.321050" elapsed="2.000679"/>
+</kw>
+<status status="PASS" start="2025-11-21T16:51:49.303094" elapsed="2.018855"/>
+</kw>
+<doc>Verify validation error when Category Name exceeds maximum length on Update Category Page</doc>
+<tag>Category</tag>
+<tag>MaxLength</tag>
+<tag>Validation</tag>
+<status status="PASS" start="2025-11-21T16:51:49.129468" elapsed="2.192789">validation error message with '• Category name must be between 3 and 50 characters'</status>
+</test>
+<test id="s1-t3" name="Update Category with existing Category Name on Update Category Page" line="30">
+<kw name="Given User on at Update Category Page" owner="UpdateCategoryPage">
+<kw name="No Operation" owner="BuiltIn">
+<doc>Does absolutely nothing.</doc>
+<status status="PASS" start="2025-11-21T16:51:51.324257" elapsed="0.000226"/>
+</kw>
+<status status="PASS" start="2025-11-21T16:51:51.323806" elapsed="0.000829"/>
+</kw>
+<kw name="When Input Category Name" owner="UpdateCategoryPage">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CATEGORY_NAME_INPUT}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:51.325415" elapsed="0.014064"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${CATEGORY_NAME_INPUT}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:51.339813" elapsed="0.018909"/>
+</kw>
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${elm_input}</arg>
+<arg>15s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:51.359522" elapsed="0.008771"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:51:51.368820" level="INFO">Typing text 'NikeSchoe' into text field 'xpath=//input[@placeholder='Enter Category Name']'.</msg>
+<arg>${elm_input}</arg>
+<arg>${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:51.368533" elapsed="0.034526"/>
+</kw>
+<arg>${CATEGORY_NAME_INPUT}</arg>
+<arg>${category_name}</arg>
+<status status="PASS" start="2025-11-21T16:51:51.359034" elapsed="0.044191"/>
+</kw>
+<arg>${Category_exist}</arg>
+<status status="PASS" start="2025-11-21T16:51:51.324937" elapsed="0.078370"/>
+</kw>
+<kw name="And Click Submit button and wait for response Existing Category Name" owner="UpdateCategoryPage">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-21T16:51:56.404638" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-21T16:51:51.403829" elapsed="5.001321"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:51:56.411307" level="INFO">${url} = https://app.panda.ennam.vn/product-management/category/edit/18941</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-11-21T16:51:56.405692" elapsed="0.005892"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-21T16:51:56.412406" level="INFO">https://app.panda.ennam.vn/product-management/category/edit/18941</msg>
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-21T16:51:56.411979" elapsed="0.000670"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-21T16:51:56.419091" level="INFO">${id} = 18941</msg>
+<var>${id}</var>
+<arg>re.search(r'/edit/([0-9]+)(?:[/?]|$)', """${url}""").group(1)</arg>
+<arg>re</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-21T16:51:56.412978" elapsed="0.006316"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-21T16:51:56.419966" level="INFO">18941</msg>
+<arg>${id}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-21T16:51:56.419633" elapsed="0.000529"/>
+</kw>
+<kw name="Prepare For Request Interception" owner="Common">
+<kw name="Get Library Instance" owner="BuiltIn">
+<msg time="2025-11-21T16:51:56.421580" level="INFO">${driver} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x104ab6850&gt;</msg>
+<var>${driver}</var>
+<arg>SeleniumLibrary</arg>
+<doc>Returns the currently active instance of the specified library.</doc>
+<status status="PASS" start="2025-11-21T16:51:56.421187" elapsed="0.000561"/>
+</kw>
+<kw name="Inject Request Interceptor" owner="Network">
+<msg time="2025-11-21T16:51:56.429261" level="INFO">JavaScript interceptor injected for endpoint: api/categories/18941/</msg>
+<arg>${driver.driver}</arg>
+<arg>${endpoint}</arg>
+<doc>Inject JavaScript to intercept and log requests to a specific API endpoint.</doc>
+<status status="PASS" start="2025-11-21T16:51:56.422018" elapsed="0.007761"/>
+</kw>
+<return>
+<value>${driver}</value>
+<status status="PASS" start="2025-11-21T16:51:56.430075" elapsed="0.000187"/>
+</return>
+<msg time="2025-11-21T16:51:56.430560" level="INFO">${driver} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x104ab6850&gt;</msg>
+<var>${driver}</var>
+<arg>${Update_Category_API}${id}/</arg>
+<status status="PASS" start="2025-11-21T16:51:56.420509" elapsed="0.010189"/>
+</kw>
+<kw name="Click on Element" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:56.431530" elapsed="0.013787"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:51:56.445978" level="INFO">Clicking element 'xpath=/html/body/div[1]/div/main/div/form/button'.</msg>
+<arg>${elm_input}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:56.445646" elapsed="0.058946"/>
+</kw>
+<arg>${Submit_BUTTON_Category}</arg>
+<status status="PASS" start="2025-11-21T16:51:56.431004" elapsed="0.073768"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.505508" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-21T16:51:56.504933" elapsed="2.001136"/>
+</kw>
+<kw name="Get Request API" owner="Common">
+<kw name="Get Intercepted Requests" owner="Network">
+<msg time="2025-11-21T16:51:58.633979" level="INFO">Found 1 matching requests</msg>
+<msg time="2025-11-21T16:51:58.634528" level="INFO">${requests} = [{'method': 'PUT', 'payload': '{"name":"NikeSchoe"}', 'response': '{"success":false,"statusCode":400,"message":"INVALID_INPUT","data":{"name":["VAL024"]}}', 'status': 400, 'timestamp': 1763718716503, ...</msg>
+<var>${requests}</var>
+<arg>${driver.driver}</arg>
+<doc>Get intercepted requests matching the given criteria.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.508278" elapsed="0.126451"/>
+</kw>
+<kw name="Run Keyword Unless" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.635424" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<arg>${requests}</arg>
+<arg>Fail</arg>
+<arg>No intercepted requests found.</arg>
+<doc>*DEPRECATED since RF 5.0. Use Native IF/ELSE or `Run Keyword If` instead.*</doc>
+<status status="PASS" start="2025-11-21T16:51:58.635164" elapsed="0.001149"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.639832" level="INFO">${status} = 400</msg>
+<var>${status}</var>
+<arg>${requests[0]['status']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.637347" elapsed="0.002778"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.641851" level="INFO">${url} = https://api.panda.ennam.vn/api/categories/18941/</msg>
+<var>${url}</var>
+<arg>${requests[0]['url']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.640475" elapsed="0.001578"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.643652" level="INFO">${payload} = {"name":"NikeSchoe"}</msg>
+<var>${payload}</var>
+<arg>${requests[0]['payload']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.642366" elapsed="0.001468"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.645251" level="INFO">${body} = {"success":false,"statusCode":400,"message":"INVALID_INPUT","data":{"name":["VAL024"]}}</msg>
+<var>${body}</var>
+<arg>${requests[0]['response']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.644131" elapsed="0.001289"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.646551" level="INFO">&amp;{result} = { status=400 | body={"success":false,"statusCode":400,"message":"INVALID_INPUT","data":{"name":["VAL024"]}} | payload={"name":"NikeSchoe"} | url=https://api.panda.ennam.vn/api/categories/18941/ }</msg>
+<var>&amp;{result}</var>
+<arg>status=${status}</arg>
+<arg>body=${body}</arg>
+<arg>payload=${payload}</arg>
+<arg>url=${url}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.645720" elapsed="0.001004"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2025-11-21T16:51:58.646906" elapsed="0.000147"/>
+</return>
+<msg time="2025-11-21T16:51:58.647345" level="INFO">${result} = {'status': 400, 'body': '{"success":false,"statusCode":400,"message":"INVALID_INPUT","data":{"name":["VAL024"]}}', 'payload': '{"name":"NikeSchoe"}', 'url': 'https://api.panda.ennam.vn/api/categories/...</msg>
+<var>${result}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-11-21T16:51:58.506934" elapsed="0.140569"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.648925" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${result.status}</arg>
+<arg>${Status_400}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.647772" elapsed="0.001374"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.652013" level="INFO">${request_payload} = {'name': 'NikeSchoe'}</msg>
+<var>${request_payload}</var>
+<arg>json.loads('''${result.payload}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.650091" elapsed="0.002113"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${request_payload['name']}</arg>
+<arg>${Category_exist}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.652553" elapsed="0.001037"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.654199" level="INFO">{'name': 'NikeSchoe'}</msg>
+<arg>${request_payload}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.653836" elapsed="0.000586"/>
+</kw>
+<kw name="Parse Response API" owner="Common">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.656815" level="INFO">${response_json} = {'success': False, 'statusCode': 400, 'message': 'INVALID_INPUT', 'data': {'name': ['VAL024']}}</msg>
+<var>${response_json}</var>
+<arg>json.loads('''${body}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.656247" elapsed="0.000745"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.658199" level="INFO">${success} = False</msg>
+<var>${success}</var>
+<arg>${response_json['success']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.657256" elapsed="0.001083"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.659437" level="INFO">${statusCode} = 400</msg>
+<var>${statusCode}</var>
+<arg>${response_json['statusCode']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.658574" elapsed="0.000997"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.660613" level="INFO">${message} = INVALID_INPUT</msg>
+<var>${message}</var>
+<arg>${response_json['message']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.659819" elapsed="0.000909"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.661697" level="INFO">${data} = {'name': ['VAL024']}</msg>
+<var>${data}</var>
+<arg>${response_json['data']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.660924" elapsed="0.000887"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.662703" level="INFO">&amp;{parsed} = { success=False | statusCode=400 | message=INVALID_INPUT | data={'name': ['VAL024']} }</msg>
+<var>&amp;{parsed}</var>
+<arg>success=${success}</arg>
+<arg>statusCode=${statusCode}</arg>
+<arg>message=${message}</arg>
+<arg>data=${data}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.662019" elapsed="0.000812"/>
+</kw>
+<return>
+<value>&amp;{parsed}</value>
+<status status="PASS" start="2025-11-21T16:51:58.662968" elapsed="0.000108"/>
+</return>
+<msg time="2025-11-21T16:51:58.663327" level="INFO">&amp;{parsed} = { success=False | statusCode=400 | message=INVALID_INPUT | data={'name': ['VAL024']} }</msg>
+<var>&amp;{parsed}</var>
+<arg>${result.body}</arg>
+<status status="PASS" start="2025-11-21T16:51:58.654816" elapsed="0.008619"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.664485" level="INFO">Argument types are:
+&lt;class 'bool'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${parsed.success}</arg>
+<arg>${Boolean_False}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.663635" elapsed="0.001004"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.665639" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${parsed.statusCode}</arg>
+<arg>${Status_400}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.664835" elapsed="0.000949"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${parsed.message}</arg>
+<arg>INVALID_INPUT</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.665977" elapsed="0.000822"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${parsed.data.name}</arg>
+<arg>VAL024</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.666998" elapsed="0.001123"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.668643" level="INFO">{'success': False, 'statusCode': 400, 'message': 'INVALID_INPUT', 'data': {'name': ['VAL024']}}</msg>
+<arg>${parsed}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.668383" elapsed="0.000586"/>
+</kw>
+<status status="PASS" start="2025-11-21T16:51:51.403578" elapsed="7.265536"/>
+</kw>
+<kw name="Then Verify Error Message For Exist Category Name" owner="UpdateCategoryPage">
+<kw name="Check validation error message" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.670651" elapsed="0.016452"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:51:58.725134" level="INFO">${error_message_invalid} = • Category name already exists</msg>
+<var>${error_message_invalid}</var>
+<arg>${Elm_message}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.687468" elapsed="0.037815"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${error_message_invalid}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.725470" elapsed="0.000303"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-11-21T16:51:58.726052" level="INFO">Set test message to:
+validation error message with '• Category name already exists'</msg>
+<arg>validation error message with '${error_message_invalid}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.725900" elapsed="0.000249"/>
+</kw>
+<arg>xpath=//div[@class="text-sm opacity-90"]</arg>
+<arg>• Category name already exists</arg>
+<status status="PASS" start="2025-11-21T16:51:58.670265" elapsed="0.055974"/>
+</kw>
+<status status="PASS" start="2025-11-21T16:51:58.669668" elapsed="0.056651"/>
+</kw>
+<doc>Verify updating Category with an already existing name shows proper error message</doc>
+<tag>Category</tag>
+<tag>Negative</tag>
+<tag>Update</tag>
+<status status="PASS" start="2025-11-21T16:51:51.322851" elapsed="7.403655">validation error message with '• Category name already exists'</status>
+</test>
+<test id="s1-t4" name="Update Category with valid information on Update Category Page" line="38">
+<kw name="Given User on at Update Category Page" owner="UpdateCategoryPage">
+<kw name="No Operation" owner="BuiltIn">
+<doc>Does absolutely nothing.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.728383" elapsed="0.000144"/>
+</kw>
+<status status="PASS" start="2025-11-21T16:51:58.728038" elapsed="0.000596"/>
+</kw>
+<kw name="When Input Category Name" owner="UpdateCategoryPage">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CATEGORY_NAME_INPUT}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.729261" elapsed="0.015044"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${CATEGORY_NAME_INPUT}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.744525" elapsed="0.014247"/>
+</kw>
+<kw name="Fill Text Input" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${elm_input}</arg>
+<arg>15s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.759331" elapsed="0.007748"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:51:58.767537" level="INFO">Typing text 'compare' into text field 'xpath=//input[@placeholder='Enter Category Name']'.</msg>
+<arg>${elm_input}</arg>
+<arg>${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.767293" elapsed="0.031340"/>
+</kw>
+<arg>${CATEGORY_NAME_INPUT}</arg>
+<arg>${category_name}</arg>
+<status status="PASS" start="2025-11-21T16:51:58.759014" elapsed="0.039793"/>
+</kw>
+<arg>${New_Name_Category}</arg>
+<status status="PASS" start="2025-11-21T16:51:58.728916" elapsed="0.069971"/>
+</kw>
+<kw name="And Click Submit button and wait for response Valid Category Name" owner="UpdateCategoryPage">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-21T16:52:03.800855" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-21T16:51:58.799423" elapsed="5.002765"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:52:03.811114" level="INFO">${url} = https://app.panda.ennam.vn/product-management/category/edit/18941</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-11-21T16:52:03.803214" elapsed="0.008188"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-21T16:52:03.812264" level="INFO">https://app.panda.ennam.vn/product-management/category/edit/18941</msg>
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-21T16:52:03.811823" elapsed="0.000670"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-21T16:52:03.813624" level="INFO">${id} = 18941</msg>
+<var>${id}</var>
+<arg>re.search(r'/edit/([0-9]+)(?:[/?]|$)', """${url}""").group(1)</arg>
+<arg>re</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-21T16:52:03.812825" elapsed="0.000979"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-21T16:52:03.814486" level="INFO">18941</msg>
+<arg>${id}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-21T16:52:03.814136" elapsed="0.000563"/>
+</kw>
+<kw name="Prepare For Request Interception" owner="Common">
+<kw name="Get Library Instance" owner="BuiltIn">
+<msg time="2025-11-21T16:52:03.816347" level="INFO">${driver} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x104ab6850&gt;</msg>
+<var>${driver}</var>
+<arg>SeleniumLibrary</arg>
+<doc>Returns the currently active instance of the specified library.</doc>
+<status status="PASS" start="2025-11-21T16:52:03.815900" elapsed="0.000623"/>
+</kw>
+<kw name="Inject Request Interceptor" owner="Network">
+<msg time="2025-11-21T16:52:03.823890" level="INFO">JavaScript interceptor injected for endpoint: api/categories/18941/</msg>
+<arg>${driver.driver}</arg>
+<arg>${endpoint}</arg>
+<doc>Inject JavaScript to intercept and log requests to a specific API endpoint.</doc>
+<status status="PASS" start="2025-11-21T16:52:03.816841" elapsed="0.007554"/>
+</kw>
+<return>
+<value>${driver}</value>
+<status status="PASS" start="2025-11-21T16:52:03.824801" elapsed="0.000286"/>
+</return>
+<msg time="2025-11-21T16:52:03.825602" level="INFO">${driver} = &lt;SeleniumLibrary.SeleniumLibrary object at 0x104ab6850&gt;</msg>
+<var>${driver}</var>
+<arg>${Update_Category_API}${id}/</arg>
+<status status="PASS" start="2025-11-21T16:52:03.815107" elapsed="0.010663"/>
+</kw>
+<kw name="Click on Element" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${elm_input}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:52:03.826788" elapsed="0.015500"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:52:03.842995" level="INFO">Clicking element 'xpath=/html/body/div[1]/div/main/div/form/button'.</msg>
+<arg>${elm_input}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:52:03.842625" elapsed="0.034437"/>
+</kw>
+<arg>${Submit_BUTTON_Category}</arg>
+<status status="PASS" start="2025-11-21T16:52:03.826174" elapsed="0.051087"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.878642" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-21T16:52:03.877450" elapsed="2.002621"/>
+</kw>
+<kw name="Get Request API" owner="Common">
+<kw name="Get Intercepted Requests" owner="Network">
+<msg time="2025-11-21T16:52:05.897089" level="INFO">Found 2 matching requests</msg>
+<msg time="2025-11-21T16:52:05.897619" level="INFO">${requests} = [{'method': 'PUT', 'payload': '{"name":"compare"}', 'response': '{"success":true,"statusCode":202,"message":"UPDATE_DATA_SUCCEEDED","data":{"id":18941,"name":"compare","parent_category":null,"organiza...</msg>
+<var>${requests}</var>
+<arg>${driver.driver}</arg>
+<doc>Get intercepted requests matching the given criteria.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.882593" elapsed="0.015230"/>
+</kw>
+<kw name="Run Keyword Unless" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.898485" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<arg>${requests}</arg>
+<arg>Fail</arg>
+<arg>No intercepted requests found.</arg>
+<doc>*DEPRECATED since RF 5.0. Use Native IF/ELSE or `Run Keyword If` instead.*</doc>
+<status status="PASS" start="2025-11-21T16:52:05.898254" elapsed="0.001656"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.902370" level="INFO">${status} = 202</msg>
+<var>${status}</var>
+<arg>${requests[0]['status']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.901050" elapsed="0.001505"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.903962" level="INFO">${url} = https://api.panda.ennam.vn/api/categories/18941/</msg>
+<var>${url}</var>
+<arg>${requests[0]['url']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.902883" elapsed="0.001227"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.905399" level="INFO">${payload} = {"name":"compare"}</msg>
+<var>${payload}</var>
+<arg>${requests[0]['payload']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.904379" elapsed="0.001175"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.907328" level="INFO">${body} = {"success":true,"statusCode":202,"message":"UPDATE_DATA_SUCCEEDED","data":{"id":18941,"name":"compare","parent_category":null,"organization":"School Store"}}</msg>
+<var>${body}</var>
+<arg>${requests[0]['response']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.905930" elapsed="0.001597"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.908570" level="INFO">&amp;{result} = { status=202 | body={"success":true,"statusCode":202,"message":"UPDATE_DATA_SUCCEEDED","data":{"id":18941,"name":"compare","parent_category":null,"organization":"School Store"}} | payload={"name":"com...</msg>
+<var>&amp;{result}</var>
+<arg>status=${status}</arg>
+<arg>body=${body}</arg>
+<arg>payload=${payload}</arg>
+<arg>url=${url}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.907853" elapsed="0.000902"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2025-11-21T16:52:05.908942" elapsed="0.000138"/>
+</return>
+<msg time="2025-11-21T16:52:05.909357" level="INFO">${result} = {'status': 202, 'body': '{"success":true,"statusCode":202,"message":"UPDATE_DATA_SUCCEEDED","data":{"id":18941,"name":"compare","parent_category":null,"organization":"School Store"}}', 'payload': '{"n...</msg>
+<var>${result}</var>
+<arg>${driver}</arg>
+<status status="PASS" start="2025-11-21T16:52:05.881302" elapsed="0.028206"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.910787" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${result.status}</arg>
+<arg>${Status_202}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.909753" elapsed="0.001223"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.912418" level="INFO">${request_payload} = {'name': 'compare'}</msg>
+<var>${request_payload}</var>
+<arg>json.loads('''${result.payload}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.911221" elapsed="0.001349"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${request_payload['name']}</arg>
+<arg>${New_Name_Category}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.912824" elapsed="0.001039"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.914398" level="INFO">{'name': 'compare'}</msg>
+<arg>${request_payload}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.914126" elapsed="0.000440"/>
+</kw>
+<kw name="Parse Response API" owner="Common">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.916853" level="INFO">${response_json} = {'success': True, 'statusCode': 202, 'message': 'UPDATE_DATA_SUCCEEDED', 'data': {'id': 18941, 'name': 'compare', 'parent_category': None, 'organization': 'School Store'}}</msg>
+<var>${response_json}</var>
+<arg>json.loads('''${body}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.916035" elapsed="0.001117"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.918826" level="INFO">${success} = True</msg>
+<var>${success}</var>
+<arg>${response_json['success']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.917598" elapsed="0.001437"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.920299" level="INFO">${statusCode} = 202</msg>
+<var>${statusCode}</var>
+<arg>${response_json['statusCode']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.919400" elapsed="0.001023"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.921579" level="INFO">${message} = UPDATE_DATA_SUCCEEDED</msg>
+<var>${message}</var>
+<arg>${response_json['message']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.920627" elapsed="0.001071"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.922744" level="INFO">${data} = {'id': 18941, 'name': 'compare', 'parent_category': None, 'organization': 'School Store'}</msg>
+<var>${data}</var>
+<arg>${response_json['data']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.921899" elapsed="0.000973"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.923772" level="INFO">&amp;{parsed} = { success=True | statusCode=202 | message=UPDATE_DATA_SUCCEEDED | data={'id': 18941, 'name': 'compare', 'parent_category': None, 'organization': 'School Store'} }</msg>
+<var>&amp;{parsed}</var>
+<arg>success=${success}</arg>
+<arg>statusCode=${statusCode}</arg>
+<arg>message=${message}</arg>
+<arg>data=${data}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.923125" elapsed="0.000786"/>
+</kw>
+<return>
+<value>&amp;{parsed}</value>
+<status status="PASS" start="2025-11-21T16:52:05.924052" elapsed="0.000128"/>
+</return>
+<msg time="2025-11-21T16:52:05.924453" level="INFO">&amp;{parsed} = { success=True | statusCode=202 | message=UPDATE_DATA_SUCCEEDED | data={'id': 18941, 'name': 'compare', 'parent_category': None, 'organization': 'School Store'} }</msg>
+<var>&amp;{parsed}</var>
+<arg>${result.body}</arg>
+<status status="PASS" start="2025-11-21T16:52:05.914888" elapsed="0.009770"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.925755" level="INFO">Argument types are:
+&lt;class 'bool'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${parsed.success}</arg>
+<arg>${Boolean_True}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.924871" elapsed="0.001034"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.926915" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${parsed.statusCode}</arg>
+<arg>${Status_202}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.926104" elapsed="0.000960"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${parsed.message}</arg>
+<arg>UPDATE_DATA_SUCCEEDED</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.927262" elapsed="0.000838"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.928524" level="INFO">{'success': True, 'statusCode': 202, 'message': 'UPDATE_DATA_SUCCEEDED', 'data': {'id': 18941, 'name': 'compare', 'parent_category': None, 'organization': 'School Store'}}</msg>
+<arg>${parsed}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.928300" elapsed="0.000368"/>
+</kw>
+<status status="PASS" start="2025-11-21T16:51:58.799162" elapsed="7.129638"/>
+</kw>
+<kw name="Then Verify Success Message For Update Category" owner="UpdateCategoryPage">
+<kw name="Check validation error message" owner="Common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${Elm_message}</arg>
+<arg>15s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.929885" elapsed="0.028589"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-21T16:52:05.986118" level="INFO">${error_message_invalid} = Edit Category success</msg>
+<var>${error_message_invalid}</var>
+<arg>${Elm_message}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.959069" elapsed="0.027552"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${error_message_invalid}</arg>
+<arg>${Expected_message}</arg>
+<arg>Validation text successfully -&gt; Expected: '${Expected_message}', Observed: '${error_message_invalid}'</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.986837" elapsed="0.000352"/>
+</kw>
+<kw name="Set Test Message" owner="BuiltIn">
+<msg time="2025-11-21T16:52:05.987477" level="INFO">Set test message to:
+validation error message with 'Edit Category success'</msg>
+<arg>validation error message with '${error_message_invalid}'</arg>
+<doc>Sets message for the current test case.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.987325" elapsed="0.000253"/>
+</kw>
+<arg>//div[@class="text-sm opacity-90"]</arg>
+<arg>Edit Category success</arg>
+<status status="PASS" start="2025-11-21T16:52:05.929474" elapsed="0.058192"/>
+</kw>
+<status status="PASS" start="2025-11-21T16:52:05.929083" elapsed="0.058659"/>
+</kw>
+<kw name="Basic TearDowns" owner="Common" type="TEARDOWN">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-21T16:52:08.992082" level="INFO">Slept 3 seconds.</msg>
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-21T16:52:05.990435" elapsed="3.002709"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-21T16:52:08.993729" elapsed="0.096604"/>
+</kw>
+<status status="PASS" start="2025-11-21T16:52:05.989310" elapsed="3.101193"/>
+</kw>
+<doc>Verify that category is updated successfully when input information is valid</doc>
+<tag>Category</tag>
+<tag>Positive</tag>
+<tag>Update</tag>
+<status status="PASS" start="2025-11-21T16:51:58.727011" elapsed="10.363599">validation error message with 'Edit Category success'</status>
+</test>
+<doc>Test cases for Update Category functionality</doc>
+<status status="PASS" start="2025-11-21T16:51:28.384358" elapsed="40.706768"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="4" fail="0" skip="0">Category</stat>
+<stat pass="1" fail="0" skip="0">MaxLength</stat>
+<stat pass="1" fail="0" skip="0">MinLength</stat>
+<stat pass="1" fail="0" skip="0">Negative</stat>
+<stat pass="1" fail="0" skip="0">Positive</stat>
+<stat pass="2" fail="0" skip="0">Update</stat>
+<stat pass="2" fail="0" skip="0">Validation</stat>
 </tag>
 <suite>
-<stat name="ChangeStatus" id="s1" pass="1" fail="0" skip="0">ChangeStatus</stat>
+<stat name="UpdateCategory" id="s1" pass="4" fail="0" skip="0">UpdateCategory</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2025-11-21T16:51:58.635424" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
+<msg time="2025-11-21T16:52:05.898485" level="WARN">Keyword 'BuiltIn.Run Keyword Unless' is deprecated. </msg>
 </errors>
 </robot>

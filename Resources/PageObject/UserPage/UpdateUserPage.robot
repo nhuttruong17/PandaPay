@@ -25,53 +25,46 @@ ${ORGANIZATION_SELECT}       id=organization\
 ${UPDATE_USER_BUTTON}        xpath=//p[normalize-space()='Update user']
 ${Tab_USER_BUTTON}           xpath=//button[normalize-space()='User']
 ${UPDATE_USER_SUBMIT}        xpath=//button[normalize-space()='Submit']
-
 ${Create_User_API}      api/admin/user/
 ${UserID_exist}         School1190
-
-# XPaths for validations (shared with CreateUserPage)
-${Empty_UserID}    xpath=//p[normalize-space(text())='The User ID cannot be empty']
-${Min_UserID}      xpath=//p[normalize-space(text())='User ID must be at least 8 characters.']
-${Max_UserID}      xpath=//p[normalize-space(text())='User ID must be at most 20 characters.']
-
 #Xpath First Name
-${Empty_FirstName}   xpath=//p[normalize-space(text())='The First Name cannot be empty']
-${Min_FirstName}     xpath=//p[normalize-space(text())='First name must be at least 2 characters.']
-${Max_FirstName}     xpath=//p[normalize-space(text())='First name must be at most 50 characters.']
-
+${Empty_FirstName}           xpath=//p[normalize-space(text())='First name is required.']
+${Expected_FirstName}        First name is required.
+${Min_FirstName}             xpath=//p[normalize-space(text())='First name must be at least 2 characters.']
+${Expected_min_FirstName}    First name must be at least 2 characters.
+${Max_FirstName}             xpath=//p[normalize-space(text())='First name must be at most 50 characters.']
+${Expected_max_FirstName}    First name must be at most 50 characters.
 #Xpath Last Name
-${Empty_LastName}    xpath=//p[normalize-space(text())='The Last Name cannot be empty']
-${Min_LastName}      xpath=//p[normalize-space(text())='Last Name must be at least 2 characters.']
-${Max_LastName}      xpath=//p[normalize-space(text())='Last Name must be at most 50 characters.']
-
+${Empty_LastName}           xpath=//p[normalize-space(text())='The Last Name cannot be empty']
+${Expected_LastName}        The Last Name cannot be empty
+${Min_LastName}             xpath=//p[normalize-space(text())='Last name must be at least 2 characters.']
+${Expected_min_LastName}    Last name must be at least 2 characters.
+${Max_LastName}             xpath=//p[normalize-space(text())='Last name must be at most 50 characters.']
+${Expected_max_LastName}    Last name must be at most 50 characters.
 #Xpath Email
-${Empty_Email}      //p[normalize-space(text())='Email is required.']
-${Invalid_Email}    //p[normalize-space(text())='Not a valid email address.']
-
+${Empty_Email}              xpath=//p[normalize-space(text())='Email is required.']
+${Expected_empty_Email}     Email is required.
+${Invalid_Email}            xpath=//p[normalize-space(text())='Not a valid email address.']
+${Expected_invalid_Email}   Not a valid email address.
 #Xpath Phone Number
-${Invalid_Phone}    //p[normalize-space(text())='Phone number must be 10 characters.']
-
-#Xpath Address
-${Min_Address}      //p[normalize-space(text())='Address must be at least 8 characters.']
-${Max_Address}      //p[normalize-space(text())='Address must be at most 280 characters.']
+${Invalid_Phone}            xpath=//p[normalize-space(text())='Phone number must be 10 characters.']
+${Expected_invalid_Phone}   Phone number must be 10 characters.
+#Xpath Address    
+${Min_Address}              xpath=//p[normalize-space(text())='Address must be at least 8 characters.']
+${Expected_min_Address}     Address must be at least 8 characters.
+${Max_Address}              xpath=//p[normalize-space(text())='Address must be at most 280 characters.']
+${Expected_max_Address}     Address must be at most 280 characters.
+#Toast message
+${Toast_message}                       //div[@class="text-sm opacity-90"]
+${Expected_toast_EmailExist}           • Email already used
+${Expected_toast_PhoneNumberExist}     • Phone number already used
+${Expected_toast_CreateUserSuccess}    User updated successfully.
+#Data
 ${VALID_ADDRESS}        123 Test Street
-
-#Xpath Password
-${Empty_Password}          //p[normalize-space(text())='Password is required.']
-${Min_Password}            //p[normalize-space(text())='Password must be at least 8 characters.']
-${Missing_Uppercase}       //p[normalize-space(text())='Password must contain at least one uppercase letter.']
-${Missing_Lowercase}       //p[normalize-space(text())='Password must contain at least one lowercase letter.']
-${Missing_OneNumber}       //p[normalize-space(text())='Password must contain at least one number.']
-${Missing_SpecialChar}     //p[normalize-space(text())='Password must contain at least one special character.']
-
-#Xpath Confirm Password
-${Empty_ConfirmPassword}        //p[normalize-space(text())='Confirm password is required.']
-${Mismatch_ConfirmPassword}     //p[normalize-space(text())='Confirm Passwords do not match.']
-
 ${Phone_number_exist}    3693256983
 ${Email_exist}        kai@exnodes.vn
-
 ${VALID_DOB}            11-10-2025
+
 *** Keywords ***
 Input First Name
     [Arguments]    ${first_name}
@@ -115,8 +108,97 @@ Select User Role
 Click Update Submit
     Click on Element    ${UPDATE_USER_SUBMIT}
 
-Verify Update Success
-    Check validation error message    //div[@class="text-sm opacity-90"]    User updated successfully.
+On screen Update User Page
+    No Operation
+
+Go To Update User Page
+    Basic Setup
+    Restore Browser Session
+    Click on Element    ${Tab_USER_BUTTON}
+    Select User Random User From List
+    Click on Element    ${UPDATE_USER_BUTTON}
+    Sleep    5s
+    Generate Data User Information
+
+#First Name    
+Verify Error Message For Empty First Name
+    Check validation error message    ${Empty_FirstName}    ${Expected_FirstName}    
+
+Verify Error Message For Min First Name
+    Check validation error message    ${Min_FirstName}    ${Expected_min_FirstName}
+
+Verify Error Message For Max First Name
+    Check validation error message    ${Max_FirstName}    ${Expected_max_FirstName}
+
+Verify No Error Message For Valid First Name
+    Page Should Not Contain           ${Max_FirstName}    ${Expected_max_FirstName}
+
+#Last Name
+Verify Error Message For Empty Last Name
+    Check validation error message    ${Empty_LastName}    ${Expected_LastName}    
+
+Verify Error Message For Min Last Name
+    Check validation error message    ${Min_LastName}    ${Expected_min_LastName}
+
+Verify Error Message For Max Last Name
+    Check validation error message    ${Max_LastName}    ${Expected_max_LastName}
+
+Verify No Error Message For Valid Last Name
+    Page Should Not Contain           ${Max_LastName}    ${Expected_max_LastName}
+
+#Email
+Verify Error Message For Empty Email
+    Check validation error message    ${Empty_Email}      ${Expected_empty_Email}
+
+Verify Error Message For Invalid Email
+    Check validation error message    ${Invalid_Email}    ${Expected_invalid_Email}
+
+Verify No Error Message For Valid Email
+    Page Should Not Contain           ${Invalid_Email}    ${Expected_invalid_Email}
+
+#Phone Number
+Verify Error Message For Invalid Phone Number
+    Check validation error message    ${Invalid_Phone}    ${Expected_invalid_Phone}
+
+Verify No Error Message For Valid Phone Number
+    Page Should Not Contain           ${Invalid_Phone}    ${Expected_invalid_Phone}
+
+#Address
+Verify Error Message For Min Address
+    Check validation error message    ${Min_Address}    ${Expected_min_Address}
+
+Verify Error Message For Max Address
+    Check validation error message    ${Max_Address}    ${Expected_max_Address}
+
+Verify No Error Message For Valid Address
+    Page Should Not Contain           ${Max_Address}    ${Expected_max_Address}
+
+#Input Information
+User Input Information with Existing Existing Email
+    Input Email     ${Email_exist}
+
+User Input Information with Existing Phone Number
+    Input Email           ${Gen_Email}
+    Input Phone Number    ${Phone_number_exist}
+   
+User Input Valid Information for New User
+    Input First Name      ${Gen_Firstname}
+    Input Last Name       ${Gen_Lastname}
+    Input Email           ${Gen_Email}
+    Input Phone Number    ${Gen_Phonenumber}
+    Input Date Of Birth   ${VALID_DOB}
+    Input Address         ${VALID_ADDRESS}
+
+Verify Error Message For Existing Email
+    Check validation error message    ${Toast_message}    ${Expected_toast_EmailExist}
+    Sleep    2
+
+Verify Error Message For Existing Phone Number
+    Check validation error message    ${Toast_message}    ${Expected_toast_PhoneNumberExist}
+    Sleep    2
+
+Verify Sucessfully Message For Update User
+    Check validation error message    ${Toast_message}    ${Expected_toast_CreateUserSuccess}
 
 Select User Random User From List
     [Documentation]    Collect visible user rows from the users table and click one at random.
@@ -148,10 +230,10 @@ Click Submit button and wait for response Existing Email
     Log    ${request_payload}
     #Verify response
     &{parsed}=    Parse Response API   ${result.body}
-    Should Be Equal As Strings    ${parsed.success}    ${Boolean_False}
-    Should Be Equal As Integers    ${parsed.statusCode}    ${Status_400}
-    Should Be Equal As Strings    ${parsed.message}    INVALID_INPUT
-    Should Contain    ${parsed.data.email}    VAL116
+    Should Be Equal As Strings     ${parsed.success}        ${Boolean_False}
+    Should Be Equal As Integers    ${parsed.statusCode}     ${Status_400}
+    Should Be Equal As Strings     ${parsed.message}        INVALID_INPUT
+    Should Contain                 ${parsed.data.email}     VAL116
     Log    ${parsed}
 
 Click Submit button and wait for response Existing Phone Number        
@@ -172,10 +254,10 @@ Click Submit button and wait for response Existing Phone Number
     Log    ${request_payload}
     #Verify response
     &{parsed}=    Parse Response API   ${result.body}
-    Should Be Equal As Strings    ${parsed.success}    ${Boolean_False}
-    Should Be Equal As Integers    ${parsed.statusCode}    ${Status_400}
-    Should Be Equal As Strings    ${parsed.message}    INVALID_INPUT
-    Should Contain    ${parsed.data.phone_number}    VAL117
+    Should Be Equal As Strings     ${parsed.success}              ${Boolean_False}
+    Should Be Equal As Integers    ${parsed.statusCode}           ${Status_400}
+    Should Be Equal As Strings     ${parsed.message}              INVALID_INPUT
+    Should Contain                 ${parsed.data.phone_number}    VAL117
     Log    ${parsed}
 
 Click Submit button and wait for response update user successfully
@@ -196,9 +278,9 @@ Click Submit button and wait for response update user successfully
     Log    ${response}
     ${parsed}=    Parse Response API    ${response}
     Log    ${parsed}
-    Should Be Equal As Strings    ${parsed.success}    ${Boolean_True}
-    Should Be Equal As Integers    ${parsed.statusCode}    ${Status_202}
-    Should Be Equal As Strings    ${parsed.message}    UPDATE_DATA_SUCCEEDED
+    Should Be Equal As Strings         ${parsed.success}        ${Boolean_True}
+    Should Be Equal As Integers        ${parsed.statusCode}     ${Status_202}
+    Should Be Equal As Strings         ${parsed.message}        UPDATE_DATA_SUCCEEDED
     Network.Stop Network Interception    ${driver.driver}    
 
 Generate Data User Information 
