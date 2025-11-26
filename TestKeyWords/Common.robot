@@ -140,7 +140,7 @@ Parse Response API
 
 ##Mobile
 Basic Setup iOS
-    Open Application    ${APPIUM_SERVER_URL}    platformName=${PLATFORM_NAME}   appium:automationName=${AUTOMATION_NAME}    appium:udid=${UDID}     appium:bundleId=${BUNDLE_ID}
+    Open Application    ${APPIUM_SERVER_URL}    platformName=${PLATFORM_NAME}   appium:automationName=${AUTOMATION_NAME}    appium:udid=${UDID}     appium:bundleId=${BUNDLE_ID}    noReset=true
 
 Basic TearDowns iOS
     Sleep    3

@@ -20,5 +20,3 @@ Reset and Send Password to Phone Number successfully
     And Click Submit button and wait for response Send Reset Password to Phone Number
     Then Verify Sucessfully Message For Send Reset Password successfully
     [Teardown]    Close Browser
-
-    
