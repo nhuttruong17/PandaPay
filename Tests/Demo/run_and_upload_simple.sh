@@ -1,6 +1,7 @@
 #!/bin/bash
 # /Users/apple/Downloads/School/PycharmProjects/PandaPay/Tests/Demo/run_and_upload_simple.sh
 # Simple script to run test and upload to Jira
+# python3 -m robot --outputdir Result_Demo Tests/Demo/Demo_importJira.robot
 
 cd /Users/apple/Downloads/School/PycharmProjects/PandaPay
 

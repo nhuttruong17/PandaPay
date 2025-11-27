@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.9.6 on darwin)" generated="2025-11-27T09:31:33.391803" rpa="false" schemaversion="5">
+<suite id="s1" name="Demo importJira" source="/Users/apple/Downloads/School/PycharmProjects/PandaPay/Tests/Demo/Demo_importJira.robot">
+<test id="s1-t1" name="Test case 1 Pass" line="25">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>1</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-27T09:31:33.536338" elapsed="0.000141"/>
+</kw>
+<doc>one pass</doc>
+<status status="PASS" start="2025-11-27T09:31:33.535303" elapsed="0.001295"/>
+</test>
+<test id="s1-t2" name="Test case 2 Fail" line="29">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-27T09:31:33.537050" level="FAIL">1 != 2</msg>
+<arg>1</arg>
+<arg>2</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-11-27T09:31:33.536928" elapsed="0.000168">1 != 2</status>
+</kw>
+<doc>two fail</doc>
+<status status="FAIL" start="2025-11-27T09:31:33.536732" elapsed="0.000475">1 != 2</status>
+</test>
+<kw name="Upload Results To AIO" type="TEARDOWN">
+<kw name="Normalize Path" owner="OperatingSystem">
+<msg time="2025-11-27T09:31:33.537880" level="INFO">${output_xml} = /Users/apple/Downloads/School/PycharmProjects/PandaPay/Result_Demo/output.xml</msg>
+<var>${output_xml}</var>
+<arg>${OUTPUT_DIR}/output.xml</arg>
+<doc>Normalizes the given path.</doc>
+<status status="PASS" start="2025-11-27T09:31:33.537753" elapsed="0.000146"/>
+</kw>
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2025-11-27T09:31:33.538080" level="INFO" html="true">File '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/Result_Demo/output.xml"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/Result_Demo/output.xml&lt;/a&gt;' exists.</msg>
+<arg>${output_xml}</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2025-11-27T09:31:33.537977" elapsed="0.000135"/>
+</kw>
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2025-11-27T09:31:33.538276" level="INFO" html="true">Getting file '&lt;a href="file:///Users/apple/Downloads/School/PycharmProjects/PandaPay/Result_Demo/output.xml"&gt;/Users/apple/Downloads/School/PycharmProjects/PandaPay/Result_Demo/output.xml&lt;/a&gt;'.</msg>
+<msg time="2025-11-27T09:31:33.538384" level="INFO">${filename} = </msg>
+<var>${filename}</var>
+<arg>${output_xml}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2025-11-27T09:31:33.538192" elapsed="0.000208"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-27T09:31:33.538672" level="INFO">&amp;{files} = { file=(/Users/apple/Downloads/School/PycharmProjects/PandaPay/Result_Demo/output.xml, , application/xml) }</msg>
+<var>&amp;{files}</var>
+<arg>file=(${output_xml}, ${filename}, application/xml)</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-27T09:31:33.538484" elapsed="0.000206"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-27T09:31:33.538902" level="INFO">${url} = https://tcms.aiojiraapps.com/aio-tcms/api/v1/project/PPPA/testcycle/PPPA-CY-6/import/results</msg>
+<var>${url}</var>
+<arg>${AIO_IMPORT_URL_BASE}/project/${PROJECT_KEY}/testcycle/${CYCLE_KEY}/import/results</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-27T09:31:33.538769" elapsed="0.000151"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-27T09:31:33.539141" level="INFO">${headers} = {'Authorization': 'AioAuth YWVkNmMxMTEtYjBmNC0zMmIxLWEzMGEtOTMyZTM2ZjUyM2M1LjcyODZmMzM2LTAwNTUtNGJhNC1iZjQ3LTg1ODBmOTk2ZDgyMQ==', 'Accept': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Authorization=AioAuth ${AIO_AUTH_TOKEN}</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-27T09:31:33.538999" elapsed="0.000159"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-27T09:31:33.539330" level="INFO">${params} = {'type': 'Robot'}</msg>
+<var>${params}</var>
+<arg>type=Robot</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-27T09:31:33.539239" elapsed="0.000108"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-27T09:31:33.539526" level="INFO">${data} = {'createNewRun': 'true', 'addCaseToCycle': 'true', 'createCase': 'true'}</msg>
+<var>${data}</var>
+<arg>createNewRun=true</arg>
+<arg>addCaseToCycle=true</arg>
+<arg>createCase=true</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-27T09:31:33.539424" elapsed="0.000120"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Uploading ${filename} to AIO for cycle ${cycle_key}...</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-27T09:31:33.539621" elapsed="0.000113"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-11-27T09:31:34.705312" level="INFO">POST Request : url=https://tcms.aiojiraapps.com/aio-tcms/api/v1/project/PPPA/testcycle/PPPA-CY-6/import/results?type=Robot 
+ path_url=/aio-tcms/api/v1/project/PPPA/testcycle/PPPA-CY-6/import/results?type=Robot 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'AioAuth YWVkNmMxMTEtYjBmNC0zMmIxLWEzMGEtOTMyZTM2ZjUyM2M1LjcyODZmMzM2LTAwNTUtNGJhNC1iZjQ3LTg1ODBmOTk2ZDgyMQ==', 'Content-Length': '529', 'Content-Type': 'multipart/form-data; boundary=41e0fb34d651d67fe5945cfe3b831922'} 
+ body=b'--41e0fb34d651d67fe5945cfe3b831922\r\nContent-Disposition: form-data; name="createNewRun"\r\n\r\ntrue\r\n--41e0fb34d651d67fe5945cfe3b831922\r\nContent-Disposition: form-data; name="addCaseToCycle"\r\n\r\ntrue\r\n--41e0fb34d651d67fe5945cfe3b831922\r\nContent-Disposition: form-data; name="createCase"\r\n\r\ntrue\r\n--41e0fb34d651d67fe5945cfe3b831922\r\nContent-Disposition: form-data; name="file"; filename="file"\r\n\r\n(/Users/apple/Downloads/School/PycharmProjects/PandaPay/Result_Demo/output.xml, , application/xml)\r\n--41e0fb34d651d67fe5945cfe3b831922--\r\n' 
+ </msg>
+<msg time="2025-11-27T09:31:34.705806" level="INFO">POST Response : url=https://tcms.aiojiraapps.com/aio-tcms/api/v1/project/PPPA/testcycle/PPPA-CY-6/import/results?type=Robot 
+ status=400, reason=Bad Request 
+ headers={'set-cookie': 'JSESSIONID=p2~767C54CF89E973BD3427185EA4FDCDA3; Path=/aio-tcms; HttpOnly; Secure', 'content-type': 'text/plain', 'content-length': '64', 'date': 'Thu, 27 Nov 2025 02:31:34 GMT', 'strict-transport-security': 'max-age=31536000; includeSubDomains;', 'cache-control': 'no-store', 'pragma': 'no-cache', 'x-xss-protection': '1; mode=block;', 'x-content-type-options': 'nosniff', 'referrer-policy': 'strict-origin-when-cross-origin', 'content-security-policy': "script-src 'self' *.aiojiraapps.com"} 
+ body=Cannot upload the attachment. Unsupported attachment type found. 
+ </msg>
+<msg time="2025-11-27T09:31:34.706490" level="INFO">${response} = None</msg>
+<msg time="2025-11-27T09:31:34.706601" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://tcms.aiojiraapps.com/aio-tcms/api/v1/project/PPPA/testcycle/PPPA-CY-6/import/results?type=Robot</msg>
+<var>${response}</var>
+<arg>${url}</arg>
+<arg>params=${params}</arg>
+<arg>headers=${headers}</arg>
+<arg>files=${files}</arg>
+<arg>data=${data}</arg>
+<doc>Sends a POST request.</doc>
+<status status="FAIL" start="2025-11-27T09:31:33.539815" elapsed="1.176699">HTTPError: 400 Client Error: Bad Request for url: https://tcms.aiojiraapps.com/aio-tcms/api/v1/project/PPPA/testcycle/PPPA-CY-6/import/results?type=Robot</status>
+</kw>
+<doc>Upload Robot test results to AIO after suite execution.</doc>
+<status status="FAIL" start="2025-11-27T09:31:33.537625" elapsed="1.179382">HTTPError: 400 Client Error: Bad Request for url: https://tcms.aiojiraapps.com/aio-tcms/api/v1/project/PPPA/testcycle/PPPA-CY-6/import/results?type=Robot</status>
+</kw>
+<status status="FAIL" start="2025-11-27T09:31:33.392824" elapsed="1.324491">Suite teardown failed:
+HTTPError: 400 Client Error: Bad Request for url: https://tcms.aiojiraapps.com/aio-tcms/api/v1/project/PPPA/testcycle/PPPA-CY-6/import/results?type=Robot</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Demo importJira" id="s1" pass="0" fail="2" skip="0">Demo importJira</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
